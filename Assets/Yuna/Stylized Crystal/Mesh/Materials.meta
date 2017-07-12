@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: d72bf02e860ec1d48865c64bae6d5e2a
 folderAsset: yes
 timeCreated: 1499853552
+=======
+guid: 1de9d1f2d3e45fa45be69f4c7bcf619e
+folderAsset: yes
+timeCreated: 1499852797
+>>>>>>> origin/iyoka
 licenseType: Free
 DefaultImporter:
   userData: 
