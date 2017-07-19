@@ -57,7 +57,7 @@ public class ItemManager : MonoBehaviour {
             new Vector3(0, 0, prefabColl.bounds.extents.z);
         instanceList[1].transform.position = prefabColl.bounds.center + 
             new Vector3(0, 0, prefabColl.bounds.extents.z) +
-            new Vector3(0, 0, instance2.bounds.extents.z);
+            new Vector3(0, 0, instance2.bounds.extents.z );
         instanceList[2].transform.position = instance2.bounds.center +
             new Vector3(0, 0, instance2.bounds.extents.z) +
             new Vector3(0, 0, instance3.bounds.extents.z);

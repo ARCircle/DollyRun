@@ -229,7 +229,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.140498, y: 1, z: 9.234417}
-  m_Center: {x: -0.3220744, y: 0, z: 1.2689676}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114275830907217262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,10 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bc7ddf999e55748b3428055b8a8985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   coinPrefab: {fileID: 1383790645720020, guid: 69cf400618c8ccf4b9efa51d3592b3b5, type: 2}
-  destroyBorder: {fileID: 0}
-  vacuumBorder: {fileID: 0}
   instancedCoins:
   - {fileID: 114495640344707512}
   - {fileID: 114775539278247532}
@@ -283,11 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d54dafe72695bd4abb2be881f2b2842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   itemRPrefab: {fileID: 1477582661288464, guid: 735ea7df02358964ebe0acdba48fa8f9,
     type: 2}
-  destroyBorder: {fileID: 0}
-  coinVacuumBorder: {fileID: 0}
   afterUsedItemTimer: 5
   coinSpeedToPlayer: 10
   instancedItemRs: []
