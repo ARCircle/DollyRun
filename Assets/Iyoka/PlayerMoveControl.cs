@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMoveControl : MonoBehaviour {
-	public GameObject[] RailBase;
-	GameObject body;
-	GameObject railtip;
-	Transform Temp;
-	Vector3 mp, wp, pp, dir;
-	Vector3 reset = new Vector3 (0f, -1f, 0f);
-	//Vector3[,] Rails = new Vector3[3, 2000];
-	GameObject[,] RailsObj = new GameObject[3, 2000];
-	int[] RailsFin = new int[3];
 	int touchcnt = 0, railcnt = 0;
-	float touchtime = 0f, limit = 1f, dunit = 0.1f; 
+	public int place = 2;
+	const int r_limit = 3, p_limit = 200;
+	float touchtime = 0f, limit = 0.5f;
+	float[,] StageRail = {{-5f, -4f}, {-0.5f, 0.5f}, {4f, 5f}};
 
-	// Use this for initialization
+	GameObject Body;
+	GameObject[] rrrr = new GameObject[r_limit]; // Rail RendeReR
+	RState[] RS = new RState[r_limit];
+	Vector3 mp, wp;
+
 	void Start () {
-		railtip = (GameObject)Resources.Load ("Rail");
-		RailBase [1].transform.Translate (0f, -0.4f, 0f);
-		RailBase [2].transform.Translate (0f, -0.2f, 0f);
+		rrrr [0] = transform.parent.Find ("RailRenderer").gameObject;
+		for (int i = 0; i < r_limit; i++) {
+			Body = transform.Find ("Body").gameObject;
+			if (i > 0) {
+				rrrr [i] = Instantiate<GameObject> (rrrr [0]);
+			}
+			RS [i] = new RState ();
+			RS [i].myrrrr = rrrr [i].transform; 
+			RS [i].LR = rrrr [i].GetComponent<LineRenderer> ();
+			RS [i].MD = rrrr [i].GetComponent<MoveDown> ();
+		}
 	}
 
-	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown(0)) {
 			touchtime = 0f;
@@ -30,62 +35,157 @@ public class PlayerMoveControl : MonoBehaviour {
 		if (Input.GetMouseButton (0) && touchtime < limit) {
 			// ワールド座標の取得
 			mp = Input.mousePosition;
-			mp.z = 10f;
-			pp = wp;
-			wp = Camera.main.ScreenToWorldPoint(mp);
-			// 点の補間
+			mp.z = 20f;
+			wp = Camera.main.ScreenToWorldPoint(mp) - rrrr[railcnt].transform.position;
+			// 描画の制限、レール交点の取得
 			if (touchcnt > 0) {
-				if ((wp - pp).magnitude > 0.00001f) {
-					dir = wp - pp;
-					float delta = dir.magnitude;
-					for (int i = 1; i < delta / dunit; i++) {
-						PutRail (i, delta);
-					}
-					// 前の点との角度・方向計算
-					TempLookAt (pp + dir);
-					PutRail (0, 0f);
+				if (wp.z < RS [railcnt].Points [touchcnt - 1].z) {
+					wp.z = RS [railcnt].Points [touchcnt - 1].z;
 				}
-			} else {
-				PutRail (0, 0f);
+				int ccnum = CrossCheck(RS [railcnt].Points [touchcnt - 1].x, wp.x);
+				if (ccnum > 0) {
+					RS [railcnt].SetCrossPoint (ccnum, RS [railcnt].Points [touchcnt - 1].z);
+				}
 			}
+			// 描画
+			RS [railcnt].Points [touchcnt] = wp;
+			for (int i = touchcnt; i < p_limit; i++) {  // レール終端の追従
+				RS [railcnt].LR.SetPosition (i, wp);
+			}
+			touchcnt++;
+			RS [railcnt].Fin = touchcnt;
 			touchtime += Time.deltaTime;
 		} else if (touchcnt > 0) {
 			//レール終端
-			TempLookAt (wp + dir);
-			wp = reset;
-			pp = reset;
-			dir = new Vector3 (0f, 0f, 0f);
-			RailsFin[railcnt] = touchcnt;
 			touchcnt = 0;
-			railcnt = (railcnt + 1) % 3;
-			RailBase [railcnt].transform.Translate (0f, 0.4f, 0f);
-			RailBase [(railcnt + 1) % 3].transform.Translate (0f, -0.2f, 0f);
-			RailBase [(railcnt + 2) % 3].transform.Translate (0f, -0.2f, 0f);
-			for (int i = 0; i < 2000; i++) {
-				Destroy(RailsObj [railcnt, i]);
+			railcnt = (railcnt + 1) % r_limit;
+			RS [railcnt].Reset ();
+		}
+		for (int i = 0; i < r_limit; i++) {
+			RS [i].CheckKP ();
+			if (RS [i].KPenable) {
+				int index = RS [i].FindCrossPoint (place);
+				if (index >= 0 && RS [i].CrossZ [index] + RS [i].myrrrr.position.z <= 1f) {
+					if (RS [i].GetLastCrossZ () + RS [i].myrrrr.position.z <= 1f) {
+						place = RS [i].GetLastCrossR ();
+						int j = place - 1;
+						Body.transform.position = new Vector3 ((StageRail [j, 0] + StageRail [j, 1]) / 2f, 0f, 1f);
+					} else {
+						place = -1;
+						//Debug.Log ("i:" + i + " vec:" + (RS [i].KeyPoint));// - Body.transform.position));
+						Body.transform.Translate (RS [i].KeyPoint - Body.transform.position);
+					}
+				}
 			}
 		}
 	}
 
-	void PutRail(int i, float delta){
-		Vector3 vec;
-		if (i > 0) {
-			vec = pp + dir * dunit / delta * i;
-			TempLookAt (vec);
+	int CrossCheck(float a, float b) {
+		float x, y;
+		if (a < b) {
+			x = a;
+			y = b;
 		} else {
-			vec = wp;
+			x = b;
+			y = a;
 		}
-		Temp = Instantiate (railtip).transform;
-		Temp.position = vec - reset * 0.01f * touchcnt;
-		Temp.SetParent (RailBase[railcnt].transform);
-		//Rails [railcnt, touchcnt] = Temp.position;
-		RailsObj [railcnt, touchcnt] = Temp.gameObject;
-		touchcnt++;
-
+		for (int i = 0; i < 3; i++) {
+			if ((StageRail [i, 0] <= x && x <= StageRail [i, 1]) || 
+				(StageRail [i, 0] <= y && y <= StageRail [i, 1]) ||
+				(x < StageRail [i, 0] && StageRail [i, 1] < y)){
+				return i + 1;
+			}
+		}
+		return 0;
 	}
 
-	void TempLookAt(Vector3 vec){
-		Temp.LookAt (vec - reset * 0.01f * (touchcnt - 1));
-	}
 
+
+	class RState {
+		const int crosslimit = 30;
+		public int Fin = 0, CrossFin = 0;
+		public int[] CrossR = new int[crosslimit];
+		public float[] CrossZ = new float[crosslimit];
+		public bool KPenable = false, StopPoint = false;
+		public Vector3 KeyPoint = Vector3.zero;
+		public Transform myrrrr;
+		public LineRenderer LR;
+		public MoveDown MD;
+		public Vector3[] Points = new Vector3[p_limit];
+
+		public void Reset () {
+			this.LR.SetPositions(new Vector3[p_limit]);
+			this.MD.Reset ();
+			this.Fin = 0; this.CrossFin = 0;
+			for (int i = 0; i < crosslimit; i++) {
+				this.CrossR[i] = 0;
+				this.CrossZ[i] = 0;
+			}
+			StopPoint = false;		
+		}
+
+		public int GetLastCrossR () {
+			return CrossR [CrossFin - 1];
+		}
+
+		public float GetLastCrossZ () {
+			return CrossZ [CrossFin - 1];
+		}
+
+		public void SetCrossPoint (int r, float z){
+			CrossR [CrossFin] = r;
+			CrossZ [CrossFin] = z;
+			CrossFin++;
+		}
+
+		public int FindCrossPoint (int plc) {
+			if (plc < 0) {
+				return 0;
+			}
+			for (int i = 0; i < crosslimit; i++) {
+				if (CrossR [i] == plc) {
+					return i;
+				}
+			}
+			return -1;
+		}
+
+		public void CheckKP() {
+			KPenable = false;
+			for (int i = 0; i < Fin; i++) {
+				float pi = Points [i].z + myrrrr.position.z;
+				if (pi < 1f) {
+					int j = i + 1;
+					for (; j < Fin; j++) {
+						float pj = Points [j].z + myrrrr.position.z;
+						if (pj >= 1f) {
+							float rate = (1f - pi) / (pj - pi);
+							KPenable = true;
+							KeyPoint = (Points [j] - Points [i]) * rate + Points [i] + myrrrr.position;
+							Debug.Log (Points [j]);
+							break;
+						}
+					}
+					if (j == Fin) {
+						if (!StopPoint) {
+							KPenable = true;
+							StopPoint = true;		
+							KeyPoint = Points [Fin - 1] + myrrrr.position;
+						}
+					}
+					break;
+				} else if (pi == 1f) {
+					KPenable = true;
+					KeyPoint = Points [i] + myrrrr.position;
+					break;
+				}
+			}
+		}
+	}
 }
+
+
+
+
+
+
