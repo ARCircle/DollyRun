@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 120896067854295042}
   - component: {fileID: 114299549529193652}
   m_Layer: 0
-  m_Name: Renderer (1)
+  m_Name: RailRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892428236106666}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -385,10 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2988519095f65246872b9a2853c37f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rrrr:
-  - {fileID: 1892428236106666}
-  - {fileID: 0}
-  - {fileID: 0}
+  place: 2
 --- !u!120 &120896067854295042
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -402,7 +399,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 652ecad53ec0c5540ab11fb41d8e2477, type: 2}
+  - {fileID: 2100000, guid: 31249d50ab65ac44fa13d988e72deece, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -624,7 +621,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.6
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -666,10 +663,10 @@ LineRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
+    numCornerVertices: 3
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
   m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!124 &124950558639517598

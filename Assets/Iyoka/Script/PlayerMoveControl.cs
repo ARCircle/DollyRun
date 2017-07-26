@@ -6,13 +6,14 @@ public class PlayerMoveControl : MonoBehaviour {
 	int touchcnt = 0, railcnt = 0;
 	public int place = 2;
 	const int r_limit = 3, p_limit = 200;
-	float touchtime = 0f, limit = 0.5f;
+	const float playerline = 1f;
+	float touchtime = 0f, limit = 1f;
 	float[,] StageRail = {{-5f, -4f}, {-0.5f, 0.5f}, {4f, 5f}};
 
 	GameObject Body;
 	GameObject[] rrrr = new GameObject[r_limit]; // Rail RendeReR
 	RState[] RS = new RState[r_limit];
-	Vector3 mp, wp;
+	Vector3 mp, wp, wptmp, cp;
 
 	void Start () {
 		rrrr [0] = transform.parent.Find ("RailRenderer").gameObject;
@@ -36,12 +37,19 @@ public class PlayerMoveControl : MonoBehaviour {
 			// ワールド座標の取得
 			mp = Input.mousePosition;
 			mp.z = 20f;
-			wp = Camera.main.ScreenToWorldPoint(mp) - rrrr[railcnt].transform.position;
+			wptmp = Camera.main.ScreenToWorldPoint (mp);
+			cp = Camera.main.transform.position;
+			wp = (wptmp - cp) * cp.y / (cp.y - wptmp.y) + cp - rrrr[railcnt].transform.position;
 			// 描画の制限、レール交点の取得
 			if (touchcnt > 0) {
 				if (wp.z < RS [railcnt].Points [touchcnt - 1].z) {
 					wp.z = RS [railcnt].Points [touchcnt - 1].z;
 				}
+				if (wp.x < -5.5f) {
+					wp.x = -5.5f;
+				} else if (wp.x > 5.5f) {
+					wp.x = 5.5f;
+				}					
 				int ccnum = CrossCheck(RS [railcnt].Points [touchcnt - 1].x, wp.x);
 				if (ccnum > 0) {
 					RS [railcnt].SetCrossPoint (ccnum, RS [railcnt].Points [touchcnt - 1].z);
@@ -65,14 +73,17 @@ public class PlayerMoveControl : MonoBehaviour {
 			RS [i].CheckKP ();
 			if (RS [i].KPenable) {
 				int index = RS [i].FindCrossPoint (place);
-				if (index >= 0 && RS [i].CrossZ [index] + RS [i].myrrrr.position.z <= 1f) {
-					if (RS [i].GetLastCrossZ () + RS [i].myrrrr.position.z <= 1f) {
+				if (index >= 0 && RS [i].CrossZ [index] + RS [i].myrrrr.position.z <= playerline) {
+					if (RS [i].GetLastCrossZ () + RS [i].myrrrr.position.z <= playerline) {
 						place = RS [i].GetLastCrossR ();
+						RS [i].Riding = false;
 						int j = place - 1;
-						Body.transform.position = new Vector3 ((StageRail [j, 0] + StageRail [j, 1]) / 2f, 0f, 1f);
+						Body.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+						Body.transform.position = new Vector3 ((StageRail [j, 0] + StageRail [j, 1]) / 2f, 0f, playerline);
 					} else {
 						place = -1;
-						//Debug.Log ("i:" + i + " vec:" + (RS [i].KeyPoint));// - Body.transform.position));
+						RS [i].Riding = true;
+						Body.transform.LookAt(RS [i].NextPoint);
 						Body.transform.Translate (RS [i].KeyPoint - Body.transform.position);
 					}
 				}
@@ -106,8 +117,9 @@ public class PlayerMoveControl : MonoBehaviour {
 		public int Fin = 0, CrossFin = 0;
 		public int[] CrossR = new int[crosslimit];
 		public float[] CrossZ = new float[crosslimit];
-		public bool KPenable = false, StopPoint = false;
+		public bool KPenable = false, StopPoint = false, Riding = false;
 		public Vector3 KeyPoint = Vector3.zero;
+		public Vector3 NextPoint = Vector3.zero;
 		public Transform myrrrr;
 		public LineRenderer LR;
 		public MoveDown MD;
@@ -121,7 +133,8 @@ public class PlayerMoveControl : MonoBehaviour {
 				this.CrossR[i] = 0;
 				this.CrossZ[i] = 0;
 			}
-			StopPoint = false;		
+			StopPoint = false;
+			Riding = false;
 		}
 
 		public int GetLastCrossR () {
@@ -140,7 +153,11 @@ public class PlayerMoveControl : MonoBehaviour {
 
 		public int FindCrossPoint (int plc) {
 			if (plc < 0) {
-				return 0;
+				if (Riding) {
+					return 0;
+				} else {
+					return -1;
+				}
 			}
 			for (int i = 0; i < crosslimit; i++) {
 				if (CrossR [i] == plc) {
@@ -152,31 +169,34 @@ public class PlayerMoveControl : MonoBehaviour {
 
 		public void CheckKP() {
 			KPenable = false;
-			for (int i = 0; i < Fin; i++) {
+			for (int i = Fin - 1; i >= 0; i--) {
 				float pi = Points [i].z + myrrrr.position.z;
-				if (pi < 1f) {
+				if (pi < playerline) {
 					int j = i + 1;
-					for (; j < Fin; j++) {
-						float pj = Points [j].z + myrrrr.position.z;
-						if (pj >= 1f) {
-							float rate = (1f - pi) / (pj - pi);
-							KPenable = true;
-							KeyPoint = (Points [j] - Points [i]) * rate + Points [i] + myrrrr.position;
-							Debug.Log (Points [j]);
-							break;
-						}
-					}
 					if (j == Fin) {
 						if (!StopPoint) {
 							KPenable = true;
 							StopPoint = true;		
 							KeyPoint = Points [Fin - 1] + myrrrr.position;
+							NextPoint = KeyPoint;
 						}
+					} else {
+						//for (; j < Fin; j++) {
+						float pj = Points [j].z + myrrrr.position.z;
+						//	if (pj >= playerline) {
+						float rate = (playerline - pi) / (pj - pi);
+						KPenable = true;
+						KeyPoint = (Points [j] - Points [i]) * rate + Points [i] + myrrrr.position;
+						NextPoint = Points [j] + myrrrr.position;
+						//		break;
+						//	}
+						//}
 					}
 					break;
-				} else if (pi == 1f) {
+				} else if (pi == playerline) {
 					KPenable = true;
 					KeyPoint = Points [i] + myrrrr.position;
+					NextPoint = KeyPoint;
 					break;
 				}
 			}
