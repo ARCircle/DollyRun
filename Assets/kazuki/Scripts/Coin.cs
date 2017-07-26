@@ -4,13 +4,14 @@ using UnityEngine;
 
 //コインの動きを設定するクラス
 public class Coin : MonoBehaviour {
-    public float speed;
+    private float speed;
     private bool isPlayerTouched;
     private bool isVacuumed;
     private Transform vacuumBorder;
 
     // Use this for initialization
     void Start() {
+        speed = transform.parent.GetComponent<CoinManager>().GetSpeed();
         isPlayerTouched = false;
         isVacuumed = false;
     }

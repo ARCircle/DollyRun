@@ -4,11 +4,12 @@ using UnityEngine;
 
 //ItemRの動きを設定するクラス
 public class ItemR : MonoBehaviour {
-    public float speed;
+    private float speed;
     private bool isPlayerTouched;
 
     // Use this for initialization
     void Start () {
+        speed = transform.parent.GetComponent<ItemRManager>().GetSpeed();
         isPlayerTouched = false;		
 	}
 	
