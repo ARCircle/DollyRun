@@ -10,21 +10,22 @@ public class CreateCrystal : MonoBehaviour {
 	private int c;
 
 	void Start () {
-		
+		for (int i = 2; i < 20; i++) { 
+			int type = Random.Range (0, 2);
+			float x = Random.Range (-2.0f, 2.0f);
+			if (type == 0) {
+				GameObject crystal = Instantiate (prefab_A);
+				crystal.transform.position = new Vector3 (x, 0, i * 5);
+				crystal.GetComponent<CrystalScript> ().type = "A";
+			} else {
+				GameObject crystal = Instantiate (prefab_R);
+				crystal.transform.position = new Vector3 (x, 0, i * 5);
+				crystal.GetComponent<CrystalScript> ().type = "R";
+			}
+		}
 	}
 
 	void Update () {
-		c++;
-		if (c % 60 == 0) {
-			int type = Random.Range (0, 2);
-			float x = Random.Range (-2.0f, 1.8f);
-			if (type == 0) {
-				GameObject crystal = Instantiate (prefab_A, new Vector3(x, -0.5f, 10), Quaternion.identity);
-				crystal.GetComponent<CrystalMove> ().type = "A";
-			} else {
-				GameObject crystal = Instantiate (prefab_R, new Vector3(x, -0.5f, 10), Quaternion.identity);
-				crystal.GetComponent<CrystalMove> ().type = "R";
-			}
-		}
+		
 	}
 }

@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class MoveTrokko : MonoBehaviour {
 	
-	public Vector2 mousePosi;
+	private Vector3 mousePosi;
+
+	private float x;
+	private float z;
 
 	void Start () {
 		
 	}
 
 	void Update () {
-		mousePosi = Input.mousePosition;
-		transform.position = new Vector3 (Camera.main.ScreenToWorldPoint(mousePosi).x, 0, 0);
+		if (Input.GetMouseButton (0) && Input.mousePosition.y > Screen.height / 5) {
+			mousePosi = Input.mousePosition;
+			mousePosi.z = 10;
+			x = Camera.main.ScreenToWorldPoint (mousePosi).x;
+		}
+		z += 3 * Time.deltaTime;
+		transform.position = new Vector3 (x, 0, z);
 	}
 }

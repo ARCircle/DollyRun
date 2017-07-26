@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: psUI
+    uniqueID: 1196001323
+    locked: 0
+  - name: UI
+    uniqueID: 1399225483
+    locked: 0
