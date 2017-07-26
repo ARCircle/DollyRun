@@ -8,6 +8,7 @@ public class ItemManager : MonoBehaviour {
     public float itemSpeed;
     public GameObject player;
     public Transform destroyBorder;
+    public float coinVaccumEndTime;
     public Transform vaccumBorder;
 
     //子オブジェクトのローカルポジションで親オブジェクトの下辺で指定できるようにする
@@ -113,10 +114,9 @@ public class ItemManager : MonoBehaviour {
         BoxCollider backColl = instanceList[instanceList.Count - 1].GetComponent<BoxCollider>();
         BoxCollider newColl = instancePrefab.GetComponent<BoxCollider>();
         Vector3 newVec = instancePrefab.transform.position;
-        //newVec.x = prefabColl.transform.position.x;
-        //newVec.y = prefabColl.transform.position.y;
-        //        newVec.z = backColl.bounds.max.z - prefabColl.bounds.size.z + newColl.bounds.extents.z;
-        newVec = backColl.transform.position;
+        newVec.x = prefabColl.transform.position.x;
+        newVec.y = prefabColl.transform.position.y;
+        newVec.z = backColl.bounds.max.z - prefabColl.bounds.size.z + newColl.bounds.extents.z;
         instancePrefab.transform.position = newVec;
 
         instancePrefab.transform.parent = this.transform;

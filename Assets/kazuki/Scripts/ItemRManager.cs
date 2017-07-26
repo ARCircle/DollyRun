@@ -6,47 +6,39 @@ using UnityEngine;
 public class ItemRManager : MonoBehaviour {
     private GameObject player;
     public GameObject itemRPrefab;
-    //public Transform generateBorderLeft; //生成する境界線の最左
-    //public Transform generateBorderRight; //生成する境界線の最右
     private Transform destroyBorder; //削除する境界線
     private Transform coinVacuumBorder; //コインがプレイヤーに吸い寄せられる境界線
-    //public float intervalMinTime;
-    //public float intervalMaxTime;
-    public float afterUsedItemTimer; //アイテム使用の終了時間
-    public float coinSpeedToPlayer; //集まる際のコインの速度
-    public List<ItemR> instancedItemRs; //生成されたアイテム達
+    private float afterUsedItemTimer; //アイテム使用の終了時間
 
+    private float coinSpeedToPlayer; //集まる際のコインの速度
+    private List<ItemR> instancedItemRs; //生成されたアイテム達
+    private float speed;
     private CoinManager coinManager; //コインを集める技を使うため
     private bool isItemUsed; //アイテム使用ボタンが押されたかどうか
-    private float instanceTimer; //生成するタイマー
-    private float afterInstanceTime; //どの間隔で生成するか
     private float usedItemTimer; //アイテムを使用している間のタイマー
 
     // Use this for initialization
     void Start() {
+        coinSpeedToPlayer = 15;
         coinManager = GetComponent<CoinManager>();
         instancedItemRs     = new List<ItemR>();
+        ItemR[] itemRs = GetComponentsInChildren<ItemR>();
+        for (int i = 0; i < itemRs.Length; i++)
+            instancedItemRs.Add(itemRs[i]);
+
         isItemUsed = false;
-        instanceTimer = 0;
- //       afterInstanceTime = Random.Range(intervalMinTime, intervalMaxTime);
         usedItemTimer = 0;
 
         ItemManager itemManager = GetComponentInParent<ItemManager>();
         player = itemManager.player;
         destroyBorder = itemManager.destroyBorder;
+        afterUsedItemTimer = itemManager.coinVaccumEndTime;
         coinVacuumBorder = itemManager.vaccumBorder;
+        speed = itemManager.itemSpeed;
     }
 
     // Update is called once per frame
     void Update() {
-        ////ランダム時間後にアイテム生成
-        //instanceTimer += Time.deltaTime;        
-        //if (instanceTimer > afterInstanceTime) {
-        //    instanceTimer = 0;
-        //    afterInstanceTime = Random.Range(intervalMinTime, intervalMaxTime);
-        //    GenerateItem();
-        //}
-
         //foreachのなかでlistを変更すると例外がでるから
         for (int i = instancedItemRs.Count - 1; i >= 0; i--) {
             //削除ポイントに到達するか、プレイヤーが触れたら
@@ -95,16 +87,7 @@ public class ItemRManager : MonoBehaviour {
         Destroy(itemR.gameObject);
     }
 
-    ////ItemRをランダムな場所に生成する
-    //private void GenerateItem() {
-    //    float generatePosX = Random.Range(generateBorderLeft.transform.position.x, 
-    //                                                             generateBorderRight.transform.position.x);
-    //    Vector3 generatePos = new Vector3(generatePosX,
-    //                                                           generateBorderLeft.transform.position.y,
-    //                                                           generateBorderLeft.transform.position.z);
-
-    //    GameObject itemR = Instantiate(itemRPrefab, generatePos, Quaternion.identity);
-    //    itemR.transform.parent = this.transform;
-    //    instancedItemRs.Add(itemR.GetComponent<ItemR>());
-    //}
+    public float GetSpeed() {
+        return speed;
+    }
 }

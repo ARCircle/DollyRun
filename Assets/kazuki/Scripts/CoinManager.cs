@@ -6,32 +6,26 @@ using UnityEngine;
 public class CoinManager : MonoBehaviour {
     private GameObject player;
     public GameObject coinPrefab;
-//    public Transform generateBorderLeft;
-//    public Transform generateBorderRight;
     private Transform destroyBorder;
     private Transform vacuumBorder;
-    //public float intervalMinTime;
-    //public float intervalMaxTime;
-    public List<Coin> instancedCoins; //生成されたアイテム達
 
-    private float instanceTimer; //生成するタイマー
-    private float afterInstanceTime; //どの間隔で生成するか
-    private bool isVacuumedForCoins;
+    private List<Coin> instancedCoins; //生成されたアイテム達
+    private float speed;
 
     // Use this for initialization
     void Start () {
         instancedCoins = new List<Coin>();
-        instanceTimer = 0;
-//        afterInstanceTime = Random.Range(intervalMinTime, intervalMaxTime);
-        isVacuumedForCoins = false;
+        Coin[] coins = GetComponentsInChildren<Coin>();
+        for (int i = 0; i < coins.Length; i++)
+            instancedCoins.Add(coins[i]);
 
         ItemManager itemManager = GetComponentInParent<ItemManager>();
         player = itemManager.player;
         destroyBorder = itemManager.destroyBorder;
         vacuumBorder = itemManager.vaccumBorder;
         bool isVaccumed = itemManager.isVaccumed;
-        //    coinScript.InitVacuum(vacuumBorder);
-        //    coinScript.SetIsVacuumed(isVacuumedForCoins);
+        speed = itemManager.itemSpeed;
+
         for (int i = instancedCoins.Count - 1; i >= 0; i--) {
             instancedCoins[i].InitVacuum(vacuumBorder);
             instancedCoins[i].SetIsVacuumed(isVaccumed);
@@ -40,14 +34,6 @@ public class CoinManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        ////ランダム時間後にアイテム生成
-        //instanceTimer += Time.deltaTime;
-        //if (instanceTimer > afterInstanceTime) {
-        //    instanceTimer = 0;
-        //    afterInstanceTime = Random.Range(intervalMinTime, intervalMaxTime);
-        //    GenerateItem();
-        //}
-
         for (int i = instancedCoins.Count - 1; i >= 0; i--) {
             //削除ポイントに到達するか、プレイヤーが触れたら
             if (instancedCoins[i].transform.position.z < destroyBorder.position.z ||
@@ -65,7 +51,6 @@ public class CoinManager : MonoBehaviour {
         for (int i = instancedCoins.Count - 1; i >= 0; i--) {
             instancedCoins[i].SetIsVacuumed(true);
         }
-        isVacuumedForCoins = true;
     }
 
     //ItemRが終わる瞬間に呼ばれる。
@@ -73,7 +58,6 @@ public class CoinManager : MonoBehaviour {
         for (int i = instancedCoins.Count - 1; i >= 0; i--) {
             instancedCoins[i].SetIsVacuumed(false);
         }
-        isVacuumedForCoins = false;
     }
 
     //コインを削除する
@@ -82,21 +66,9 @@ public class CoinManager : MonoBehaviour {
         Destroy(coin.gameObject);
     }
 
-    ////コインをランダムな場所に生成する
-    //private void GenerateItem() {
-    //    float generatePosX = Random.Range(generateBorderLeft.transform.position.x,
-    //                                                             generateBorderRight.transform.position.x);
-    //    Vector3 generatePos = new Vector3(generatePosX,
-    //                                                           generateBorderLeft.transform.position.y,
-    //                                                           generateBorderLeft.transform.position.z);
-
-    //    GameObject coin = Instantiate(coinPrefab, generatePos, Quaternion.identity);
-    //    Coin coinScript = coin.GetComponent<Coin>();
-    //    instancedCoins.Add(coinScript);
-    //    coin.transform.parent = this.transform;
-    //    coinScript.InitVacuum(vacuumBorder);
-    //    coinScript.SetIsVacuumed(isVacuumedForCoins);
-    //}
+    public float GetSpeed() {
+        return speed;
+    }
 
     public List<Coin> GetCoins() {
         return instancedCoins;

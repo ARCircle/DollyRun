@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763022927244754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.51, y: 0, z: 0.84}
+  m_LocalPosition: {x: -3.51, y: 0, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4654092116154086}
@@ -242,9 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 1383790645720020, guid: 69cf400618c8ccf4b9efa51d3592b3b5, type: 2}
-  instancedCoins:
-  - {fileID: 114495640344707512}
-  - {fileID: 114775539278247532}
 --- !u!114 &114495640344707512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,7 +253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fac0678c86f52e428e403d6714910ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
 --- !u!114 &114775539278247532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,7 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fac0678c86f52e428e403d6714910ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
 --- !u!114 &114986936421428220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,9 +277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemRPrefab: {fileID: 1477582661288464, guid: 735ea7df02358964ebe0acdba48fa8f9,
     type: 2}
-  afterUsedItemTimer: 5
-  coinSpeedToPlayer: 10
-  instancedItemRs: []
 --- !u!135 &135140937479957542
 SphereCollider:
   m_ObjectHideFlags: 1

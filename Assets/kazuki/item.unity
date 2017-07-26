@@ -802,12 +802,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 1072572249353480, guid: c1ceb444e0183b346a8a8079a918b34c, type: 2}
-  - {fileID: 1844399485826346, guid: 9a3d7f3dce465124a9b77ac740a9c681, type: 2}
-  - {fileID: 1889108037384886, guid: 7d270aa2344399a45878dac6736ced19, type: 2}
+  - {fileID: 1398058667960146, guid: bb8823a5ae3344244b692210f4f00ef0, type: 2}
+  - {fileID: 1249845168081824, guid: 55b8de8db469d14448bf31a6753bf1c3, type: 2}
+  - {fileID: 1912495144546778, guid: 7d72efea55d92f04892de9d63abde86d, type: 2}
   windowBelowTransform: {fileID: 1191607684}
-  itemSpeed: 5
+  itemSpeed: 10
   player: {fileID: 606521888}
   destroyBorder: {fileID: 1191607684}
+  coinVaccumEndTime: 5
   vaccumBorder: {fileID: 115304508}
   isVaccumed: 0
 --- !u!4 &1607127417
@@ -907,10 +909,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2044196475}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 12.1, z: 3.01}
+  m_LocalRotation: {x: 0.48048857, y: -0, z: -0, w: 0.877001}
+  m_LocalPosition: {x: 0, y: 12.1, z: -2.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 57.435, y: 0, z: 0}
