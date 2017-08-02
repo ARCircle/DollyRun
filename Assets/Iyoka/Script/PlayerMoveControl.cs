@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMoveControl : MonoBehaviour {
 	int touchcnt = 0, railcnt = 0;
-	public int place = 2;
 	const int r_limit = 20, p_limit = 200;
 	const float playerline = 1f;
 	float touchtime = 0f, limit = 1f;
@@ -16,6 +15,7 @@ public class PlayerMoveControl : MonoBehaviour {
 	Vector3 mp, wp, wptmp, cp;
 
 	void Start () {
+		GrobalClass.RideRailNum = 2;
 		rrrr [0] = transform.parent.Find ("RailRenderer").gameObject;
 		for (int i = 0; i < r_limit; i++) {
 			Body = transform.Find ("Body").gameObject;
@@ -72,16 +72,16 @@ public class PlayerMoveControl : MonoBehaviour {
 		for (int i = 0; i < r_limit; i++) {
 			RS [i].CheckKP ();
 			if (RS [i].KPenable) {
-				int index = RS [i].FindCrossPoint (place);
+				int index = RS [i].FindCrossPoint (GrobalClass.RideRailNum);
 				if (index >= 0 && RS [i].CrossZ [index] + RS [i].myrrrr.position.z <= playerline) {
 					if (RS [i].GetLastCrossZ () + RS [i].myrrrr.position.z <= playerline) {
-						place = RS [i].GetLastCrossR ();
+						GrobalClass.RideRailNum = RS [i].GetLastCrossR ();
 						RS [i].Riding = false;
-						int j = place - 1;
+						int j = GrobalClass.RideRailNum - 1;
 						Body.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
 						Body.transform.position = new Vector3 ((StageRail [j, 0] + StageRail [j, 1]) / 2f, 0f, playerline);
 					} else {
-						place = -1;
+						GrobalClass.RideRailNum = -1;
 						RS [i].Riding = true;
 						Body.transform.LookAt(RS [i].NextPoint);
 						Body.transform.Translate (RS [i].KeyPoint - Body.transform.position);
