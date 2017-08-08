@@ -3,7 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerItemControl : MonoBehaviour {
-	const int N = 0, A = 1, R = 2, AR = 3;
+	GameObject Body;
+	//BoxCollider bc;
+	public GameObject auraA;
+	GameObject auraAinst;
+	bool usingA = false;
+
+	void Start() {
+		Body = transform.Find ("Trokko").gameObject;
+		//bc = Body.GetComponent<BoxCollider> ();
+	}
+
+	void Update () {
+		if (GrobalClass.usingAtime > 0f) {
+			if (usingA == false) {
+				auraAinst = Instantiate<GameObject> (auraA);
+				auraAinst.transform.SetParent (Body.transform);
+				auraAinst.transform.localPosition = new Vector3(0f, 0.35f, -0.59f);
+				auraAinst.transform.Rotate (30f, 0f, 0f);
+				usingA = true;
+				Debug.Log ("active:" + auraAinst.name);
+				//bc.enabled = false;
+			}
+			GrobalClass.usingAtime -= Time.deltaTime;
+		} else if(usingA == true){
+			//bc.enabled = true;
+			usingA = false;
+			Destroy (auraAinst);
+		}
+		if (GrobalClass.usingBtime > 0f) {
+			GrobalClass.usingBtime -= Time.deltaTime;
+		}
+	}
+
+	/*const int N = 0, A = 1, R = 2, AR = 3;
 	const int ItemMax = 3;
 	int mode = N;
 	int[] box = {0, 0};
@@ -45,4 +78,5 @@ public class PlayerItemControl : MonoBehaviour {
 	public int Mode() {
 		return mode;
 	}
+	*/
 }

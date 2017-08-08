@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
 	void Start () {
 		item = GetComponent<PlayerItemControl> ();
 		move = GetComponent<PlayerMoveControl> ();
-		body = gameObject.transform.Find ("Body");
+		body = gameObject.transform.Find ("Trokko");
 	}
 
 	// Update is called once per frame

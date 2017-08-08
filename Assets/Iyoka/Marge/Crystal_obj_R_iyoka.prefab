@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4205485222520388}
   - component: {fileID: 33256892407366248}
   - component: {fileID: 23144291721914656}
-  - component: {fileID: 114795252259002262}
   - component: {fileID: 114435661027646906}
+  - component: {fileID: 114868189344500382}
   m_Layer: 0
-  m_Name: Crystal_obj_R1
+  m_Name: Crystal_obj_R_iyoka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suiside: 1
---- !u!114 &114795252259002262
+--- !u!114 &114868189344500382
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1139594111668460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1188a3bd809f8c45b136f805c61c972, type: 3}
+  m_Script: {fileID: 11500000, guid: cd2dc1101d36600488f04b2cb740e498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 

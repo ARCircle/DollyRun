@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4079592897893422}
   - component: {fileID: 33635094913433794}
   - component: {fileID: 23883094713915132}
-  - component: {fileID: 114580717243213962}
   - component: {fileID: 114382085086727722}
+  - component: {fileID: 114150303891591448}
   m_Layer: 0
-  m_Name: Crystal_obj_A1
+  m_Name: Crystal_obj_A_iyoka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,6 +82,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1854809834878404}
   m_Mesh: {fileID: 4300000, guid: 4d7cc98ae5cab2947a8d9fa3c15e4fa8, type: 3}
+--- !u!114 &114150303891591448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1854809834878404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2dc1101d36600488f04b2cb740e498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 
 --- !u!114 &114382085086727722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,15 +106,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suiside: 1
---- !u!114 &114580717243213962
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1854809834878404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1188a3bd809f8c45b136f805c61c972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 
