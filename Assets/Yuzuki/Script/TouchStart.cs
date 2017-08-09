@@ -15,6 +15,8 @@ public class TouchStart : MonoBehaviour {
 	GameObject touch_start;
 	Animation CameraMove;
 
+	Fader fade = new Fader ();
+
 
 	// Use this for initialization
 	void Start () {
@@ -41,9 +43,18 @@ public class TouchStart : MonoBehaviour {
 			//ノンアクティブ時
 			alpha -= speed * flashSpeed;
 			textImg.color = new Color (textImg.color.r, textImg.color.g, textImg.color.b, alpha);
-			if (alpha < 0)	transform.parent.gameObject.SetActive (false);
+			if (alpha < 0) {
+
+				Image[] imgs = GameObject.Find ("StartScene").GetComponentsInChildren <Image> ();
+				StartCoroutine(fade.fadein (1.0f, imgs, DisenableThisObj));
+				//StartCoroutine(GameObject.Find("MainCanvas").GetComponent <Fader> ().fadein (1.0f, imgs, DisenableThisObj));
+			}
 		}
 
+	}
+
+	void DisenableThisObj () {
+		transform.parent.gameObject.SetActive (false);
 	}
 
 	public void DoNonactive () {
