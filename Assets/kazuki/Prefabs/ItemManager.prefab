@@ -91,7 +91,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4299821363630366
 Transform:
   m_ObjectHideFlags: 1
@@ -279,7 +279,7 @@ MonoBehaviour:
   - {fileID: 1741796660194308, guid: fe9adb3cfefbd8a4faf5202ca1741619, type: 2}
   - {fileID: 1715561870510858, guid: e1d62aa44be66874b8960bc52b817f47, type: 2}
   windowBelowTransform: {fileID: 4299821363630366}
-  itemSpeed: 10
+  itemSpeed: 5
   player: {fileID: 0}
   destroyBorder: {fileID: 4299821363630366}
   coinVaccumEndTime: 5

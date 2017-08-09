@@ -19,6 +19,7 @@ public class ItemManager : MonoBehaviour {
     private float intervalTime; //生成するまでの時間
     private float instanceTimer; //加算タイマー
     private bool isVaccumed = false;
+//    private bool preUsingItemR = false;
 
     // Use this for initialization
     void Start () {
@@ -108,25 +109,33 @@ public class ItemManager : MonoBehaviour {
         instanceTimer += Time.deltaTime;
 
         //アイテム使用ボタンが押されたら
-        //if (GrobalClass.SetItemRUsed()) isItemUsed = true;
         if (Input.GetKeyDown("i") ) {
-            GrobalClass.useItemR = true;            
+            //            GrobalClass.useItemR = true;            
+            GrobalClass.usingRtime = 5;
         }
-        //アイテムＲ使用中        
-        if (GrobalClass.useItemR) {
-            GrobalClass.useItemR = false;
-            if (isVaccumed) //時間延長
-                coinVaccumEndTimer -= coinVaccumEndTime;
-            else
+        //アイテムＲ使用してる間
+        if (GrobalClass.usingRtime > 0) {
+            //if (isVaccumed) //時間延長
+            //    GrobalClass.usingRtime -= Time.deltaTime;
+            //else
                 isVaccumed = true;
         }
-        if (isVaccumed) { 
-            coinVaccumEndTimer += Time.deltaTime;
-            if (coinVaccumEndTimer > coinVaccumEndTime) {
-                coinVaccumEndTimer = 0;
+        //if (GrobalClass.useItemR) {
+        //    GrobalClass.useItemR = false;
+        //    if (isVaccumed) //時間延長
+        //        coinVaccumEndTimer -= coinVaccumEndTime;
+        //    else
+        //        isVaccumed = true;
+        //}
+        //アイテムＲ使用中        
+        if (isVaccumed) {
+            GrobalClass.usingRtime -= Time.deltaTime;
+            if (GrobalClass.usingRtime < 0) { //残り時間が無くなったら
+                GrobalClass.usingRtime = 0;
                 isVaccumed = false;
             }
         }
+//        preUsingItemR = (GrobalClass.usingRtime > 0) ? true : false;
     }
 
     void InstanceItem() {
