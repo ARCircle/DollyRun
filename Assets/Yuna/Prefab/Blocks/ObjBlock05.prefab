@@ -55,6 +55,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4173924176474440}
+  - component: {fileID: 114789615564798808}
   m_Layer: 0
   m_Name: ObjBlock05
   m_TagString: Untagged
@@ -549,3 +550,15 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 9b6ad04ffe2454240bbc19d0ef8c3a0c, type: 3}
+--- !u!114 &114789615564798808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146568099047434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a426dce1a0330b144bca9aa99bca9f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suiside: 1

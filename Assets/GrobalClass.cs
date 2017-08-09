@@ -10,4 +10,5 @@ public static class GrobalClass{
 
     public static int coins; //今まで手に入れたコインの枚数
 	public static bool gameover = false;
+	public static float speed = 5f;  // 1秒にz軸マイナス方向へ進む速さ
 }
