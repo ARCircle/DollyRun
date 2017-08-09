@@ -13,12 +13,14 @@ public class TouchStart : MonoBehaviour {
 	bool active = true;
 	Text textImg;
 	GameObject touch_start;
+	Animation CameraMove;
 
 
 	// Use this for initialization
 	void Start () {
 		textImg = GetComponent <Text> ();
 		touch_start = transform.parent.Find ("button").gameObject;
+		CameraMove = GameObject.Find ("Camera").GetComponent<Animation> ();
 	}
 	
 	// Update is called once per frame
@@ -49,8 +51,16 @@ public class TouchStart : MonoBehaviour {
 		upAlpha = true;
 		//タッチスタートボタンを無効化	
 		touch_start.SetActive (false);
+		//カメラの移動
+		CameraMove.Play ();
 	}
+		
 
+
+
+
+	//使わないが、残しておく
+	//TouchScreenを入力する前の状態に移行
 	/*
 	public void DoActive () {
 		active = true;
