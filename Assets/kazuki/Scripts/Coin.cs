@@ -25,11 +25,13 @@ public class Coin : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        transform.Rotate(new Vector3(0, 6f, 0));
+		if (!GrobalClass.gameover) {
+			transform.Rotate (new Vector3 (0, 6f, 0));
 //        Debug.Log(transform.position.z + " >" + vacuumBorder.position.z);
 //ItemRの技が使用中でなく、技の適用範囲に入っていなかったら
-        if (!isVacuumed || transform.position.z > vacuumBorder.position.z)
-            transform.position -= speed * Vector3.forward * Time.deltaTime;
+			if (!isVacuumed || transform.position.z > vacuumBorder.position.z)
+				transform.position -= speed * Vector3.forward * Time.deltaTime;
+		}
     }
 
     void OnTriggerEnter(Collider coll) {

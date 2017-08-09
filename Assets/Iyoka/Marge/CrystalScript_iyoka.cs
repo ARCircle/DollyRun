@@ -15,11 +15,10 @@ public class CrystalScript_iyoka : MonoBehaviour {
 
 	void Update () {
 		//衝突
-		if (trokko.activeSelf == true){
+		if (!GrobalClass.gameover){
 			if(Vector3.Distance (transform.position, trokko.transform.position) < 0.8f) {
 				_itemEffectControler.GetItem (type);
 				Destroy (gameObject);
-
 			}
 		}
 	}

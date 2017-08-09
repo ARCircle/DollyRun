@@ -291,7 +291,7 @@ Transform:
   m_Children:
   - {fileID: 1268944058}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &79755892
 GameObject:
@@ -690,6 +690,10 @@ Prefab:
       propertyPath: auraR
       value: 
       objectReference: {fileID: 100008, guid: 0c2dea8c51a8bd3479bbb9bf75e93abc, type: 2}
+    - target: {fileID: 1180925907210798, guid: 0155e285e2ce86a468af14ca249833c5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0155e285e2ce86a468af14ca249833c5, type: 2}
   m_IsPrefabParent: 0
@@ -1055,7 +1059,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4621274648207100, guid: a2854cda07c5f284d87d1568ba768153, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114227616875548690, guid: a2854cda07c5f284d87d1568ba768153, type: 2}
@@ -2097,7 +2101,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4482484390864076, guid: 1046e0030a10f8f46964dc8b61f455e9, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 108560177504915214, guid: 1046e0030a10f8f46964dc8b61f455e9,
         type: 2}
@@ -6830,7 +6834,7 @@ MeshRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1784400778}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -7167,7 +7171,7 @@ Transform:
   - {fileID: 2096804169}
   - {fileID: 159406128}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857289165
 GameObject:

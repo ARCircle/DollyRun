@@ -33,7 +33,6 @@ public class PlayerItemControl : MonoBehaviour {
 			Destroy (auraAinst);
 		}
 		if (GrobalClass.usingRtime > 0f) {
-			GrobalClass.usingRtime -= Time.deltaTime;
 			if (usingR == false) {
 				auraRinst = Instantiate<GameObject> (auraR);
 				auraRinst.transform.SetParent (Body.transform);
@@ -42,7 +41,7 @@ public class PlayerItemControl : MonoBehaviour {
 				usingR = true;
 				Debug.Log ("active:" + auraRinst.name);
 			}
-			GrobalClass.usingAtime -= Time.deltaTime;
+			//GrobalClass.usingRtime -= Time.deltaTime; ItemManagerで実行
 		} else if(usingR == true){
 			usingR = false;
 			Destroy (auraRinst);
