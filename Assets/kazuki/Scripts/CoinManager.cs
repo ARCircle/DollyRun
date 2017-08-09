@@ -5,7 +5,6 @@ using UnityEngine;
 //コインを生成・削除管理するクラス
 public class CoinManager : MonoBehaviour {
     private GameObject player;
-//    private GameObject coinPrefab;
     private Transform destroyBorder;
     private Transform vacuumBorder;
 
@@ -26,7 +25,6 @@ public class CoinManager : MonoBehaviour {
         player = itemMana.player;
         destroyBorder = itemMana.destroyBorder;
         vacuumBorder = itemMana.vaccumBorder;
-//        bool isVaccumed = itemManager.isVaccumed;
         bool isVaccumed = itemMana.GetIsVaccumed();
         speed = itemMana.itemSpeed;
 
@@ -53,7 +51,7 @@ public class CoinManager : MonoBehaviour {
         }
 
         //アイテムＲ使用ボタンがtrueになった瞬間
-        if (itemMana.GetIsVaccumed() && !preIsItemUsed)
+        if (GrobalClass.usingRtime > 0 && !preIsItemUsed)
             setIsVacuumedForCoins();
         //アイテム使用中
         if (itemMana.GetIsVaccumed()) {
@@ -64,7 +62,6 @@ public class CoinManager : MonoBehaviour {
             setNonIsVacuumedForCoins();
         }
         preIsItemUsed = itemMana.GetIsVaccumed();
-
     }
 
     private void useItem() {

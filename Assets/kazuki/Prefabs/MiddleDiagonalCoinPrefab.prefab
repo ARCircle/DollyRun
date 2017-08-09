@@ -267,7 +267,7 @@ Transform:
   m_GameObject: {fileID: 1196247084482714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.5, y: 0, z: -6.6}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 2
@@ -280,7 +280,7 @@ Transform:
   m_GameObject: {fileID: 1250769184332856}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2.16}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 8
@@ -293,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 1046124196752186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.6, y: 0, z: -5.14}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 4
@@ -306,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 1830614676290196}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.5, y: 0, z: -8.3}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 1
@@ -343,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 1238932976950446}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.62}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 9
@@ -356,7 +356,7 @@ Transform:
   m_GameObject: {fileID: 1523176928155024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.7}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 3
@@ -369,7 +369,7 @@ Transform:
   m_GameObject: {fileID: 1617134884452514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.8, y: 0, z: -2.22}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 5
@@ -382,7 +382,7 @@ Transform:
   m_GameObject: {fileID: 1598525381511230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.5, y: 0, z: -10}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 0
@@ -395,7 +395,7 @@ Transform:
   m_GameObject: {fileID: 1565069963977284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.7, y: 0, z: -3.68}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 6
@@ -408,7 +408,7 @@ Transform:
   m_GameObject: {fileID: 1951740448774492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.5, y: 0, z: -11.6}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 10
@@ -421,7 +421,7 @@ Transform:
   m_GameObject: {fileID: 1295670256252278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.9, y: 0, z: -0.76}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4324102769557714}
   m_RootOrder: 7
@@ -1174,7 +1174,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122207843990993660
 Halo:
   m_ObjectHideFlags: 1
@@ -1185,7 +1185,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122221821083191096
 Halo:
   m_ObjectHideFlags: 1
@@ -1196,7 +1196,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122239395886657502
 Halo:
   m_ObjectHideFlags: 1
@@ -1207,7 +1207,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122347842093257234
 Halo:
   m_ObjectHideFlags: 1
@@ -1218,7 +1218,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122505406547549878
 Halo:
   m_ObjectHideFlags: 1
@@ -1229,7 +1229,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122757345445391790
 Halo:
   m_ObjectHideFlags: 1
@@ -1240,7 +1240,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122777723349682876
 Halo:
   m_ObjectHideFlags: 1
@@ -1251,7 +1251,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122843355833985492
 Halo:
   m_ObjectHideFlags: 1
@@ -1262,7 +1262,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122873067258455656
 Halo:
   m_ObjectHideFlags: 1
@@ -1273,7 +1273,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!122 &122933275328119986
 Halo:
   m_ObjectHideFlags: 1
@@ -1284,7 +1284,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278217857
-  m_Size: 1.1
+  m_Size: 0.6
 --- !u!135 &135109957580871454
 SphereCollider:
   m_ObjectHideFlags: 1
