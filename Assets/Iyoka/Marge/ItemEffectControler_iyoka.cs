@@ -127,13 +127,13 @@ public class ItemEffectControler_iyoka : MonoBehaviour {
 				ps_UseA [i].Play();
 				sound2.Play ();
 				GrobalClass.usingAtime += 3f;
-				Debug.Log ("time:" + GrobalClass.usingAtime);
 			}
 			for (int i = 0; i < ItemStatus.status_R; i++) {
 				anims_R [i].SetTrigger ("UseR");
 				ps_IdleR [i].Stop ();
 				ps_UseR [i].Play();
 				sound2.Play ();
+				GrobalClass.usingRtime += 3f;
 			}
 
 			ItemStatus.status_A = 0;

@@ -23,11 +23,9 @@ public class PlayerItemControl : MonoBehaviour {
 				auraAinst.transform.Rotate (30f, 0f, 0f);
 				usingA = true;
 				Debug.Log ("active:" + auraAinst.name);
-				//bc.enabled = false;
 			}
 			GrobalClass.usingAtime -= Time.deltaTime;
 		} else if(usingA == true){
-			//bc.enabled = true;
 			usingA = false;
 			Destroy (auraAinst);
 		}

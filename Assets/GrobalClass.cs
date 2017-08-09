@@ -12,4 +12,5 @@ public static class GrobalClass{
                                     //trueにすれば使用するが、次フレーム以降はfalseになる
                                     //使用している間に再びtrueにするとアイテム使用時間が延長される
     public static int coins; //今まで手に入れたコインの枚数
+	public static bool gameover = false;
 }
