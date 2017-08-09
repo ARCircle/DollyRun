@@ -57,6 +57,7 @@ public class PlayerMoveControl : MonoBehaviour {
 				int ccnum = CrossCheck(RS [railcnt].Points [touchcnt - 1].x, wp.x);
 				if (ccnum > 0) {
 					RS [railcnt].SetCrossPoint (ccnum, RS [railcnt].Points [touchcnt - 1].z);
+					RS [railcnt].CFpoint = touchcnt;
 				}
 			}
 			// 描画
@@ -69,6 +70,10 @@ public class PlayerMoveControl : MonoBehaviour {
 			touchtime += Time.deltaTime;
 		} else if (touchcnt > 0) {
 			//レール終端
+			int finp = RS [railcnt].CFpoint;
+			for (int i = finp; i < p_limit; i++) {
+				RS [railcnt].LR.SetPosition (i, RS [railcnt].LR.GetPosition(finp-1));
+			}
 			touchcnt = 0;
 			railcnt = (railcnt + 1) % r_limit;
 			RS [railcnt].Reset ();
@@ -117,7 +122,7 @@ public class PlayerMoveControl : MonoBehaviour {
 
 	class RState {
 		const int crosslimit = 30;
-		public int Fin = 0, CrossFin = 0;
+		public int Fin = 0, CrossFin = 0, CFpoint = 0;
 		public int[] CrossR = new int[crosslimit];
 		public float[] CrossZ = new float[crosslimit];
 		public bool KPenable = false, StopPoint = false, Riding = false;
@@ -131,7 +136,7 @@ public class PlayerMoveControl : MonoBehaviour {
 		public void Reset () {
 			this.LR.SetPositions(new Vector3[p_limit]);
 			this.MD.Reset ();
-			this.Fin = 0; this.CrossFin = 0;
+			this.Fin = 0; this.CrossFin = 0; this.CFpoint = 0;
 			for (int i = 0; i < crosslimit; i++) {
 				this.CrossR[i] = 0;
 				this.CrossZ[i] = 0;
