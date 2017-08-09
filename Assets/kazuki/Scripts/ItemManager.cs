@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour {
     public GameObject[] prefabs;
+    public int[] probability;
     public Transform windowBelowTransform;
     public float itemSpeed;
     public GameObject player;
@@ -19,21 +20,40 @@ public class ItemManager : MonoBehaviour {
     private float intervalTime; //生成するまでの時間
     private float instanceTimer; //加算タイマー
     private bool isVaccumed = false;
+
 //    private bool preUsingItemR = false;
 
     // Use this for initialization
     void Start () {
         //ランダムに生成
-        int first_selectPrefab = Random.Range(0, prefabs.Length);
-        int second_selectPrefab = Random.Range(0, prefabs.Length);
-        int third_selectPrefab = Random.Range(0, prefabs.Length);
-        int fourth_selectPrefab = Random.Range(0, prefabs.Length);
-        int fifth_selectPrefab = Random.Range(0, prefabs.Length);
+        int[] random = new int[prefabs.Length];
+        int[] selectNumber = new int[prefabs.Length];
+        for (int  i = 0; i < prefabs.Length; i++ ) {
+            random[i] = Random.Range(0, 100);
+
+            int curPro = probability[0];
+            if (random[i] < curPro)
+                selectNumber[i] = 0;
+            for (int j = 1; j < probability.Length; j++) {
+                if (curPro < random[i] && random[i] < curPro + probability[j])
+                    selectNumber[i] = j;
+                curPro += probability[j];
+            }
+        }
+//        probability Random.RandomRange(0, 100);
+        //int first_selectPrefab = Random.Range(0, prefabs.Length);
+        //int second_selectPrefab = Random.Range(0, prefabs.Length);
+        //int third_selectPrefab = Random.Range(0, prefabs.Length);
+        //int fourth_selectPrefab = Random.Range(0, prefabs.Length);
+        //int fifth_selectPrefab = Random.Range(0, prefabs.Length);
 
         instanceList = new List<GameObject>();
-        GameObject first = Instantiate(prefabs[first_selectPrefab]);
-        GameObject second = Instantiate(prefabs[second_selectPrefab]);
-        GameObject third = Instantiate(prefabs[third_selectPrefab]);
+        GameObject first = Instantiate(prefabs[selectNumber[0]]);
+        GameObject second = Instantiate(prefabs[selectNumber[1]]);
+        GameObject third = Instantiate(prefabs[selectNumber[2]]);
+        //GameObject first = Instantiate(prefabs[first_selectPrefab]);
+        //GameObject second = Instantiate(prefabs[second_selectPrefab]);
+        //GameObject third = Instantiate(prefabs[third_selectPrefab]);
         //GameObject fourth = Instantiate(prefabs[fourth_selectPrefab]);
         //GameObject fifth = Instantiate(prefabs[fifth_selectPrefab]);
         first.transform.parent = this.transform;
@@ -129,13 +149,18 @@ public class ItemManager : MonoBehaviour {
         //}
         //アイテムＲ使用中        
         if (isVaccumed) {
-            GrobalClass.usingRtime -= Time.deltaTime;
+            //他で減少させてる
+//            GrobalClass.usingRtime -= Time.deltaTime;
             if (GrobalClass.usingRtime < 0) { //残り時間が無くなったら
                 GrobalClass.usingRtime = 0;
                 isVaccumed = false;
             }
         }
 //        preUsingItemR = (GrobalClass.usingRtime > 0) ? true : false;
+        if (GrobalClass.gameover) {
+            isVaccumed = false;
+            GrobalClass.usingRtime = 0;
+        }
     }
 
     void InstanceItem() {
@@ -144,8 +169,21 @@ public class ItemManager : MonoBehaviour {
         instanceList.Remove(destObj);
         Destroy(destObj);
 
-        int selectPrefab = Random.Range(0, prefabs.Length);
-        GameObject instancePrefab = Instantiate(prefabs[selectPrefab]);
+        //ランダムに生成
+        int selectNumber = 0;
+        int random = Random.Range(0, 100);
+        int curPro = probability[0];
+        if (random < curPro)
+            selectNumber = 0;
+        for (int j = 1; j < probability.Length; j++) {
+            if (curPro < random && random <= curPro + probability[j])
+                selectNumber = j;
+            curPro += probability[j];
+        }
+
+
+//        int selectPrefab = Random.Range(0, prefabs.Length);
+        GameObject instancePrefab = Instantiate(prefabs[selectNumber]);
 
         //生成する場所指定
         //positionは毎回可変するので調べる
