@@ -8,12 +8,14 @@ public class Coin : MonoBehaviour {
     private bool isPlayerTouched;
     private bool isVacuumed;
     private Transform vacuumBorder;
+    private Vector3 angle; 
 
     // Use this for initialization
     void Start() {
         speed = transform.parent.GetComponent<CoinManager>().GetSpeed();
         isPlayerTouched = false;
         isVacuumed = false;
+        angle = Vector3.zero;
     }
 
     //生成されたときにItemRの技を使用中かどうかをわかるようにするため
@@ -23,10 +25,11 @@ public class Coin : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        transform.Rotate(new Vector3(0, 6f, 0));
 //        Debug.Log(transform.position.z + " >" + vacuumBorder.position.z);
 //ItemRの技が使用中でなく、技の適用範囲に入っていなかったら
         if (!isVacuumed || transform.position.z > vacuumBorder.position.z)
-            transform.position -= speed * transform.forward * Time.deltaTime;
+            transform.position -= speed * Vector3.forward * Time.deltaTime;
     }
 
     void OnTriggerEnter(Collider coll) {
