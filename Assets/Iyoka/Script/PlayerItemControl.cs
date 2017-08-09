@@ -31,8 +31,8 @@ public class PlayerItemControl : MonoBehaviour {
 			usingA = false;
 			Destroy (auraAinst);
 		}
-		if (GrobalClass.usingBtime > 0f) {
-			GrobalClass.usingBtime -= Time.deltaTime;
+		if (GrobalClass.usingRtime > 0f) {
+			GrobalClass.usingRtime -= Time.deltaTime;
 		}
 	}
 

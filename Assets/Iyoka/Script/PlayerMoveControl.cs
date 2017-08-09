@@ -87,8 +87,9 @@ public class PlayerMoveControl : MonoBehaviour {
 					} else {
 						GrobalClass.RideRailNum = -1;
 						RS [i].Riding = true;
-						//Body.transform.LookAt(RS [i].NextPoint);
 						Body.transform.Translate (RS [i].KeyPoint - Body.transform.position);
+						Body.transform.LookAt(RS [i].NextPoint);
+						Body.transform.position = new Vector3(Body.transform.position.x, Body.transform.position.y, 1f);
 					}
 				}
 			}
