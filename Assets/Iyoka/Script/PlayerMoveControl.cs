@@ -6,7 +6,7 @@ public class PlayerMoveControl : MonoBehaviour {
 	int touchcnt = 0, railcnt = 0;
 	const int r_limit = 20, p_limit = 200;
 	const float playerline = 1f;
-	float touchtime = 0f, limit = 1f;
+	float touchtime = 0f, limit = 0.5f;
 	float[,] StageRail = {{-5f, -4f}, {-0.5f, 0.5f}, {4f, 5f}};
 
 	GameObject Body;
@@ -18,9 +18,10 @@ public class PlayerMoveControl : MonoBehaviour {
 		GrobalClass.RideRailNum = 2;
 		rrrr [0] = transform.parent.Find ("RailRenderer").gameObject;
 		for (int i = 0; i < r_limit; i++) {
-			Body = transform.Find ("Body").gameObject;
+			Body = transform.Find ("Trokko").gameObject;
 			if (i > 0) {
 				rrrr [i] = Instantiate<GameObject> (rrrr [0]);
+				rrrr [i].transform.SetParent (this.transform);
 			}
 			RS [i] = new RState ();
 			RS [i].myrrrr = rrrr [i].transform; 
@@ -36,6 +37,9 @@ public class PlayerMoveControl : MonoBehaviour {
 		if (Input.GetMouseButton (0) && touchtime < limit) {
 			// ワールド座標の取得
 			mp = Input.mousePosition;
+			if (mp.y < Screen.height / 5) {
+				touchtime += limit;
+			}
 			mp.z = 20f;
 			wptmp = Camera.main.ScreenToWorldPoint (mp);
 			cp = Camera.main.transform.position;
@@ -83,8 +87,9 @@ public class PlayerMoveControl : MonoBehaviour {
 					} else {
 						GrobalClass.RideRailNum = -1;
 						RS [i].Riding = true;
-						Body.transform.LookAt(RS [i].NextPoint);
 						Body.transform.Translate (RS [i].KeyPoint - Body.transform.position);
+						Body.transform.LookAt(RS [i].NextPoint);
+						Body.transform.position = new Vector3(Body.transform.position.x, Body.transform.position.y, 1f);
 					}
 				}
 			}
@@ -109,8 +114,6 @@ public class PlayerMoveControl : MonoBehaviour {
 		}
 		return 0;
 	}
-
-
 
 	class RState {
 		const int crosslimit = 30;
