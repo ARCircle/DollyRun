@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Fader {
-	//Monobehaviourを継承しなくてもいけるっぽい？
-	//バグったら継承して
+public class Fader : MonoBehaviour{
 
 	//使い方
 	//Faderのインスタンスを生成した後、使いたいメソッドを使う
@@ -54,23 +52,41 @@ public class Fader {
 		func ();
 	}
 
-	/*
+
 	public IEnumerator blackin (float ProcessingTime, TargetFunc func) {
 		float alpha = 0;
 		float time = 0;
+		Image img = Instantiate (Resources.Load ("BlackPlate") as GameObject).transform.Find ("Image").gameObject.GetComponent <Image> ();
 
 		//フェードイン
 		while (time < ProcessingTime) {
 			time += Time.deltaTime;
 			alpha = time / ProcessingTime;
-			
+			img.color = new Color (0, 0, 0, alpha);
 
 			yield return null;
 		}
 		//フェードイン終了後の処理
 		func ();
 	}
-	*/
+
+
+	public IEnumerator blackout (float ProcessingTime, TargetFunc func) {
+		float alpha = 0;
+		float time = 0;
+		Image img = Instantiate (Resources.Load ("BlackPlate") as GameObject).transform.Find ("Image").gameObject.GetComponent <Image> ();
+
+		//フェードイン
+		while (time < ProcessingTime) {
+			time += Time.deltaTime;
+			alpha = 1 - time / ProcessingTime;
+			img.color = new Color (0, 0, 0, alpha);
+
+			yield return null;
+		}
+		//フェードイン終了後の処理
+		func ();
+	}
 
 
 

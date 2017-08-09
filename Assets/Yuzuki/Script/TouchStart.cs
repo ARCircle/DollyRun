@@ -23,6 +23,8 @@ public class TouchStart : MonoBehaviour {
 		textImg = GetComponent <Text> ();
 		touch_start = transform.parent.Find ("button").gameObject;
 		CameraMove = GameObject.Find ("Camera").GetComponent<Animation> ();
+
+		StartCoroutine (fade.blackout (1.0f, DeletePanel));
 	}
 	
 	// Update is called once per frame
@@ -64,6 +66,10 @@ public class TouchStart : MonoBehaviour {
 		touch_start.SetActive (false);
 		//カメラの移動
 		CameraMove.Play ();
+	}
+
+	void DeletePanel () {
+		Destroy (GameObject.Find ("BlackPlate(Clone)"));
 	}
 		
 

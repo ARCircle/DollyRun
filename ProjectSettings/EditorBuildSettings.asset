@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Yuzuki/Tittle.unity
+    guid: 618fdfaf08c35aa4f8f517544c8f1a26
+  - enabled: 1
+    path: Assets/Iyoka/IyokaTestStage.unity
+    guid: 00000000000000000000000000000000

@@ -23,7 +23,11 @@ public class TouchOtherButton : MonoBehaviour {
 
 	IEnumerator StartGame () {
 		yield return new WaitForSeconds (1.0f);
-		Debug.Log ("fade開始");
-		//yield return fade.blackout ();
+
+		yield return fade.blackin (1.5f, ToGameScene);
+	}
+
+	void ToGameScene () {
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("IyokaTestStage");
 	}
 }
