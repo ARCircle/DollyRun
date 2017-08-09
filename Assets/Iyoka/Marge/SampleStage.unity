@@ -619,7 +619,7 @@ Prefab:
         type: 2}
       propertyPath: auraA
       value: 
-      objectReference: {fileID: 100006, guid: d6ebb0ab3f51846fdbe1ebd88c5a39e0, type: 2}
+      objectReference: {fileID: 100006, guid: f644ffa9da5f199429d1378eeb6b0840, type: 2}
     - target: {fileID: 65921514648410548, guid: 0155e285e2ce86a468af14ca249833c5,
         type: 2}
       propertyPath: m_Enabled
@@ -685,6 +685,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114007723197092266, guid: 0155e285e2ce86a468af14ca249833c5,
+        type: 2}
+      propertyPath: auraR
+      value: 
+      objectReference: {fileID: 100008, guid: 0c2dea8c51a8bd3479bbb9bf75e93abc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0155e285e2ce86a468af14ca249833c5, type: 2}
   m_IsPrefabParent: 0

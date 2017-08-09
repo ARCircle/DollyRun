@@ -8,6 +8,9 @@ public class PlayerItemControl : MonoBehaviour {
 	public GameObject auraA;
 	GameObject auraAinst;
 	bool usingA = false;
+	public GameObject auraR;
+	GameObject auraRinst;
+	bool usingR = false;
 
 	void Start() {
 		Body = transform.Find ("Trokko").gameObject;
@@ -31,6 +34,18 @@ public class PlayerItemControl : MonoBehaviour {
 		}
 		if (GrobalClass.usingRtime > 0f) {
 			GrobalClass.usingRtime -= Time.deltaTime;
+			if (usingR == false) {
+				auraRinst = Instantiate<GameObject> (auraR);
+				auraRinst.transform.SetParent (Body.transform);
+				auraRinst.transform.localPosition = Vector3.zero;//new Vector3(0f, 0.35f, -0.59f);
+				//auraRinst.transform.Rotate (30f, 0f, 0f);
+				usingR = true;
+				Debug.Log ("active:" + auraRinst.name);
+			}
+			GrobalClass.usingAtime -= Time.deltaTime;
+		} else if(usingR == true){
+			usingR = false;
+			Destroy (auraRinst);
 		}
 	}
 
