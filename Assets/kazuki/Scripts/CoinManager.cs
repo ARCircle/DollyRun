@@ -5,12 +5,15 @@ using UnityEngine;
 //コインを生成・削除管理するクラス
 public class CoinManager : MonoBehaviour {
     private GameObject player;
-    public GameObject coinPrefab;
+//    private GameObject coinPrefab;
     private Transform destroyBorder;
     private Transform vacuumBorder;
 
     private List<Coin> instancedCoins; //生成されたアイテム達
     private float speed;
+    private ItemManager itemMana;
+    private bool preIsItemUsed;
+    private float coinSpeedToPlayer = 15;
 
     // Use this for initialization
     void Start () {
@@ -19,17 +22,20 @@ public class CoinManager : MonoBehaviour {
         for (int i = 0; i < coins.Length; i++)
             instancedCoins.Add(coins[i]);
 
-        ItemManager itemManager = GetComponentInParent<ItemManager>();
-        player = itemManager.player;
-        destroyBorder = itemManager.destroyBorder;
-        vacuumBorder = itemManager.vaccumBorder;
-        bool isVaccumed = itemManager.isVaccumed;
-        speed = itemManager.itemSpeed;
+        itemMana = GetComponentInParent<ItemManager>();
+        player = itemMana.player;
+        destroyBorder = itemMana.destroyBorder;
+        vacuumBorder = itemMana.vaccumBorder;
+//        bool isVaccumed = itemManager.isVaccumed;
+        bool isVaccumed = itemMana.GetIsVaccumed();
+        speed = itemMana.itemSpeed;
 
         for (int i = instancedCoins.Count - 1; i >= 0; i--) {
             instancedCoins[i].InitVacuum(vacuumBorder);
             instancedCoins[i].SetIsVacuumed(isVaccumed);
         }
+
+        preIsItemUsed = false;
     }
 
     // Update is called once per frame
@@ -39,9 +45,34 @@ public class CoinManager : MonoBehaviour {
             if (instancedCoins[i].transform.position.z < destroyBorder.position.z ||
                 instancedCoins[i].GetIsPlayerTouched()) {
                 if (instancedCoins[i].GetIsPlayerTouched()) {
+                    GrobalClass.coins++;
                     //player.GetComponent("PlayerController").getItem(coin.gameobject);
                 }
                 RemoveItem(instancedCoins[i]);
+            }
+        }
+
+        //アイテムＲ使用ボタンがtrueになった瞬間
+        if (itemMana.GetIsVaccumed() && !preIsItemUsed)
+            setIsVacuumedForCoins();
+        //アイテム使用中
+        if (itemMana.GetIsVaccumed()) {
+            useItem();
+        }
+        //終わった瞬間
+        if (!itemMana.GetIsVaccumed() && preIsItemUsed) {
+            setNonIsVacuumedForCoins();
+        }
+        preIsItemUsed = itemMana.GetIsVaccumed();
+
+    }
+
+    private void useItem() {
+        //画面内のコインを集める        
+        foreach (Coin coin in instancedCoins) {
+            if (coin.transform.position.z < vacuumBorder.position.z) {
+                Vector3 directionToPlayer = (player.transform.position - coin.transform.position).normalized;
+                coin.transform.position += directionToPlayer * coinSpeedToPlayer * Time.deltaTime;
             }
         }
     }
