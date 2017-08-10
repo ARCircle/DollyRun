@@ -22,13 +22,13 @@ public class ScoreManager : MonoBehaviour {
 		Image[] imgs = GetComponentsInChildren <Image> ();
 		GetComponent <Canvas> ().enabled = true;
 
-		StartCoroutine (fade.fadein (1.0f, imgs));
+		StartCoroutine (fade.fadein (0.2f, imgs));
 	}
 
 	public void EndScoreMenu () {
 		Image[] imgs = GetComponentsInChildren <Image> ();
 
-		StartCoroutine (fade.fadeout (1.0f, imgs, DisenableScoreCanvas));
+		StartCoroutine (fade.fadeout (0.2f, imgs, DisenableScoreCanvas));
 	}
 
 	void DisenableScoreCanvas () {

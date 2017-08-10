@@ -37,4 +37,17 @@ public class TouchOtherButton : MonoBehaviour {
 		GameObject.Find ("ScoreCanvas").GetComponent <ScoreManager> ().StartScoreMenu ();
 	}
 
+
+	public void TutorialStart () {
+		StartCoroutine (fade.blackin (1.5f, ToTutorial));
+	}
+
+	void ToTutorial () {
+		Debug.Log ("チュートリアルシーンへ");
+		//UnityEngine.SceneManagement.SceneManager.LoadScene ("");
+	}
+
+	public void ScoreEnd () {
+		GameObject.Find ("ScoreCanvas").GetComponent <ScoreManager> ().EndScoreMenu ();
+	}
 }
