@@ -12,10 +12,11 @@ public class Fader : MonoBehaviour{
 	//TargetFunc funcには、fadeの終了後に使いたい関数を入れる
 	//ただし、入れられるのは、返り値も引数も無い関数のみ
 	//関数名のみを引数に入れるだけでよい、()の部分はいらない
+	//関数は引数に入れなくてもよい。その場合、fade後には何も実行されない
 
 	public delegate void TargetFunc ();
 
-	public IEnumerator fadein (float ProcessingTime, Image[] targetImg, TargetFunc func) {
+	public IEnumerator fadein (float ProcessingTime, Image[] targetImg, TargetFunc func = null) {
 		float alpha = 0;
 		float time = 0;
 
@@ -30,11 +31,15 @@ public class Fader : MonoBehaviour{
 			yield return null;
 		}
 		//フェードイン終了後の処理
-		func ();
+		if (func != null) {
+			func ();
+		} else {
+			Debug.Log ("EndProcess is NULL");
+		}
 	}
 
 
-	public IEnumerator fadeout (float ProcessingTime, Image[] targetImg, TargetFunc func) {
+	public IEnumerator fadeout (float ProcessingTime, Image[] targetImg, TargetFunc func = null) {
 		float alpha = 0;
 		float time = 0;
 
@@ -49,11 +54,15 @@ public class Fader : MonoBehaviour{
 			yield return null;
 		}
 		//フェードアウト終了後の処理
-		func ();
+		if (func != null) {
+			func ();
+		} else {
+			Debug.Log ("EndProcess is NULL");
+		}
 	}
 
 
-	public IEnumerator blackin (float ProcessingTime, TargetFunc func) {
+	public IEnumerator blackin (float ProcessingTime, TargetFunc func = null) {
 		float alpha = 0;
 		float time = 0;
 		Image img = Instantiate (Resources.Load ("BlackPlate") as GameObject).transform.Find ("Image").gameObject.GetComponent <Image> ();
@@ -67,25 +76,34 @@ public class Fader : MonoBehaviour{
 			yield return null;
 		}
 		//フェードイン終了後の処理
-		func ();
+		if (func != null) {
+			func ();
+		} else {
+			Debug.Log ("EndProcess is NULL");
+		}
 	}
 
 
-	public IEnumerator blackout (float ProcessingTime, TargetFunc func) {
+	public IEnumerator blackout (float ProcessingTime, TargetFunc func = null) {
 		float alpha = 0;
 		float time = 0;
 		Image img = Instantiate (Resources.Load ("BlackPlate") as GameObject).transform.Find ("Image").gameObject.GetComponent <Image> ();
 
 		//フェードイン
 		while (time < ProcessingTime) {
+			yield return null;
 			time += Time.deltaTime;
 			alpha = 1 - time / ProcessingTime;
 			img.color = new Color (0, 0, 0, alpha);
 
-			yield return null;
+			//yield return null;
 		}
 		//フェードイン終了後の処理
-		func ();
+		if (func != null) {
+			func ();
+		} else {
+			Debug.Log ("EndProcess is NULL");
+		}
 	}
 
 

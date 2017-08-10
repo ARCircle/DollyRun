@@ -30,4 +30,11 @@ public class TouchOtherButton : MonoBehaviour {
 	void ToGameScene () {
 		UnityEngine.SceneManagement.SceneManager.LoadScene ("IyokaTestStage");
 	}
+
+
+
+	public void ScoreStart () {
+		GameObject.Find ("ScoreCanvas").GetComponent <ScoreManager> ().StartScoreMenu ();
+	}
+
 }
