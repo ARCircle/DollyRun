@@ -108,5 +108,56 @@ public class Fader : MonoBehaviour{
 
 
 
+	public IEnumerator fadein2 (float ProcessingTime, Image[] targetImg, Text[] targetText, TargetFunc func = null) {
+		float alpha = 0;
+		float time = 0;
+
+		//フェードイン
+		while (time < ProcessingTime) {
+			time += Time.deltaTime;
+			alpha = time / ProcessingTime;
+			for (int j = 0; j < targetImg.Length; j++) {
+				targetImg [j].color = new Color (targetImg [j].color.r, targetImg [j].color.g, targetImg [j].color.b, alpha);
+			}
+			for (int j = 0; j < targetText.Length; j++) {
+				targetText [j].color = new Color (targetText [j].color.r, targetText [j].color.g, targetText [j].color.b, alpha);
+			}
+
+			yield return null;
+		}
+		//フェードイン終了後の処理
+		if (func != null) {
+			func ();
+		} else {
+			Debug.Log ("EndProcess is NULL");
+		}
+	}
+
+
+	public IEnumerator fadeout2 (float ProcessingTime, Image[] targetImg, Text[] targetText, TargetFunc func = null) {
+		float alpha = 0;
+		float time = 0;
+
+		//フェードアウト
+		while (time < ProcessingTime) {
+			time += Time.deltaTime;
+			alpha = 1 - time / ProcessingTime;
+			for (int j = 0; j < targetImg.Length; j++) {
+				targetImg [j].color = new Color (targetImg [j].color.r, targetImg [j].color.g, targetImg [j].color.b, alpha);
+			}
+			for (int j = 0; j < targetText.Length; j++) {
+				targetText [j].color = new Color (targetText [j].color.r, targetText [j].color.g, targetText [j].color.b, alpha);
+			}
+
+			yield return null;
+		}
+		//フェードアウト終了後の処理
+		if (func != null) {
+			func ();
+		} else {
+			Debug.Log ("EndProcess is NULL");
+		}
+	}
+
 
 }
