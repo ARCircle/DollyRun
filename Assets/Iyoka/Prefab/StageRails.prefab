@@ -142,6 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
+  teamnum: 7
+  length: 35
 --- !u!120 &120020756044002678
 LineRenderer:
   m_ObjectHideFlags: 1

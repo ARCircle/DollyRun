@@ -14,7 +14,6 @@ public class PlayerItemControl : MonoBehaviour {
 
 	void Start() {
 		Body = transform.Find ("Trokko").gameObject;
-		//bc = Body.GetComponent<BoxCollider> ();
 	}
 
 	void Update () {
@@ -36,12 +35,11 @@ public class PlayerItemControl : MonoBehaviour {
 			if (usingR == false) {
 				auraRinst = Instantiate<GameObject> (auraR);
 				auraRinst.transform.SetParent (Body.transform);
-				auraRinst.transform.localPosition = Vector3.zero;//new Vector3(0f, 0.35f, -0.59f);
-				//auraRinst.transform.Rotate (30f, 0f, 0f);
+				auraRinst.transform.localPosition = Vector3.zero;
 				usingR = true;
 				Debug.Log ("active:" + auraRinst.name);
 			}
-			//GrobalClass.usingRtime -= Time.deltaTime; ItemManagerで実行
+			GrobalClass.usingRtime -= Time.deltaTime;
 		} else if(usingR == true){
 			usingR = false;
 			Destroy (auraRinst);

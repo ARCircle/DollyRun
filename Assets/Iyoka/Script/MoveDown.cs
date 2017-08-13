@@ -8,7 +8,7 @@ public class MoveDown : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!GrobalClass.gameover) {
+		if (!GrobalClass.gameover || !GrobalClass.pause) {
 			this.transform.Translate (dir * Time.deltaTime, Space.World);
 			if (suiside && transform.position.z < -100) {
 				Destroy (this.gameObject);
@@ -17,7 +17,7 @@ public class MoveDown : MonoBehaviour {
 	}
 
 	public void Reset () {
-		if (!GrobalClass.gameover) {
+		if (!GrobalClass.gameover || !GrobalClass.pause) {
 			this.transform.position = Vector3.zero;
 		}
 	}
