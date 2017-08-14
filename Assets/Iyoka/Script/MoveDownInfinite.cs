@@ -28,7 +28,7 @@ public class MoveDownInfinite : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!GrobalClass.gameover || !GrobalClass.pause) {
+		if (!GrobalClass.gameover && !GrobalClass.pause) {
 			this.transform.Translate (dir * Time.deltaTime * GrobalClass.speed);
 			timer -= Time.deltaTime * GrobalClass.speed;
 			if (timer <= 0f) {

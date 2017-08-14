@@ -31,7 +31,7 @@ public class PlayerMoveControl : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!GrobalClass.gameover || !GrobalClass.pause) {
+		if (!GrobalClass.gameover && !GrobalClass.pause) {
 			
 			// 速度上昇、距離計算
 			GrobalClass.playtime += Time.deltaTime;
@@ -65,9 +65,10 @@ public class PlayerMoveControl : MonoBehaviour {
 					} else if (wp.x > 5.5f) {
 						wp.x = 5.5f;
 					}					
-					int ccnum = CrossCheck (RS [railcnt].Points [touchcnt - 1].x, wp.x);
+					float ccz = 0f;
+					int ccnum = CrossCheck (RS [railcnt].Points [touchcnt - 1], wp, ref ccz);
 					if (ccnum > 0) {
-						RS [railcnt].SetCrossPoint (ccnum, RS [railcnt].Points [touchcnt - 1].z);
+						RS [railcnt].SetCrossPoint (ccnum, ccz);//RS [railcnt].Points [touchcnt - 1].z);
 						RS [railcnt].CFpoint = touchcnt;
 					}
 				}
@@ -114,19 +115,26 @@ public class PlayerMoveControl : MonoBehaviour {
 		}
 	}
 
-	int CrossCheck(float a, float b) {
-		float x, y;
-		if (a < b) {
-			x = a;
-			y = b;
+	int CrossCheck(Vector3 a, Vector3 b, ref float rtz) {
+		float x, y, chg, zrate;
+		if (a.x < b.x) {
+			x = a.x; y = b.x; chg = 0f;
 		} else {
-			x = b;
-			y = a;
+			x = b.x; y = a.x; chg = 1f;
 		}
 		for (int i = 0; i < 3; i++) {
-			if ((StageRail [i, 0] <= x && x <= StageRail [i, 1]) || 
-				(StageRail [i, 0] <= y && y <= StageRail [i, 1]) ||
-				(x < StageRail [i, 0] && StageRail [i, 1] < y)){
+			if (StageRail [i, 0] <= x && x <= StageRail [i, 1]) {
+				zrate = chg;
+				rtz = (b.z - a.z) * zrate + a.z;
+				return i + 1;
+			} else if (StageRail [i, 0] <= y && y <= StageRail [i, 1]) {
+				zrate = 1f - chg;
+				rtz = (b.z - a.z) * zrate + a.z;
+				return i + 1;
+			} else if (x < StageRail [i, 0] && StageRail [i, 1] < y) {
+				float center = (StageRail [i, 0] + StageRail [i, 1]) / 2;
+				zrate = (center - a.x) / (b.x - a.x);
+				rtz = (b.z - a.z) * zrate + a.z;
 				return i + 1;
 			}
 		}
@@ -220,6 +228,7 @@ public class PlayerMoveControl : MonoBehaviour {
 					}
 					break;
 				} else if (pi == playerline) {
+					Debug.Log ("moving");
 					KPenable = true;
 					KeyPoint = Points [i] + myrrrr.position;
 					NextPoint = KeyPoint;
