@@ -108,7 +108,7 @@ public class PlayerMoveControl : MonoBehaviour {
 							Body.transform.position = new Vector3 (Body.transform.position.x, Body.transform.position.y, 1f);
 						}
 					}
-					//RS [i].DeleteCrossPoint ();
+					RS [i].DeleteCrossPoint ();
 				}
 			}
 		}
@@ -135,7 +135,8 @@ public class PlayerMoveControl : MonoBehaviour {
 
 	class RState {
 		const int crosslimit = 30;
-		public int CrossStart = 0, Fin = 0, CrossFin = 0, CFpoint = 0;
+		private int CrossStart = 0, CrossFin = 0;
+		public int Fin = 0, CFpoint = 0;
 		public int[] CrossR = new int[crosslimit];
 		public float[] CrossZ = new float[crosslimit];
 		public bool KPenable = false, StopPoint = false, Riding = false;
@@ -176,12 +177,12 @@ public class PlayerMoveControl : MonoBehaviour {
 		public int FindCrossPoint (int plc) {
 			if (plc < 0) {
 				if (Riding) {
-					return 0;
+					return CrossStart;
 				} else {
 					return -1;
 				}
 			}
-			for (int i = CrossStart; i < crosslimit; i++) {
+			for (int i = CrossStart; i < CrossFin; i++) {
 				if (CrossR [i] == plc) {
 					return i;
 				}
@@ -190,9 +191,9 @@ public class PlayerMoveControl : MonoBehaviour {
 		}
 
 		public void DeleteCrossPoint () {
-			for (int i = 0; i < crosslimit; i++) {
-				if (CrossZ [i] + myrrrr.position.z < playerline && !Riding) {
-					CrossStart = i + 1;
+			for (int i = CrossStart; i < CrossFin; i++) {
+				if (CrossZ [i] + myrrrr.position.z < playerline && !Riding && CrossR [i] != GrobalClass.RideRailNum) {
+					CrossStart += 1;
 				}
 			}
 		}

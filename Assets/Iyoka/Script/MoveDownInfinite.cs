@@ -21,7 +21,7 @@ public class MoveDownInfinite : MonoBehaviour {
 				break;
 			}
 		}
-		unit = length / dir.magnitude * GrobalClass.speed;
+		unit = length / dir.magnitude;
 		timer = unit * (team + 1);
 		transform.position = transform.position - dir * unit * team;
 	}

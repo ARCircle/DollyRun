@@ -114,7 +114,8 @@ public class ItemManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+	void Update () {
+		itemSpeed = GrobalClass.speed;  // 勝手に追加してごめん
 //        Debug.Log("coin: " + GrobalClass.coins);
  //       Debug.Log("itemR: " + GrobalClass.itemRs);
         //下まで来たら削除して生成

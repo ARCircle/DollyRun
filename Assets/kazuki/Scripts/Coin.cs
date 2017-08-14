@@ -24,7 +24,8 @@ public class Coin : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+	void Update() {
+		speed = GrobalClass.speed;  // 勝手に追加してごめん
 		if (!GrobalClass.gameover) {
 			transform.Rotate (new Vector3 (0, 6f, 0));
 //        Debug.Log(transform.position.z + " >" + vacuumBorder.position.z);

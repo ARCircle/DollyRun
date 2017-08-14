@@ -37,7 +37,8 @@ public class CoinManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+	void Update () {
+		coinSpeedToPlayer = GrobalClass.speed * 3f;  // 勝手に追加してごめん
         for (int i = instancedCoins.Count - 1; i >= 0; i--) {
             //削除ポイントに到達するか、プレイヤーが触れたら
             if (instancedCoins[i].transform.position.z < destroyBorder.position.z ||
