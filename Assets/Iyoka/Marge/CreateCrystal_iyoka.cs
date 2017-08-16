@@ -29,8 +29,8 @@ public class CreateCrystal_iyoka : MonoBehaviour {
 					crystal.GetComponent<CrystalScript_iyoka> ().type = "R";
 				}
 			}*/
-			int type = Random.Range (0, 2);
-			float x = Random.Range (-4.5f, 4.5f);
+			int type = UnityEngine.Random.Range (0, 2);
+			float x = UnityEngine.Random.Range (-4.5f, 4.5f);
 			if (type == 0) {
 				GameObject crystal = Instantiate (prefab_A);
 				crystal.transform.position = new Vector3 (x, 0, 40);

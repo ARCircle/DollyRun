@@ -697,11 +697,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0155e285e2ce86a468af14ca249833c5, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &113806316 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1180925907210798, guid: 0155e285e2ce86a468af14ca249833c5,
-    type: 2}
-  m_PrefabInternal: {fileID: 113806315}
 --- !u!1 &145646687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,8 +1210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!65 &306202096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1743,8 +1738,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!65 &471413397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3053,8 +3048,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!65 &846623710
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3379,8 +3374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!65 &905890687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3486,8 +3481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!135 &909851676
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3957,20 +3952,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffeb7440ec2b5b46a25e7b6f617f948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 1143859004392554, guid: 1a1056e9137e55945a2beab3a2768c46, type: 2}
-  - {fileID: 1291685754795248, guid: c846806d53310af4584a9ec0d403e544, type: 2}
-  - {fileID: 1914951823340600, guid: c8f8b612fed56b14ba6c49f57358a0ec, type: 2}
-  - {fileID: 1223463535839234, guid: c2f9d208b3ddba748906398aa8485722, type: 2}
-  - {fileID: 1741796660194308, guid: fe9adb3cfefbd8a4faf5202ca1741619, type: 2}
-  - {fileID: 1715561870510858, guid: e1d62aa44be66874b8960bc52b817f47, type: 2}
+  prefabs: []
   probability: 
-  windowBelowTransform: {fileID: 1325459476}
-  itemSpeed: 5
-  player: {fileID: 113806316}
-  destroyBorder: {fileID: 1325459476}
-  coinVaccumEndTime: 5
-  vaccumBorder: {fileID: 1784400779}
+  windowBelowTransform: {fileID: 0}
+  itemSpeed: 0
+  player: {fileID: 0}
+  destroyBorder: {fileID: 0}
+  coinVaccumEndTime: 0
+  vaccumBorder: {fileID: 0}
 --- !u!1 &1067266758
 GameObject:
   m_ObjectHideFlags: 0
@@ -4366,8 +4355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  teamnum: 3
-  length: 50
+  teamnum: 7
+  length: 35
 --- !u!1 &1113310166
 GameObject:
   m_ObjectHideFlags: 0
@@ -4455,8 +4444,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!65 &1113310171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5113,8 +5102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  teamnum: 5
-  length: 16
+  teamnum: 7
+  length: 35
 --- !u!1 &1278244374
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,8 +6069,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!65 &1610581870
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6308,8 +6297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!65 &1686109004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7196,8 +7185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!65 &1807477156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7252,18 +7241,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffeb7440ec2b5b46a25e7b6f617f948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1249845168081824, guid: 55b8de8db469d14448bf31a6753bf1c3, type: 2}
+  prefabs: []
   probability: 
-  windowBelowTransform: {fileID: 2096804169}
-  itemSpeed: 15
-  player: {fileID: 113806316}
-  destroyBorder: {fileID: 159406128}
-  coinVaccumEndTime: 8
-  vaccumBorder: {fileID: 2096804169}
+  windowBelowTransform: {fileID: 0}
+  itemSpeed: 0
+  player: {fileID: 0}
+  destroyBorder: {fileID: 0}
+  coinVaccumEndTime: 0
+  vaccumBorder: {fileID: 0}
 --- !u!4 &1833027395
 Transform:
   m_ObjectHideFlags: 0
@@ -7763,8 +7748,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!65 &2053942219
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7854,8 +7839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff4c7b8cb1c53439641a7a0ce9a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burst: {fileID: 100008, guid: e6205a94ee6b9724daa51ba9b0d681e1, type: 2}
-  breakeffect: {fileID: 100008, guid: 47eb63c396558a445b87bf0ce3df824a, type: 2}
+  burst: {fileID: 0}
+  breakeffect: {fileID: 0}
 --- !u!135 &2072166689
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class OldCoinManager : MonoBehaviour {
     void Start() {
         instancedCoins = new List<Coin>();
         instanceTimer = 0;
-        afterInstanceTime = Random.Range(intervalMinTime, intervalMaxTime);
+		afterInstanceTime = UnityEngine.Random.Range(intervalMinTime, intervalMaxTime);
         isVacuumedForCoins = false;
 
         //ItemManager itemManager = GetComponentInParent<ItemManager>();
@@ -42,7 +42,7 @@ public class OldCoinManager : MonoBehaviour {
         instanceTimer += Time.deltaTime;
         if (instanceTimer > afterInstanceTime) {
             instanceTimer = 0;
-            afterInstanceTime = Random.Range(intervalMinTime, intervalMaxTime);
+			afterInstanceTime = UnityEngine.Random.Range(intervalMinTime, intervalMaxTime);
             GenerateItem();
         }
 
@@ -82,7 +82,7 @@ public class OldCoinManager : MonoBehaviour {
 
     //コインをランダムな場所に生成する
     private void GenerateItem() {
-        float generatePosX = Random.Range(generateBorderLeft.transform.position.x,
+		float generatePosX = UnityEngine.Random.Range(generateBorderLeft.transform.position.x,
                                                                  generateBorderRight.transform.position.x);
         Vector3 generatePos = new Vector3(generatePosX,
                                                                generateBorderLeft.transform.position.y,

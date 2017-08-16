@@ -29,7 +29,7 @@ public class ItemManager : MonoBehaviour {
         int[] random = new int[prefabs.Length];
         int[] selectNumber = new int[prefabs.Length];
         for (int  i = 0; i < prefabs.Length; i++ ) {
-            random[i] = Random.Range(0, 100);
+			random[i] = UnityEngine.Random.Range(0, 100);
 
             int curPro = probability[0];
             if (random[i] < curPro)
@@ -171,7 +171,7 @@ public class ItemManager : MonoBehaviour {
 
         //ランダムに生成
         int selectNumber = 0;
-        int random = Random.Range(0, 100);
+		int random = UnityEngine.Random.Range(0, 100);
         int curPro = probability[0];
         if (random < curPro)
             selectNumber = 0;

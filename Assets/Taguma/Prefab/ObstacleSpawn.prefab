@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1455945014831416}
+  m_IsPrefabParent: 1
+--- !u!1 &1455945014831416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4439698324840834}
+  - component: {fileID: 114551659684526742}
+  m_Layer: 0
+  m_Name: ObstacleSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4439698324840834
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455945014831416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114551659684526742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455945014831416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb9c69c8fdf5a14784667c8b2f106d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  block0: {fileID: 1204120520881166, guid: 3c9f26c4e35caeb4c8ee77971de59af8, type: 2}
+  block1: {fileID: 1712202232876504, guid: 5d349512e592b8b4698e559ac8b1545d, type: 2}
+  block2: {fileID: 1657772086275202, guid: 6bc3e254e620a5249b3e53da7ae320b1, type: 2}
+  block3: {fileID: 1811696889207080, guid: 5da0c3e703009954ea59a283e802d8ff, type: 2}
+  block4: {fileID: 1236653764461718, guid: 74849bd37e081c54499f74000b53f8af, type: 2}
+  block5: {fileID: 1146568099047434, guid: 401c0151950c2e541a4528e86e8c62c0, type: 2}
+  block6: {fileID: 1494222532605202, guid: 0116b4e7a1fe2824dbc1d1c35fecff3b, type: 2}

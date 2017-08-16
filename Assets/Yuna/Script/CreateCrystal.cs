@@ -11,8 +11,8 @@ public class CreateCrystal : MonoBehaviour {
 
 	void Start () {
 		for (int i = 2; i < 20; i++) { 
-			int type = Random.Range (0, 2);
-			float x = Random.Range (-2.0f, 2.0f);
+			int type = UnityEngine.Random.Range (0, 2);
+			float x = UnityEngine.Random.Range (-2.0f, 2.0f);
 			if (type == 0) {
 				GameObject crystal = Instantiate (prefab_A);
 				crystal.transform.position = new Vector3 (x, 0, i * 5);

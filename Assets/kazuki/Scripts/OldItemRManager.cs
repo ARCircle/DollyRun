@@ -28,7 +28,7 @@ public class OldItemRManager : MonoBehaviour {
         instancedItemRs = new List<ItemR>();
         isItemUsed = false;
         instanceTimer = 0;
-        afterInstanceTime = Random.Range(intervalMinTime, intervalMaxTime);
+        afterInstanceTime = UnityEngine.Random.Range(intervalMinTime, intervalMaxTime);
         usedItemTimer = 0;
 
 //        ItemManager itemManager = GetComponentInParent<ItemManager>();
@@ -43,7 +43,7 @@ public class OldItemRManager : MonoBehaviour {
         instanceTimer += Time.deltaTime;
         if (instanceTimer > afterInstanceTime) {
             instanceTimer = 0;
-            afterInstanceTime = Random.Range(intervalMinTime, intervalMaxTime);
+			afterInstanceTime = UnityEngine.Random.Range(intervalMinTime, intervalMaxTime);
             GenerateItem();
         }
 
@@ -97,7 +97,7 @@ public class OldItemRManager : MonoBehaviour {
 
     //ItemRをランダムな場所に生成する
     private void GenerateItem() {
-        float generatePosX = Random.Range(generateBorderLeft.transform.position.x,
+		float generatePosX = UnityEngine.Random.Range(generateBorderLeft.transform.position.x,
                                                                  generateBorderRight.transform.position.x);
         Vector3 generatePos = new Vector3(generatePosX,
                                                                generateBorderLeft.transform.position.y,
