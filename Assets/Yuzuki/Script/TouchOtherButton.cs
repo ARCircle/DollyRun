@@ -17,6 +17,8 @@ public class TouchOtherButton : MonoBehaviour {
 		//アニメション再生
 		Animation playerMove = GameObject.Find("PlayerSystem").GetComponent <Animation> ();
 		playerMove.Play ();
+		//音声の再生
+		GameObject.Find ("AudioManager").GetComponent <AudioManager> ().DecisionSE.Play ();
 
 		StartCoroutine (StartGame());
 	}
@@ -28,12 +30,15 @@ public class TouchOtherButton : MonoBehaviour {
 	}
 
 	void ToGameScene () {
-		UnityEngine.SceneManagement.SceneManager.LoadScene ("IyokaTestStage");
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("GameScene");
 	}
 
 
 
 	public void ScoreStart () {
+		//音声の再生
+		GameObject.Find ("AudioManager").GetComponent <AudioManager> ().DecisionSE.Play ();
+
 		GameObject.Find ("ScoreCanvas").GetComponent <ScoreManager> ().StartScoreMenu ();
 	}
 
@@ -44,10 +49,16 @@ public class TouchOtherButton : MonoBehaviour {
 
 	void ToTutorial () {
 		Debug.Log ("チュートリアルシーンへ");
+		//音声の再生
+		GameObject.Find ("AudioManager").GetComponent <AudioManager> ().DecisionSE.Play ();
+
 		//UnityEngine.SceneManagement.SceneManager.LoadScene ("");
 	}
 
 	public void ScoreEnd () {
+		//音声の再生
+		GameObject.Find ("AudioManager").GetComponent <AudioManager> ().backSE.Play ();
+
 		GameObject.Find ("ScoreCanvas").GetComponent <ScoreManager> ().EndScoreMenu ();
 	}
 }

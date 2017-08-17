@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Yuzuki/Tittle.unity
     guid: 618fdfaf08c35aa4f8f517544c8f1a26
   - enabled: 1
-    path: Assets/Iyoka/IyokaTestStage.unity
+    path: Assets/Iyoka/Scene/IyokaTestStage.unity
     guid: 8f14d4a1f05a84947a972b8d10f56013
   - enabled: 1
     path: Assets/Yuzuki/Logo.unity
     guid: 788cb0e6f88148941b5b6f18d3d0eca3
   - enabled: 1
     path: Assets/Yuna/Scene/OpeningScene.unity
-    guid: 00000000000000000000000000000000
+    guid: b0dae566cd3d6a945b0d0c097d307e07
+  - enabled: 1
+    path: Assets/Iyoka/Main/GameScene.unity
+    guid: 0a91ca28db904554fa7e1c8cde7899b6
