@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OpeningAnimation : MonoBehaviour {
 
@@ -90,6 +91,7 @@ public class OpeningAnimation : MonoBehaviour {
 
 			if (t > 8) {
 				//シーン遷移
+				SceneManager.LoadScene("Tittle");
 			}
 		}
 	}
