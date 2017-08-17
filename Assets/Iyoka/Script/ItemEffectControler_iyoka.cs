@@ -110,34 +110,35 @@ public class ItemEffectControler_iyoka : MonoBehaviour {
 				ItemStatus.status_R++;
 			}
 		}
-		Debug.Log ("A:" + ItemStatus.status_A + " R:" + ItemStatus.status_R);
 	}
 
 
 	//アイテムを使う
 	void UseItem() {
-		if (Flick () == true) {
-			tonkachiAnim.SetTrigger ("Use");
-			yajirusiAnim.SetTrigger ("SetFalse");
-			flickTextAnim.SetTrigger ("SetFalse");
+		if (!GrobalClass.gameover && !GrobalClass.pause) {
+			if (Flick () == true) {
+				tonkachiAnim.SetTrigger ("Use");
+				yajirusiAnim.SetTrigger ("SetFalse");
+				flickTextAnim.SetTrigger ("SetFalse");
 
-			for (int i = 0; i < ItemStatus.status_A; i++) {
-				anims_A [i].SetTrigger ("UseA");
-				ps_IdleA [i].Stop ();
-				ps_UseA [i].Play();
-				sound2.Play ();
-				GrobalClass.usingAtime += 3f;
-			}
-			for (int i = 0; i < ItemStatus.status_R; i++) {
-				anims_R [i].SetTrigger ("UseR");
-				ps_IdleR [i].Stop ();
-				ps_UseR [i].Play();
-				sound2.Play ();
-				GrobalClass.usingRtime += 3f;
-			}
+				for (int i = 0; i < ItemStatus.status_A; i++) {
+					anims_A [i].SetTrigger ("UseA");
+					ps_IdleA [i].Stop ();
+					ps_UseA [i].Play ();
+					sound2.Play ();
+					GrobalClass.usingAtime += 3f;
+				}
+				for (int i = 0; i < ItemStatus.status_R; i++) {
+					anims_R [i].SetTrigger ("UseR");
+					ps_IdleR [i].Stop ();
+					ps_UseR [i].Play ();
+					sound2.Play ();
+					GrobalClass.usingRtime += 3f;
+				}
 
-			ItemStatus.status_A = 0;
-			ItemStatus.status_R = 0;
+				ItemStatus.status_A = 0;
+				ItemStatus.status_R = 0;
+			}
 		}
 	}
 

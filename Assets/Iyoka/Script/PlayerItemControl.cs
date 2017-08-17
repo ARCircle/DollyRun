@@ -14,37 +14,35 @@ public class PlayerItemControl : MonoBehaviour {
 
 	void Start() {
 		Body = transform.Find ("Trokko").gameObject;
-		//bc = Body.GetComponent<BoxCollider> ();
 	}
 
 	void Update () {
-		if (GrobalClass.usingAtime > 0f) {
-			if (usingA == false) {
-				auraAinst = Instantiate<GameObject> (auraA);
-				auraAinst.transform.SetParent (Body.transform);
-				auraAinst.transform.localPosition = new Vector3(0f, 0.35f, -0.59f);
-				auraAinst.transform.Rotate (30f, 0f, 0f);
-				usingA = true;
-				Debug.Log ("active:" + auraAinst.name);
+		if (!GrobalClass.gameover && !GrobalClass.pause) {
+			if (GrobalClass.usingAtime > 0f) {
+				if (usingA == false) {
+					auraAinst = Instantiate<GameObject> (auraA);
+					auraAinst.transform.SetParent (Body.transform);
+					auraAinst.transform.localPosition = new Vector3 (0f, 0.35f, -0.59f);
+					auraAinst.transform.Rotate (30f, 0f, 0f);
+					usingA = true;
+				}
+				GrobalClass.usingAtime -= Time.deltaTime;
+			} else if (usingA == true) {
+				usingA = false;
+				Destroy (auraAinst);
 			}
-			GrobalClass.usingAtime -= Time.deltaTime;
-		} else if(usingA == true){
-			usingA = false;
-			Destroy (auraAinst);
-		}
-		if (GrobalClass.usingRtime > 0f) {
-			if (usingR == false) {
-				auraRinst = Instantiate<GameObject> (auraR);
-				auraRinst.transform.SetParent (Body.transform);
-				auraRinst.transform.localPosition = Vector3.zero;//new Vector3(0f, 0.35f, -0.59f);
-				//auraRinst.transform.Rotate (30f, 0f, 0f);
-				usingR = true;
-				Debug.Log ("active:" + auraRinst.name);
+			if (GrobalClass.usingRtime > 0f) {
+				if (usingR == false) {
+					auraRinst = Instantiate<GameObject> (auraR);
+					auraRinst.transform.SetParent (Body.transform);
+					auraRinst.transform.localPosition = Vector3.zero;
+					usingR = true;
+				}
+				GrobalClass.usingRtime -= Time.deltaTime;
+			} else if (usingR == true) {
+				usingR = false;
+				Destroy (auraRinst);
 			}
-			//GrobalClass.usingRtime -= Time.deltaTime; ItemManagerで実行
-		} else if(usingR == true){
-			usingR = false;
-			Destroy (auraRinst);
 		}
 	}
 

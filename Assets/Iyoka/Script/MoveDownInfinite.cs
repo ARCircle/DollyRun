@@ -7,7 +7,7 @@ public class MoveDownInfinite : MonoBehaviour {
 	public int team = 0;
 	public int teamnum = 7;
 	public float length = 35f;
-	Vector3 dir = new Vector3(0f, 0f, -5f);
+	Vector3 dir = new Vector3(0f, 0f, -1f);
 	float unit = 0f;
 	float timer = 0f;
 
@@ -28,9 +28,9 @@ public class MoveDownInfinite : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!GrobalClass.gameover) {
-			this.transform.Translate (dir * Time.deltaTime);
-			timer -= Time.deltaTime;
+		if (!GrobalClass.gameover && !GrobalClass.pause) {
+			this.transform.Translate (dir * Time.deltaTime * GrobalClass.speed);
+			timer -= Time.deltaTime * GrobalClass.speed;
 			if (timer <= 0f) {
 				transform.position = transform.position - dir * unit * teamnum;
 				timer = unit * teamnum;
