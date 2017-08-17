@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour {
+    public float coinBaseSize = 5;
+    public float coinHeight = 1;
+//    public float coinHaloSize = 0.6f;
     public GameObject[] prefabs;
     public int[] probability;
     public Transform windowBelowTransform;
-    public float itemSpeed;
+//    public float itemSpeed;
     public GameObject player;
     public Transform destroyBorder;
     public float coinVaccumEndTime;
@@ -50,7 +53,7 @@ public class ItemManager : MonoBehaviour {
         instanceList = new List<GameObject>();
         GameObject first = Instantiate(prefabs[selectNumber[0]]);
         GameObject second = Instantiate(prefabs[selectNumber[1]]);
-        GameObject third = Instantiate(prefabs[selectNumber[2]]);
+//        GameObject third = Instantiate(prefabs[selectNumber[2]]);
         //GameObject first = Instantiate(prefabs[first_selectPrefab]);
         //GameObject second = Instantiate(prefabs[second_selectPrefab]);
         //GameObject third = Instantiate(prefabs[third_selectPrefab]);
@@ -58,12 +61,12 @@ public class ItemManager : MonoBehaviour {
         //GameObject fifth = Instantiate(prefabs[fifth_selectPrefab]);
         first.transform.parent = this.transform;
         second.transform.parent = this.transform;
-        third.transform.parent = this.transform;
+//        third.transform.parent = this.transform;
         //fourth.transform.parent = this.transform;
         //fifth.transform.parent = this.transform;
         instanceList.Add(first);
         instanceList.Add(second);
-        instanceList.Add(third);
+//        instanceList.Add(third);
         //instanceList.Add(fourth);
         //instanceList.Add(fifth);
 
@@ -73,7 +76,7 @@ public class ItemManager : MonoBehaviour {
         //他４つくらいも同じことをやる
         prefabColl = instanceList[0].GetComponent<BoxCollider>();
         BoxCollider instance2 = instanceList[1].GetComponent<BoxCollider>();
-        BoxCollider instance3 = instanceList[2].GetComponent<BoxCollider>();
+//        BoxCollider instance3 = instanceList[2].GetComponent<BoxCollider>();
         //BoxCollider instance4 = instanceList[3].GetComponent<BoxCollider>();
         //BoxCollider instance5 = instanceList[4].GetComponent<BoxCollider>();
         instanceList[0].transform.position = windowBelowTransform.position +
@@ -84,11 +87,11 @@ public class ItemManager : MonoBehaviour {
             new Vector3(0, 0, prefabColl.bounds.extents.z) +
             new Vector3(0, 0, instance2.bounds.extents.z) - instance2.bounds.center
           + instance2.transform.position;
-        instanceList[2].transform.position = /*instance2.bounds.center + */
-            new Vector3(windowBelowTransform.position.x, windowBelowTransform.position.y, instance2.bounds.center.z) +
-            new Vector3(0, 0, instance2.bounds.extents.z) +
-            new Vector3(0, 0, instance3.bounds.extents.z) - instance3.bounds.center
-            + instance3.transform.position;
+        //instanceList[2].transform.position = /*instance2.bounds.center + */
+        //    new Vector3(windowBelowTransform.position.x, windowBelowTransform.position.y, instance2.bounds.center.z) +
+        //    new Vector3(0, 0, instance2.bounds.extents.z) +
+        //    new Vector3(0, 0, instance3.bounds.extents.z) - instance3.bounds.center
+        //    + instance3.transform.position;
         //instanceList[3].transform.position = /*instance3.bounds.center + */
         //    new Vector3(windowBelowTransform.position.x, windowBelowTransform.position.y, instance3.bounds.center.z) +
         //    new Vector3(0, 0, instance3.bounds.extents.z) +
@@ -104,7 +107,8 @@ public class ItemManager : MonoBehaviour {
         //その時間間隔で生成すればいい（アイテムは勝手に動いて勝手に消えてくれる）
         //リストの０のところにあるプレハブの奥行距離から生成間隔時間を毎回調べれば、
         //任意のバラバラの大きさのプレハブをまとめて自動生成できる
-        intervalTime = prefabColl.bounds.size.z / itemSpeed;
+//        intervalTime = prefabColl.bounds.size.z / itemSpeed;
+        intervalTime = prefabColl.bounds.size.z / GrobalClass.speed;
         instanceTimer = 0;
         coinVaccumEndTimer = 0;
 
@@ -123,17 +127,18 @@ public class ItemManager : MonoBehaviour {
 
             //新しい間隔時間を設定
             prefabColl = instanceList[0].GetComponent<BoxCollider>();
-            intervalTime = prefabColl.bounds.size.z / itemSpeed;
+//            intervalTime = prefabColl.bounds.size.z / itemSpeed;
+            intervalTime = prefabColl.bounds.size.z / GrobalClass.speed;
             instanceTimer = 0;
         }
         instanceTimer += Time.deltaTime;
 
-        //アイテム使用ボタンが押されたら
-        if (Input.GetKeyDown("i") ) {
-            //            GrobalClass.useItemR = true;            
-            GrobalClass.usingRtime = 5;
-        }
-        Debug.Log(GrobalClass.usingRtime);
+        ////アイテム使用ボタンが押されたら
+        //if (Input.GetKeyDown("i") ) {
+        //    //            GrobalClass.useItemR = true;            
+        //    GrobalClass.usingRtime = 5;
+        //}
+//        Debug.Log(GrobalClass.usingRtime);
         //アイテムＲ使用してる間
         if (GrobalClass.usingRtime > 0) {
             //if (isVaccumed) //時間延長

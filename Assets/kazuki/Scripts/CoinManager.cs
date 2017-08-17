@@ -26,13 +26,16 @@ public class CoinManager : MonoBehaviour {
 		destroyBorder = itemMana.destroyBorder;
 		vacuumBorder = itemMana.vaccumBorder;
 		bool isVaccumed = itemMana.GetIsVaccumed();
-		speed = itemMana.itemSpeed;
+//        speed = itemMana.itemSpeed;
+        speed = GrobalClass.speed;
 
-		for (int i = instancedCoins.Count - 1; i >= 0; i--) {
+        for (int i = instancedCoins.Count - 1; i >= 0; i--) {
 			instancedCoins[i].InitVacuum(vacuumBorder);
 			instancedCoins[i].SetIsVacuumed(isVaccumed);
+            instancedCoins[i].SetCoinSize(itemMana.coinBaseSize, itemMana.coinHeight);
 		}
 
+//        transform.position = new Vector3(transform.position.x, destroyBorder.position.y, transform.position.z);
 		preIsItemUsed = false;
 	}
 

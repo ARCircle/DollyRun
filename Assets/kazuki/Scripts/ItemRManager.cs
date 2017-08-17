@@ -33,8 +33,9 @@ public class ItemRManager : MonoBehaviour {
         player = itemMana.player;
         destroyBorder = itemMana.destroyBorder;
         afterUsedItemTimer = itemMana.coinVaccumEndTime;
-//        coinVacuumBorder = itemMana.vaccumBorder;
-        speed = itemMana.itemSpeed;
+        //        coinVacuumBorder = itemMana.vaccumBorder;
+        //        speed = itemMana.itemSpeed;
+        speed = GrobalClass.speed;
     }
 
     // Update is called once per frame
