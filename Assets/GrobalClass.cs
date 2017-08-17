@@ -5,6 +5,7 @@ using UnityEngine;
 public static class GrobalClass{
 
 	public static int   RideRailNum = 2;  //プレイヤーが乗っている線路の番号 左から順に1,2,3 描いた線路は-1
+	public static float StartInterval = 3f;  // ステージ開始時のカメラワーク時間
 	public static float usingAtime = 0f;  //アイテムAを使用中は>0
 	public static float usingRtime = 0f;  //アイテムBを使用中は>0
 	public static float speed = 5f;       // 1秒にz軸マイナス方向へ進む速さ
