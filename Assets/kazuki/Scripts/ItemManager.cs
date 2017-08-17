@@ -133,6 +133,7 @@ public class ItemManager : MonoBehaviour {
             //            GrobalClass.useItemR = true;            
             GrobalClass.usingRtime = 5;
         }
+        Debug.Log(GrobalClass.usingRtime);
         //アイテムＲ使用してる間
         if (GrobalClass.usingRtime > 0) {
             //if (isVaccumed) //時間延長

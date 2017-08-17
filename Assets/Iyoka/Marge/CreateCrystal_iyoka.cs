@@ -30,8 +30,9 @@ public class CreateCrystal_iyoka : MonoBehaviour {
 				}
 			}*/
 			int type = Random.Range (0, 2);
-			float x = Random.Range (-4.5f, 4.5f);
-			if (type == 0) {
+//            float x = Random.Range(-4.5f, 4.5f);
+            float x = -4.5f + (Random.Range(1, 6)-1)*2.25f; //-4.5+(n-1)*2.25 [ただしn=1,2,3,4,5]
+            if (type == 0) {
 				GameObject crystal = Instantiate (prefab_A);
 				crystal.transform.position = new Vector3 (x, 0, 40);
 				crystal.GetComponent<CrystalScript_iyoka> ().type = "A";
@@ -40,8 +41,8 @@ public class CreateCrystal_iyoka : MonoBehaviour {
 				crystal.transform.position = new Vector3 (x, 0, 40);
 				crystal.GetComponent<CrystalScript_iyoka> ().type = "R";
 			}
-			time = 7 * 5f / GrobalClass.speed;
-		} else {
+            time = 7 * 5f / GrobalClass.speed;
+        } else {
 			time -= Time.deltaTime;
 		}
 	}
