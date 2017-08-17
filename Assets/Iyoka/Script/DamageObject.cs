@@ -12,7 +12,8 @@ public class DamageObject : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		if (col.gameObject.tag == "Player"){
 			if (GrobalClass.usingAtime > 0f) {
-				Instantiate (breakeffect).transform.position = this.transform.position;
+				GameObject tmp = Instantiate<GameObject> (breakeffect);
+				tmp.transform.position = new Vector3 (this.transform.position.x, 0f, this.transform.position.z);
 				Destroy (this.gameObject);
 			} else {
 				col.gameObject.SetActive(false);
