@@ -169,7 +169,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1216787906349884}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -227,7 +227,7 @@ MonoBehaviour:
   - {fileID: 1223463535839234, guid: c2f9d208b3ddba748906398aa8485722, type: 2}
   - {fileID: 1741796660194308, guid: fe9adb3cfefbd8a4faf5202ca1741619, type: 2}
   - {fileID: 1715561870510858, guid: e1d62aa44be66874b8960bc52b817f47, type: 2}
-  probability: 050000000f0000001e0000001e0000000f00000005000000
+  probability: 05000000140000001e000000140000000a0000000f000000
   windowBelowTransform: {fileID: 4299821363630366}
   itemSpeed: 5
   player: {fileID: 0}
