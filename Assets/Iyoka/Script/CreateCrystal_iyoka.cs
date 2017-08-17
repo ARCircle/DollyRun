@@ -18,7 +18,7 @@ public class CreateCrystal_iyoka : MonoBehaviour {
 		if (!GrobalClass.gameover && !GrobalClass.pause) {
 			if (time <= 0f) {
 				int type = Random.Range (0, 2);
-				float x = Random.Range (-4.5f, 4.5f);
+				float x = -4.5f + (Random.Range (1, 6) - 1) * 2.25f;
 				if (type == 0) {
 					GameObject crystal = Instantiate (prefab_A);
 					crystal.transform.position = new Vector3 (x, 0, 40);
