@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateCrystal_iyoka : MonoBehaviour {
+public class CreateCrystal_iyoka2 : MonoBehaviour {
 
 	public GameObject prefab_A;
 	public GameObject prefab_R;
