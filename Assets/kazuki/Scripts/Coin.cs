@@ -12,12 +12,14 @@ public class Coin : MonoBehaviour {
 	private Vector3 angle;
     private float baseSize;
     private float extents; //あたり判定の大きさをコライダーに依存
+	private AudioSource AS;
 //    private float haloSize;
 
     // Use this for initialization
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
 		speed = transform.parent.GetComponent<CoinManager>().GetSpeed();
+		AS = transform.parent.parent.GetComponent<AudioSource> ();
 		isPlayerTouched = false;
 		isVacuumed = false;
 		angle = Vector3.zero;
@@ -54,6 +56,7 @@ public class Coin : MonoBehaviour {
 	//}
 
 	public bool GetIsPlayerTouched() {
+		if(isPlayerTouched) AS.PlayOneShot (AS.clip);
 		return isPlayerTouched;
 	}
 

@@ -36,8 +36,8 @@ public class PlayerMoveControl : MonoBehaviour {
 			// 速度上昇、距離計算
 			GrobalClass.playtime += Time.deltaTime;
 			GrobalClass.distance += GrobalClass.speed * Time.deltaTime;
-			if (GrobalClass.playtime - GrobalClass.speedlevel * 30f > 0f) {
-				GrobalClass.speed += 0.5f;
+			if (GrobalClass.playtime - GrobalClass.speedlevel * 0.4f > 0f) {
+				GrobalClass.speed += 0.01f;
 				GrobalClass.speedlevel += 1;
 			}
 
@@ -70,6 +70,8 @@ public class PlayerMoveControl : MonoBehaviour {
 					if (ccnum > 0) {
 						RS [railcnt].SetCrossPoint (ccnum, ccz);//RS [railcnt].Points [touchcnt - 1].z);
 						RS [railcnt].CFpoint = touchcnt;
+						//if (RS [railcnt].CSpoint < 0)
+						//	RS [railcnt].CSpoint = touchcnt - 1;
 					}
 				}
 				// 描画
@@ -81,6 +83,11 @@ public class PlayerMoveControl : MonoBehaviour {
 				RS [railcnt].Fin = touchcnt;
 				touchtime += Time.deltaTime;
 			} else if (touchcnt > 0) {
+				//レール始端
+				/*int strp = RS [railcnt].CSpoint;
+				for (int i = 0; i < strp; i++) {
+					RS [railcnt].LR.SetPosition (i, RS [railcnt].LR.GetPosition (strp));
+				}*/
 				//レール終端
 				int finp = RS [railcnt].CFpoint;
 				for (int i = finp; i < p_limit; i++) {
@@ -144,7 +151,7 @@ public class PlayerMoveControl : MonoBehaviour {
 	class RState {
 		const int crosslimit = 30;
 		private int CrossStart = 0, CrossFin = 0;
-		public int Fin = 0, CFpoint = 0;
+		public int Fin = 0, CFpoint = 0;//, CSpoint = -1;
 		public int[] CrossR = new int[crosslimit];
 		public float[] CrossZ = new float[crosslimit];
 		public bool KPenable = false, StopPoint = false, Riding = false;
@@ -159,7 +166,7 @@ public class PlayerMoveControl : MonoBehaviour {
 			this.LR.SetPositions(new Vector3[p_limit]);
 			this.MD.Reset ();
 			this.Fin = 0; this.CrossStart = 0;
-			this.CrossFin = 0; this.CFpoint = 0;
+			this.CrossFin = 0; this.CFpoint = 0; //this.CSpoint = -1;
 			for (int i = 0; i < crosslimit; i++) {
 				this.CrossR[i] = 0;
 				this.CrossZ[i] = 0;

@@ -33,9 +33,9 @@ public class ObstacleSpawn : MonoBehaviour {
 		if (Time <= 0.0) {
 			Time = 8.0f;
 			while (true) {
-				obj1 = UnityEngine.Random.Range (6, 7);
-				obj2 = UnityEngine.Random.Range (6, 7);
-				obj3 = UnityEngine.Random.Range (6, 7);
+				obj1 = UnityEngine.Random.Range (0, 7);
+				obj2 = UnityEngine.Random.Range (0, 7);
+				obj3 = UnityEngine.Random.Range (0, 7);
 
 				if ((obj1 == 1 || obj2 == 1 || obj3 == 1) && (((obj1 == 2) || (obj2 == 2) || (obj3 == 2))|| (obj1 == 4) || (obj2 == 4) || (obj3 == 4))) {
 
