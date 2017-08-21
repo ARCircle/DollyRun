@@ -15,7 +15,7 @@ public class CreateCrystal_iyoka : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!GrobalClass.gameover && !GrobalClass.pause) {
+		if (StageActive.isTrue()) {
 			if (time <= 0f) {
 				int type = Random.Range (0, 2);
 				float x = -4.5f + (Random.Range (1, 6) - 1) * 2.25f;

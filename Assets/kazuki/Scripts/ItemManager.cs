@@ -115,58 +115,61 @@ public class ItemManager : MonoBehaviour {
         //GrobalClass関連
         GrobalClass.coins = 0;
 //        GrobalClass.itemRs = 0;
+		//instanceList [0].SetActive(false);
     }
 
     // Update is called once per frame
     void Update () {
+		if (StageActive.isTrue ()) {
 //        Debug.Log("coin: " + GrobalClass.coins);
- //       Debug.Log("itemR: " + GrobalClass.itemRs);
-        //下まで来たら削除して生成
-        if (instanceTimer > intervalTime) {
-            InstanceItem();
+			//       Debug.Log("itemR: " + GrobalClass.itemRs);
+			//下まで来たら削除して生成
+			if (instanceTimer > intervalTime) {
+				InstanceItem ();
 
-            //新しい間隔時間を設定
-            prefabColl = instanceList[0].GetComponent<BoxCollider>();
+				//新しい間隔時間を設定
+				prefabColl = instanceList [0].GetComponent<BoxCollider> ();
 //            intervalTime = prefabColl.bounds.size.z / itemSpeed;
-            intervalTime = prefabColl.bounds.size.z / GrobalClass.speed;
-            instanceTimer = 0;
-        }
-        instanceTimer += Time.deltaTime;
+				intervalTime = prefabColl.bounds.size.z / GrobalClass.speed;
+				instanceTimer = 0;
+			}
+			instanceTimer += Time.deltaTime;
 
-        ////アイテム使用ボタンが押されたら
-        //if (Input.GetKeyDown("i") ) {
-        //    //            GrobalClass.useItemR = true;            
-        //    GrobalClass.usingRtime = 5;
-        //}
+			////アイテム使用ボタンが押されたら
+			//if (Input.GetKeyDown("i") ) {
+			//    //            GrobalClass.useItemR = true;            
+			//    GrobalClass.usingRtime = 5;
+			//}
 //        Debug.Log(GrobalClass.usingRtime);
-        //アイテムＲ使用してる間
-        if (GrobalClass.usingRtime > 0) {
-            //if (isVaccumed) //時間延長
-            //    GrobalClass.usingRtime -= Time.deltaTime;
-            //else
-                isVaccumed = true;
-        }
-        //if (GrobalClass.useItemR) {
-        //    GrobalClass.useItemR = false;
-        //    if (isVaccumed) //時間延長
-        //        coinVaccumEndTimer -= coinVaccumEndTime;
-        //    else
-        //        isVaccumed = true;
-        //}
-        //アイテムＲ使用中        
-        if (isVaccumed) {
-            //他で減少させてる
+			//アイテムＲ使用してる間
+			if (GrobalClass.usingRtime > 0) {
+				//if (isVaccumed) //時間延長
+				//    GrobalClass.usingRtime -= Time.deltaTime;
+				//else
+				isVaccumed = true;
+			}
+			//if (GrobalClass.useItemR) {
+			//    GrobalClass.useItemR = false;
+			//    if (isVaccumed) //時間延長
+			//        coinVaccumEndTimer -= coinVaccumEndTime;
+			//    else
+			//        isVaccumed = true;
+			//}
+			//アイテムＲ使用中        
+			if (isVaccumed) {
+				//他で減少させてる
 //            GrobalClass.usingRtime -= Time.deltaTime;
-            if (GrobalClass.usingRtime < 0) { //残り時間が無くなったら
-                GrobalClass.usingRtime = 0;
-                isVaccumed = false;
-            }
-        }
+				if (GrobalClass.usingRtime < 0) { //残り時間が無くなったら
+					GrobalClass.usingRtime = 0;
+					isVaccumed = false;
+				}
+			}
 //        preUsingItemR = (GrobalClass.usingRtime > 0) ? true : false;
-        if (GrobalClass.gameover) {
-            isVaccumed = false;
-            GrobalClass.usingRtime = 0;
-        }
+			if (GrobalClass.gameover) {
+				isVaccumed = false;
+				GrobalClass.usingRtime = 0;
+			}
+		}
     }
 
     void InstanceItem() {

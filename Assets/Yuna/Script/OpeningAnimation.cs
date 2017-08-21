@@ -91,6 +91,7 @@ public class OpeningAnimation : MonoBehaviour {
 
 			if (t > 8) {
 				//シーン遷移
+				GrobalClass.Reset ();
 				SceneManager.LoadScene("Tittle");
 			}
 		}

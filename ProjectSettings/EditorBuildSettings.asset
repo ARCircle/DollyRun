@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Iyoka/Main/GameScene.unity
     guid: 0a91ca28db904554fa7e1c8cde7899b6
+  - enabled: 1
+    path: Assets/Yuna/Scene/GameOverScene.unity
+    guid: b1055ba9451c3524db666b7b67fe2cf4

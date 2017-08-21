@@ -33,19 +33,24 @@ public class Coin : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
-		speed = GrobalClass.speed;  // 勝手に追加してごめん
-		if (!GrobalClass.gameover) {
-            Vector3 planePlayer = player.transform.position;
-            planePlayer.y = 0;
-            Vector3 planeCoin = transform.position;
-            planeCoin.y = 0;
-            float disToPlayer = (planePlayer - planeCoin).magnitude;
-            if (disToPlayer < extents) isPlayerTouched = true;
+		if (StageActive.isTrue ()) {
+			speed = GrobalClass.speed;  // 勝手に追加してごめん
+			if (!GrobalClass.gameover) {
+				Vector3 planePlayer = player.transform.position;
+				planePlayer.y = 0;
+				Vector3 planeCoin = transform.position;
+				planeCoin.y = 0;
+				float disToPlayer = (planePlayer - planeCoin).magnitude;
+				if (disToPlayer < extents)
+					isPlayerTouched = true;
+				//        Debug.Log(transform.position.z + " >" + vacuumBorder.position.z);
+				//ItemRの技が使用中でなく、技の適用範囲に入っていなかったら
+				if (!isVacuumed || transform.position.z > vacuumBorder.position.z)
+					transform.position -= speed * Vector3.forward * Time.deltaTime;
+			}
+		}
+		if (!GrobalClass.pause) {
 			transform.Rotate (new Vector3 (0, 6f, 0));
-			//        Debug.Log(transform.position.z + " >" + vacuumBorder.position.z);
-			//ItemRの技が使用中でなく、技の適用範囲に入っていなかったら
-			if (!isVacuumed || transform.position.z > vacuumBorder.position.z)
-				transform.position -= speed * Vector3.forward * Time.deltaTime;
 		}
 	}
 

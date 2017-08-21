@@ -31,7 +31,7 @@ public class PlayerMoveControl : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!GrobalClass.gameover && !GrobalClass.pause) {
+		if (StageActive.isTrue()) {
 			
 			// 速度上昇、距離計算
 			GrobalClass.playtime += Time.deltaTime;

@@ -6,14 +6,12 @@ public class Player : MonoBehaviour {
 	public PlayerItemControl item;
 	public PlayerMoveControl move;
 	Transform body;
-	Fader fade = new Fader ();
 
 	// Use this for initialization
 	void Start () {
 		item = GetComponent<PlayerItemControl> ();
 		move = GetComponent<PlayerMoveControl> ();
 		body = gameObject.transform.Find ("Trokko");
-		StartCoroutine (fade.blackout (1f, DeletePanel));
 
 	}
 
@@ -21,9 +19,5 @@ public class Player : MonoBehaviour {
 	void Update () {
 		float x = Input.GetAxis ("Horizontal");
 		body.Translate (x * Time.deltaTime * 4f, 0f, 0f);
-	}
-
-	void DeletePanel () {
-		Destroy (GameObject.Find ("BlackPlate(Clone)"));
 	}
 }

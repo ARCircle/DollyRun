@@ -41,31 +41,33 @@ public class CoinManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		coinSpeedToPlayer = GrobalClass.speed * 3f;  // 勝手に追加してごめん
-		for (int i = instancedCoins.Count - 1; i >= 0; i--) {
-			//削除ポイントに到達するか、プレイヤーが触れたら
-			if (instancedCoins [i].transform.position.z < destroyBorder.position.z ||
-				instancedCoins [i].GetIsPlayerTouched ()) {
-				if (instancedCoins [i].GetIsPlayerTouched ()) {
-					GrobalClass.coins++;
-					//player.GetComponent("PlayerController").getItem(coin.gameobject);
+		if (StageActive.isTrue ()) {
+			coinSpeedToPlayer = GrobalClass.speed * 3f;  // 勝手に追加してごめん
+			for (int i = instancedCoins.Count - 1; i >= 0; i--) {
+				//削除ポイントに到達するか、プレイヤーが触れたら
+				if (instancedCoins [i].transform.position.z < destroyBorder.position.z ||
+				   instancedCoins [i].GetIsPlayerTouched ()) {
+					if (instancedCoins [i].GetIsPlayerTouched ()) {
+						GrobalClass.coins++;
+						//player.GetComponent("PlayerController").getItem(coin.gameobject);
+					}
+					RemoveItem (instancedCoins [i]);
 				}
-				RemoveItem (instancedCoins [i]);
 			}
-		}
 
-		//アイテムＲ使用ボタンがtrueになった瞬間
-		if (GrobalClass.usingRtime > 0 && !preIsItemUsed)
-			setIsVacuumedForCoins ();
-		//アイテム使用中
-		if (itemMana.GetIsVaccumed ()) {
-			useItem ();
+			//アイテムＲ使用ボタンがtrueになった瞬間
+			if (GrobalClass.usingRtime > 0 && !preIsItemUsed)
+				setIsVacuumedForCoins ();
+			//アイテム使用中
+			if (itemMana.GetIsVaccumed ()) {
+				useItem ();
+			}
+			//終わった瞬間
+			if (!itemMana.GetIsVaccumed () && preIsItemUsed) {
+				setNonIsVacuumedForCoins ();
+			}
+			preIsItemUsed = itemMana.GetIsVaccumed ();
 		}
-		//終わった瞬間
-		if (!itemMana.GetIsVaccumed () && preIsItemUsed) {
-			setNonIsVacuumedForCoins ();
-		}
-		preIsItemUsed = itemMana.GetIsVaccumed ();
 	}
 
 	private void useItem() {
