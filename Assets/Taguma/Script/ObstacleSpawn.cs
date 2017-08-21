@@ -12,6 +12,12 @@ public class ObstacleSpawn : MonoBehaviour {
 	public GameObject block4;
 	public GameObject block5;
 	public GameObject block6;
+	public GameObject block7;
+	public GameObject block8;
+	public GameObject block9;
+	public GameObject block10;
+	public GameObject block11;
+	public GameObject block12;
 
 	private int obj1;
 	private int obj2;
@@ -33,23 +39,35 @@ public class ObstacleSpawn : MonoBehaviour {
 		if (Time <= 0.0) {
 			Time = 8.0f;
 			while (true) {
-				obj1 = UnityEngine.Random.Range (0, 7);
-				obj2 = UnityEngine.Random.Range (0, 7);
-				obj3 = UnityEngine.Random.Range (0, 7);
+			obj1 = UnityEngine.Random.Range (0, 12);
+			obj2 = UnityEngine.Random.Range (0, 12);
+			obj3 = UnityEngine.Random.Range (0, 12);
 
-				if ((obj1 == 1 || obj2 == 1 || obj3 == 1) && (((obj1 == 2) || (obj2 == 2) || (obj3 == 2))|| (obj1 == 4) || (obj2 == 4) || (obj3 == 4))) {
-
-				} else if ((obj1 == 2 || obj2 == 2 || obj3 == 2) && (((obj1 == 1) || (obj2 == 1) || (obj3 == 1)) || ((obj1 == 4) || (obj2 == 4) || (obj3 == 4)) || ((obj1 == 5) || (obj2 == 5) || (obj3 == 5)))) {
-
-				} else if ((obj1 == 3 || obj2 == 3 || obj3 == 3) && (((obj1 == 4) || (obj2 == 4) || (obj3 == 4)) || ((obj1 == 5) || (obj2 == 5) || (obj3 == 5)) || ((obj1 == 6) || (obj2 == 6) || (obj3 == 6)))) {
-
-				} else if ((obj1 == 4 || obj2 == 4 || obj3 == 4) && (((obj1 == 1) || (obj2 == 1) || (obj3 == 1)) || ((obj1 == 3) || (obj2 == 3) || (obj3 == 3)) || ((obj1 == 5) || (obj2 == 5) || (obj3 == 5)) || ((obj1 == 6) || (obj2 == 6) || (obj3 == 6)))) {
-
-				} else if ((obj1 == 5 || obj2 == 5 || obj3 == 5) && (((obj1 == 3) || (obj2 == 3) || (obj3 == 3)) || ((obj1 == 4) || (obj2 == 4) || (obj3 == 4)) || ((obj1 == 6) || (obj2 == 6) || (obj3 == 6)))) {
-			
-				} else if ((obj1 == 6 || obj2 == 6 || obj3 == 6) && (((obj1 == 3) || (obj2 == 3) || (obj3 == 3)) || ((obj1 == 4) || (obj2 == 4) || (obj3 == 4)))) {
+				if((obj1 == 6 && obj2 == 10) || (obj2 == 6 && obj3 == 10)){
 					
-				} else {
+				} else if ((obj1 == 10 && obj2 == 6) || (obj2 == 10 && obj3 == 6)){
+					
+				} else if ((obj1 == 3 && obj2 == 8) || (obj2 == 3 && obj3 == 8)){
+
+				} else if ((obj1 == 8 && obj2 == 3) || (obj2 == 8 && obj3 == 3)){
+
+				} else if ((obj1 == 8 && obj2 == 4) || (obj2 == 8 && obj3 == 4)){
+
+				} else if ((obj1 == 9 && obj2 == 3) || (obj2 == 9 && obj3 == 3)){
+
+				} else if ((obj1 == 3 && obj2 == 9) || (obj2 == 3 && obj3 == 9)){
+
+				} else if ((obj1 == 10 && obj2 == 8) || (obj2 == 10 && obj3 == 8)){
+
+				} else if ((obj1 == 10 && obj2 == 11) || (obj2 == 10 && obj3 == 11)){
+
+				} else if ((obj1 == 11 && obj2 == 10) || (obj2 == 11 && obj3 == 10)){
+
+				} else if ((obj1 == 3 && obj2 == 11) || (obj2 == 3 && obj3 == 11)){
+
+				} else if ((obj1 == 3 && obj2 == 6) || (obj2 == 3 && obj3 == 6)){
+					
+				}else {
 					break;
 				}
 
@@ -69,38 +87,61 @@ public class ObstacleSpawn : MonoBehaviour {
 					break;
 				}
 				if (objnum == 0) {
-					UnityEngine.Object.Instantiate (this.block0);
 					block0.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block0);
 				}
 				if (objnum == 1) {
-					UnityEngine.Object.Instantiate (this.block1);
 					block1.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block1);
 				}
 				if (objnum == 2) {
-					UnityEngine.Object.Instantiate (this.block2);
 					block2.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block2);
 				}
 				if (objnum == 3) {
-					UnityEngine.Object.Instantiate (this.block3);
 					block3.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block3);
 				}
 				if (objnum == 4) {
-					UnityEngine.Object.Instantiate (this.block4);
 					block4.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block4);
 				}
 				if (objnum == 5) {
-					UnityEngine.Object.Instantiate (this.block5);
 					block5.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block5);
 				}
 				if (objnum == 6) {
-					UnityEngine.Object.Instantiate (this.block6);
 					block6.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block6);
 				} 
-
-				//Debug.Log (obj1);
-				//Debug.Log (obj2);
-				//Debug.Log (obj3);
+				if (objnum == 7) {
+					block7.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block7);
+				}
+				if (objnum == 8) {
+					block8.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block8);
+				}
+				if (objnum == 9) {
+					block9.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block9);
+				}
+				if (objnum == 10) {
+					block10.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block10);
+				}
+				if (objnum == 11) {
+					block11.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block11);
+				}
+				if (objnum == 12) {
+					block12.transform.position = pos + Vector3.forward * i * span;
+					UnityEngine.Object.Instantiate (this.block12);
+				}
 			}
+			//Debug.Log (obj1);
+			//Debug.Log (obj2);
+			//Debug.Log (obj3);
 		}
 	}
 }
