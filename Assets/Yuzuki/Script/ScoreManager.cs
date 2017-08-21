@@ -45,7 +45,6 @@ public static class ScoreCalculator {
 	public static int[] TopScore = new int[7];	//トップ７のスコア
 	public static int LatestScoreNum = -1;		//直前のスコアの番地、ランク外の場合は-1
 
-
 	public static void LoadTopScore () {
 		TopScore = PlayerPrefsX.GetIntArray ("TopScore");
 	}
