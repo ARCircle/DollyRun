@@ -18,6 +18,8 @@ public class CoinManager : MonoBehaviour {
 	void Start () {
 		instancedCoins = new List<Coin>();
 		Coin[] coins = GetComponentsInChildren<Coin>();
+        if (coins == null) return;
+
 		for (int i = 0; i < coins.Length; i++)
 			instancedCoins.Add(coins[i]);
 

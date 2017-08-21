@@ -2659,6 +2659,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinBaseSize: 6
   coinHeight: 1
+  firstPrefab: {fileID: 1914951823340600, guid: 394456cbef144334bb71827139d8f37e,
+    type: 2}
   prefabs:
   - {fileID: 1143859004392554, guid: 1a1056e9137e55945a2beab3a2768c46, type: 2}
   - {fileID: 1291685754795248, guid: c846806d53310af4584a9ec0d403e544, type: 2}

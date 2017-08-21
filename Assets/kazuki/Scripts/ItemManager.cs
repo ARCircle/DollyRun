@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour {
     public float coinBaseSize = 5;
     public float coinHeight = 1;
+    public GameObject firstPrefab;
 //    public float coinHaloSize = 0.6f;
     public GameObject[] prefabs;
     public int[] probability;
@@ -51,7 +52,7 @@ public class ItemManager : MonoBehaviour {
         //int fifth_selectPrefab = Random.Range(0, prefabs.Length);
 
         instanceList = new List<GameObject>();
-        GameObject first = Instantiate(prefabs[selectNumber[0]]);
+        GameObject first = Instantiate(firstPrefab);
         GameObject second = Instantiate(prefabs[selectNumber[1]]);
 //        GameObject third = Instantiate(prefabs[selectNumber[2]]);
         //GameObject first = Instantiate(prefabs[first_selectPrefab]);
@@ -107,15 +108,18 @@ public class ItemManager : MonoBehaviour {
         //その時間間隔で生成すればいい（アイテムは勝手に動いて勝手に消えてくれる）
         //リストの０のところにあるプレハブの奥行距離から生成間隔時間を毎回調べれば、
         //任意のバラバラの大きさのプレハブをまとめて自動生成できる
-//        intervalTime = prefabColl.bounds.size.z / itemSpeed;
+        //        intervalTime = prefabColl.bounds.size.z / itemSpeed;
         intervalTime = prefabColl.bounds.size.z / GrobalClass.speed;
         instanceTimer = 0;
         coinVaccumEndTimer = 0;
 
         //GrobalClass関連
         GrobalClass.coins = 0;
-//        GrobalClass.itemRs = 0;
-		//instanceList [0].SetActive(false);
+        //        GrobalClass.itemRs = 0;
+        //instanceList [0].SetActive(false);
+        //GameObject obj = instanceList[0];
+        //instanceList.RemoveAt(0);
+        //Destroy(obj);
     }
 
     // Update is called once per frame
