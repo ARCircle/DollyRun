@@ -6,7 +6,7 @@ public class PlayerMoveControl : MonoBehaviour {
 	int touchcnt = 0, railcnt = 0;
 	const int r_limit = 20, p_limit = 200;
 	const float playerline = 1f;
-	float touchtime = 0f, limit = 0.5f;
+	float touchtime = 0f, limit = 0.6f;
 	float[,] StageRail = {{-5f, -4f}, {-0.5f, 0.5f}, {4f, 5f}};
 
 	GameObject Body;

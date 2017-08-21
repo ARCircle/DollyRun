@@ -33,6 +33,10 @@ public class OpeningAnimation : MonoBehaviour {
 
 	void Update () {
 		t = Time.time - startTime;
+		if (Input.GetMouseButtonDown (0)) {
+			GrobalClass.Reset ();
+			SceneManager.LoadScene("Tittle");
+		}
 
 		if (t >= 0.5f && t < 1) {
 			if (f == 0) {

@@ -42,11 +42,11 @@ public class GameOverScript : MonoBehaviour {
 			gameoverText.SetActive (true);
 		}
 
-		if (t > 3) {
+		if (t > 7) {
 			fadeOut.SetActive (true);
 		}
 
-		if (t > 4) {
+		if (t > 8) {
 			//シーン遷移
 			SceneManager.LoadScene("OpeningScene");
 		}

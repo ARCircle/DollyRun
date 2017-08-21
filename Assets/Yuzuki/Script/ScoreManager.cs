@@ -8,10 +8,9 @@ public class ScoreManager : MonoBehaviour {
 	Fader fade = new Fader ();
 	public int testnum;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		//ランキングをロード
 		ScoreCalculator.LoadTopScore ();
-		Debug.Log ("loadlen : " + ScoreCalculator.TopScore.Length);
 	}
 	
 	// Update is called once per frame

@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Yuna/Scene/OpeningScene.unity
-    guid: b0dae566cd3d6a945b0d0c097d307e07
-  - enabled: 1
     path: Assets/Yuzuki/Logo.unity
     guid: 788cb0e6f88148941b5b6f18d3d0eca3
+  - enabled: 1
+    path: Assets/Yuna/Scene/OpeningScene.unity
+    guid: b0dae566cd3d6a945b0d0c097d307e07
   - enabled: 1
     path: Assets/Yuzuki/Tittle.unity
     guid: 618fdfaf08c35aa4f8f517544c8f1a26

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
 	public GameObject pausePanel;
+	bool isgameover = false;
 	bool pausing = false;
 	bool fading = false;
 	float gameovertime = 2f;
@@ -19,17 +20,19 @@ public class Pause : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("length : " + ScoreCalculator.TopScore.Length);
 		if (GrobalClass.StartInterval > 0f) {
 			GrobalClass.StartInterval -= Time.deltaTime;
 		}
 		if (GrobalClass.gameover) {
+			if (!isgameover) {
+				isgameover = true;
+				ScoreCalculator.UpdateTopScore((int)(GrobalClass.distance + GrobalClass.coins) * 10);
+			}
 			gameovertime -= Time.deltaTime;
 			if (gameovertime < 0f) {
 				SceneManager.LoadScene ("GameOverScene");				
 			} else if (gameovertime < 1f && !fading) {
 				fading = true;
-				ScoreCalculator.UpdateTopScore((int)(GrobalClass.distance + GrobalClass.coins) * 10);
 				StartCoroutine (fade.blackin (1f, DeletePanel));
 			}
 		}
