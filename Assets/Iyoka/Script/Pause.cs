@@ -19,6 +19,7 @@ public class Pause : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log ("length : " + ScoreCalculator.TopScore.Length);
 		if (GrobalClass.StartInterval > 0f) {
 			GrobalClass.StartInterval -= Time.deltaTime;
 		}
@@ -27,9 +28,9 @@ public class Pause : MonoBehaviour {
 			if (gameovertime < 0f) {
 				SceneManager.LoadScene ("GameOverScene");				
 			} else if (gameovertime < 1f && !fading) {
+				fading = true;
 				ScoreCalculator.UpdateTopScore((int)(GrobalClass.distance + GrobalClass.coins) * 10);
 				StartCoroutine (fade.blackin (1f, DeletePanel));
-				fading = true;
 			}
 		}
 	}

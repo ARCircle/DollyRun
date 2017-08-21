@@ -8,9 +8,10 @@ public class ScoreManager : MonoBehaviour {
 	Fader fade = new Fader ();
 	public int testnum;
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		//ランキングをロード
 		ScoreCalculator.LoadTopScore ();
+		Debug.Log ("loadlen : " + ScoreCalculator.TopScore.Length);
 	}
 	
 	// Update is called once per frame
@@ -42,11 +43,14 @@ public class ScoreManager : MonoBehaviour {
 
 public static class ScoreCalculator {
 
-	public static int[] TopScore = new int[7];	//トップ７のスコア
+	public static int[] TopScore = { 0, 0, 0, 0, 0, 0, 0 };	//トップ７のスコア
 	public static int LatestScoreNum = -1;		//直前のスコアの番地、ランク外の場合は-1
 
 	public static void LoadTopScore () {
 		TopScore = PlayerPrefsX.GetIntArray ("TopScore");
+		if (TopScore.Length <= 0) {
+			ResetTopScore ();
+		}
 	}
 
 	public static void ResetTopScore () {
