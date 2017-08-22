@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleSpawn : MonoBehaviour {
 	private float Time = 0;
-	private const float span = 6f;
+	private const float span = 10f;
 	public GameObject block0;
 	public GameObject block1;
 	public GameObject block2;
@@ -67,7 +67,7 @@ public class ObstacleSpawn : MonoBehaviour {
 
 				} else if ((obj1 == 3 && obj2 == 6) || (obj2 == 3 && obj3 == 6)){
 					
-				}else {
+				} else {
 					break;
 				}
 
