@@ -44,7 +44,8 @@ public class TouchOtherButton : MonoBehaviour {
 
 
 	public void TutorialStart () {
-		StartCoroutine (fade.blackin (1.5f, ToTutorial));
+		ToTutorial ();
+		//StartCoroutine (fade.blackin (1.5f, ToTutorial));
 	}
 
 	void ToTutorial () {
