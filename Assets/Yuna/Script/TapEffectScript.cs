@@ -5,11 +5,11 @@ using UnityEngine;
 public class TapEffectScript : MonoBehaviour {
 
 	private ParticleSystem ps;
-	private GameObject cam;
+	public GameObject cam;
 
 	void Start () {
 		ps = GetComponent<ParticleSystem> ();
-		cam = GameObject.Find ("Main Camera");
+		//cam = GameObject.Find ("Main Camera");
 	}
 
 	void Update () {
