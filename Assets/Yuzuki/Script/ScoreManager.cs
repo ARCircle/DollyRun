@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
 
-	Fader fade = new Fader ();
+	Fader fade;
 	public int testnum;
 	// Use this for initialization
 	void Awake () {
+		fade = this.gameObject.AddComponent <Fader> ();
 		//ランキングをロード
 		ScoreCalculator.LoadTopScore ();
 	}

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class TouchOtherButton : MonoBehaviour {
 
-	Fader fade = new Fader ();
+	Fader fade;
 	//スタートボタンを押したときの処理
 	public void TouchStart () {
-		//ボタン入力を禁止する
+		fade = this.gameObject.AddComponent<Fader> ();
 
 
 		//カメラの親子関係をリセット

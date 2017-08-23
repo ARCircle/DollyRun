@@ -15,11 +15,13 @@ public class TouchStart : MonoBehaviour {
 	GameObject touch_start;
 	Animation CameraMove;
 
-	Fader fade = new Fader ();
+	Fader fade;
 
 
 	// Use this for initialization
 	void Start () {
+		fade = this.gameObject.AddComponent<Fader> ();
+
 		textImg = GetComponent <Text> ();
 		touch_start = transform.parent.Find ("button").gameObject;
 		CameraMove = GameObject.Find ("Camera").GetComponent<Animation> ();
