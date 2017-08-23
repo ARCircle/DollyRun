@@ -10,10 +10,11 @@ public class Pause : MonoBehaviour {
 	bool fading = false;
 	float gameovertime = 2f;
 	Animator[] anims;
-	Fader fade = new Fader ();
+	Fader fade;// = new Fader ();
 
 	// Use this for initialization
 	void Start () {
+		fade = gameObject.AddComponent<Fader> ();
 		anims = transform.root.GetComponentsInChildren<Animator> ();
 		StartCoroutine (fade.blackout (1f, DeletePanel));
 	}

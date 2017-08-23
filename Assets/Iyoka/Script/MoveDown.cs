@@ -15,7 +15,7 @@ public class MoveDown : MonoBehaviour {
 	void Update () {
 		if (StageActive.isTrue()) {
 			this.transform.Translate (dir * Time.deltaTime * GrobalClass.speed, Space.World);
-			if (suiside && transform.position.z < -100) {
+			if (suiside && transform.position.z < -10) {
 				Destroy (this.gameObject);
 			}
 		}
