@@ -5,12 +5,12 @@ using UnityEngine;
 //コインの動きを設定するクラス
 public class Coin : MonoBehaviour {
     private GameObject player;
-	private float speed;
+//	private float speed;
 	private bool isPlayerTouched;
 	private bool isVacuumed;
 	private Transform vacuumBorder;
-	private Vector3 angle;
-    private float baseSize;
+//	private Vector3 angle;
+    //private float baseSize;
     private float extents; //あたり判定の大きさをコライダーに依存
 	private AudioSource AS;
 //    private float haloSize;
@@ -18,11 +18,11 @@ public class Coin : MonoBehaviour {
     // Use this for initialization
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
-		speed = transform.parent.GetComponent<CoinManager>().GetSpeed();
+//		speed = transform.parent.GetComponent<CoinManager>().GetSpeed();
 		AS = transform.parent.parent.GetComponent<AudioSource> ();
 		isPlayerTouched = false;
 		isVacuumed = false;
-		angle = Vector3.zero;
+//		angle = Vector3.zero;
 //        transform.localScale = new Vector3(size, size, size);
 	}
 
@@ -34,7 +34,7 @@ public class Coin : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 		if (StageActive.isTrue ()) {
-			speed = GrobalClass.speed;  // 勝手に追加してごめん
+			//speed = GrobalClass.speed;  // 勝手に追加してごめん
 			if (!GrobalClass.gameover) {
 				Vector3 planePlayer = player.transform.position;
 				planePlayer.y = 0;
@@ -46,7 +46,7 @@ public class Coin : MonoBehaviour {
 				//        Debug.Log(transform.position.z + " >" + vacuumBorder.position.z);
 				//ItemRの技が使用中でなく、技の適用範囲に入っていなかったら
 				if (!isVacuumed || transform.position.z > vacuumBorder.position.z)
-					transform.position -= speed * Vector3.forward * Time.deltaTime;
+					transform.position -= GrobalClass.speed * Vector3.forward * Time.deltaTime;
 			}
 		}
 		if (!GrobalClass.pause) {

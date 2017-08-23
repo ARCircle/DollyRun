@@ -20,7 +20,7 @@ public class ItemManager : MonoBehaviour {
     private BoxCollider prefabColl; //一番下のコライダー
 
     private List<GameObject> instanceList;
-    private float coinVaccumEndTimer; //加算タイマー
+//    private float coinVaccumEndTimer; //加算タイマー
     private float intervalTime; //生成するまでの時間
     private float instanceTimer; //加算タイマー
     private bool isVaccumed = false;
@@ -111,7 +111,7 @@ public class ItemManager : MonoBehaviour {
         //        intervalTime = prefabColl.bounds.size.z / itemSpeed;
         intervalTime = prefabColl.bounds.size.z / GrobalClass.speed;
         instanceTimer = 0;
-        coinVaccumEndTimer = 0;
+//        coinVaccumEndTimer = 0;
 
         //GrobalClass関連
         GrobalClass.coins = 0;

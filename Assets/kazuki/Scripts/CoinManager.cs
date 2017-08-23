@@ -12,7 +12,7 @@ public class CoinManager : MonoBehaviour {
 	private float speed;
 	private ItemManager itemMana;
 	private bool preIsItemUsed;
-	private float coinSpeedToPlayer = 15;
+//	private float coinSpeedToPlayer = 15;
 
 	// Use this for initialization
 	void Start () {
@@ -44,7 +44,7 @@ public class CoinManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (StageActive.isTrue ()) {
-			coinSpeedToPlayer = GrobalClass.speed * 3f;  // 勝手に追加してごめん
+//			coinSpeedToPlayer = GrobalClass.speed * 3f;  // 勝手に追加してごめん
 			for (int i = instancedCoins.Count - 1; i >= 0; i--) {
 				//削除ポイントに到達するか、プレイヤーが触れたら
 				if (instancedCoins [i].transform.position.z < destroyBorder.position.z ||
@@ -77,7 +77,7 @@ public class CoinManager : MonoBehaviour {
 		foreach (Coin coin in instancedCoins) {
 			if (coin.transform.position.z < vacuumBorder.position.z) {
 				Vector3 directionToPlayer = (player.transform.position - coin.transform.position).normalized;
-				coin.transform.position += directionToPlayer * coinSpeedToPlayer * Time.deltaTime;
+				coin.transform.position += directionToPlayer * GrobalClass.speed * 3f * Time.deltaTime;
 			}
 		}
 	}

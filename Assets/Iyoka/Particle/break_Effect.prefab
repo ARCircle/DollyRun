@@ -78,7 +78,6 @@ GameObject:
   - component: {fileID: 400012}
   - component: {fileID: 114737950250621148}
   - component: {fileID: 82112253128743540}
-  - component: {fileID: 114930550712326052}
   m_Layer: 0
   m_Name: break_Effect
   m_TagString: Untagged
@@ -18962,7 +18961,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 838935b5e5069ba4d9a2722834d1db32, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -19043,14 +19042,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suiside: 1
---- !u!114 &114930550712326052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838e43f9462b804448de05f9f0efe95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

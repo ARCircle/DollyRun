@@ -36,7 +36,7 @@ public class PlayerMoveControl : MonoBehaviour {
 			// 速度上昇、距離計算
 			GrobalClass.playtime += Time.deltaTime;
 			GrobalClass.distance += GrobalClass.speed * Time.deltaTime;
-			if (GrobalClass.playtime - GrobalClass.speedlevel * 0.4f > 0f) {
+			if (GrobalClass.playtime - GrobalClass.speedlevel * 0.2f > 0f) {
 				GrobalClass.speed += 0.01f;
 				GrobalClass.speedlevel += 1;
 			}

@@ -27,7 +27,7 @@ public class Pause : MonoBehaviour {
 		if (GrobalClass.gameover) {
 			if (!isgameover) {
 				isgameover = true;
-				ScoreCalculator.UpdateTopScore((int)(GrobalClass.distance + GrobalClass.coins) * 10);
+				ScoreCalculator.UpdateTopScore ((int)(GrobalClass.distance + GrobalClass.coins) * 10);
 			}
 			gameovertime -= Time.deltaTime;
 			if (gameovertime < 0f) {
@@ -36,6 +36,8 @@ public class Pause : MonoBehaviour {
 				fading = true;
 				StartCoroutine (fade.blackin (1f, DeletePanel));
 			}
+		} else {
+			ScoreCalculator.UpdateTmpScore ((int)(GrobalClass.distance + GrobalClass.coins) * 10);
 		}
 	}
 
