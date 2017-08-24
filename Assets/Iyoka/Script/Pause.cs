@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
 	public GameObject pausePanel;
+    public GameObject pauseButton;
 	bool isgameover = false;
 	bool pausing = false;
 	bool fading = false;
@@ -44,8 +45,9 @@ public class Pause : MonoBehaviour {
 	public void Push(){
 		GrobalClass.pause = !GrobalClass.pause;
 		pausing = !pausing;
-		pausePanel.SetActive (pausing);
-		foreach (Animator an in anims) {
+        pausePanel.SetActive(pausing);
+        pauseButton.SetActive(pausing);
+        foreach (Animator an in anims) {
 			an.enabled = !pausing;
 		} 
 		/*if (pausing) {
