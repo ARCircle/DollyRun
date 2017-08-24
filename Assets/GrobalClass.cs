@@ -21,6 +21,9 @@ public static class GrobalClass{
 	public static int LatestScoreNum = 0;  //直前のスコアの配列番号
 
 	public static void Reset(){   //ゲームスタート時に実行してね！
+		Debug.Log("Reset!");
+		Resources.UnloadUnusedAssets();
+		System.GC.Collect ();
 		Application.targetFrameRate = 30;
 		ItemStatus.status_A = 0;
 		ItemStatus.status_R = 0;
@@ -35,5 +38,6 @@ public static class GrobalClass{
 		pause = false;    // ポーズ中はtrue
 		gameover = false; // ゲームオーバーになるとtrue
 		coins = 0;        //今まで手に入れたコインの枚数
+
 	}
 }

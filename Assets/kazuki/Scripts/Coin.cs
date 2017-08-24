@@ -50,7 +50,7 @@ public class Coin : MonoBehaviour {
 			}
 		}
 		if (!GrobalClass.pause) {
-			transform.Rotate (new Vector3 (0, 6f, 0));
+			transform.Rotate (new Vector3 (0, 180f * Time.deltaTime, 0));
 		}
 	}
 
