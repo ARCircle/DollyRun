@@ -38,6 +38,9 @@ public static class GrobalClass{
 		pause = false;    // ポーズ中はtrue
 		gameover = false; // ゲームオーバーになるとtrue
 		coins = 0;        //今まで手に入れたコインの枚数
+	}
 
+	public static int ScoreCalc(){
+		return (int)(GrobalClass.distance + GrobalClass.coins) * 10;
 	}
 }

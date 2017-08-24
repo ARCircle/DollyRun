@@ -32,7 +32,7 @@ public class Pause : MonoBehaviour {
 		if (GrobalClass.gameover) {
 			if (!isgameover) {
 				isgameover = true;
-				ScoreCalculator.UpdateTopScore ((int)(GrobalClass.distance + GrobalClass.coins) * 10);
+				ScoreCalculator.UpdateTopScore (GrobalClass.ScoreCalc());
 			}
 			gameovertime -= Time.deltaTime;
 			if (gameovertime < 0f) {
@@ -42,7 +42,7 @@ public class Pause : MonoBehaviour {
 				StartCoroutine (fade.blackin (1f, DeletePanel));
 			}
 		} else {
-			ScoreCalculator.UpdateTmpScore ((int)(GrobalClass.distance + GrobalClass.coins) * 10);
+			ScoreCalculator.UpdateTmpScore (GrobalClass.ScoreCalc());
 		}
 		/*if (GrobalClass.distance - 500f * gccount > 0f) {
 			Resources.UnloadUnusedAssets();
