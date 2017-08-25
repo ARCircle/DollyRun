@@ -21,5 +21,9 @@ public class test : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.V)) {
 			GrobalClass.pause = !GrobalClass.pause;
 		}
+
+		if (Input.GetMouseButtonDown(0)) {
+			Debug.Log(Input.mousePosition);
+		}
 	}
 }

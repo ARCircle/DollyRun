@@ -10,9 +10,12 @@ public class TutorialManager : MonoBehaviour {
 	private int ProcessNum = -1;
 	private string endMessage = "バッチリだね！！";
 
+	float time = 0;
+	public float waittime = 2;
 	string[] GuideText;
+	bool isWaiting = true;
 
-	GameObject GuideObj;
+	public GameObject GuideObj;
 	Text Guide;
 
 
@@ -22,24 +25,49 @@ public class TutorialManager : MonoBehaviour {
 		Guide = GuideObj.transform.Find ("Text").gameObject.GetComponent <Text> ();
 		GuideObj.SetActive (false);
 
-		NextTutorial ();
+		//NextTutorial ();
+	}
+
+	void Update () {
+		//次のチュートリアルへ進むための制御
+		if (isWaiting) {
+			
+			time += Time.deltaTime;
+			if (time > waittime) {
+				time = 0;
+				isWaiting = false;
+				NextTutorial ();
+			}
+		}
 	}
 	
 	public void NextTutorial () {
+
 		ProcessNum++;
 		GuideObj.SetActive (true);
 		//プレイヤーの操作をテキスト送り以外無効にする
 
 		switch (ProcessNum) {
-		case 0:
+		case 0:		//最初の基本説明と線路の書き方
 			GuideText = new string[3];
 			GuideText [0] = "a";
 			GuideText [1] = "aa";
 			GuideText [2] = "aaa";
+
+			waittime = 0;
 			break;
-		case 1:
+		case 1:		//線路を引く、の追加説明
 			GuideText = new string[7];
+			waittime = 2;
 			break;
+		case 2:		//アイテムの説明
+			GuideText = new string[8];
+			GuideText [0] = "次は、アイテムについて\n説明するよ！！";
+			GuideText [1] = "aa";
+			GuideText [2] = "aaa";
+
+			break;
+
 
 		}
 
@@ -80,9 +108,17 @@ public class TutorialManager : MonoBehaviour {
 		Debug.Log ("Start Support Action");
 		switch (ProcessNum) {
 		case 0:
+			this.gameObject.AddComponent <DrowLineSupport> ();
 			break;
+		case 2:
+			this.gameObject.AddComponent <ItemSupport> ();
+			break;
+
+
 		case 1:
-			endActionSupport = true;
+			//テキスト表示だけで終わるときはこの二つを実行する
+			isWaiting = true;
+			yield break;
 			break;
 
 		}
@@ -92,7 +128,6 @@ public class TutorialManager : MonoBehaviour {
 			if (endActionSupport) {
 				endActionSupport = false;
 
-				ProcessNum++;
 				Debug.Log ("End Support Action");
 
 				//終了メッセージを表示
@@ -102,6 +137,7 @@ public class TutorialManager : MonoBehaviour {
 				while (true) {
 					if (Input.GetMouseButtonUp (0)) {
 						GuideObj.SetActive (false);
+						isWaiting = true;
 						yield break;
 					}
 					yield return null;
