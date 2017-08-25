@@ -5,7 +5,7 @@ using UnityEngine;
 public static class GrobalClass{
 
 	public static int   RideRailNum = 2;  //プレイヤーが乗っている線路の番号 左から順に1,2,3 描いた線路は-1
-	public static float StartInterval = 0f;  // ステージ開始時のカメラワーク時間
+	public static float StartInterval = 4f;  // ステージ開始時のカメラワーク時間
 	public static float usingAtime = 0f;  //アイテムAを使用中は>0
 	public static float usingRtime = 0f;  //アイテムBを使用中は>0
 	public static float speed = 5f;       // 1秒にz軸マイナス方向へ進む速さ
@@ -21,10 +21,14 @@ public static class GrobalClass{
 	public static int LatestScoreNum = 0;  //直前のスコアの配列番号
 
 	public static void Reset(){   //ゲームスタート時に実行してね！
+		Debug.Log("Reset!");
+		Resources.UnloadUnusedAssets();
+		System.GC.Collect ();
+		Application.targetFrameRate = 30;
 		ItemStatus.status_A = 0;
 		ItemStatus.status_R = 0;
 		RideRailNum = 2;  //プレイヤーが乗っている線路の番号 左から順に1,2,3 描いた線路は-1
-		StartInterval = 0f;  // ステージ開始時のカメラワーク時間
+		StartInterval = 4f;  // ステージ開始時のカメラワーク時間
 		usingAtime = 0f;  //アイテムAを使用中は>0
 		usingRtime = 0f;  //アイテムBを使用中は>0
 		speed = 5f;       // 1秒にz軸マイナス方向へ進む速さ
@@ -34,5 +38,9 @@ public static class GrobalClass{
 		pause = false;    // ポーズ中はtrue
 		gameover = false; // ゲームオーバーになるとtrue
 		coins = 0;        //今まで手に入れたコインの枚数
+	}
+
+	public static int ScoreCalc(){
+		return (int)(GrobalClass.distance + GrobalClass.coins) * 10;
 	}
 }

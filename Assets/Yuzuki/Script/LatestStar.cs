@@ -17,7 +17,7 @@ public class LatestStar : MonoBehaviour {
 		if (ScoreCalculator.LatestScoreNum == -1) {
 			this.gameObject.SetActive (false);
 		} else {
-			this.GetComponent <RectTransform> ().localPosition = new Vector3 (-270, 320 - ScoreCalculator.LatestScoreNum * 110, 0);
+			this.GetComponent <RectTransform> ().localPosition = new Vector3 (-270, 330 - ScoreCalculator.LatestScoreNum * 100, 0);
 			string name = "rank" + (ScoreCalculator.LatestScoreNum + 1);
 			textImg = GameObject.Find("ranking").transform.Find (name).Find ("point").gameObject.GetComponent <Text> ();
 		}
@@ -25,11 +25,11 @@ public class LatestStar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Rotate (0, 0, 5);
+		transform.Rotate (0, 0, 5 * 30f * Time.deltaTime);
 
 		//アクティブ時
 		if (upAlpha) {
-			alpha += speed * flashSpeed;
+			alpha += speed * flashSpeed * 30f * Time.deltaTime;
 			if (alpha > 1) upAlpha = false;
 		} else {
 			alpha -= speed * flashSpeed;

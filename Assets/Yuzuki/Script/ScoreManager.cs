@@ -44,23 +44,36 @@ public class ScoreManager : MonoBehaviour {
 public static class ScoreCalculator {
 
 	public static int[] TopScore = { 0, 0, 0, 0, 0, 0, 0 };	//トップ７のスコア
+	public static int TmpScore = 0;
 	public static int LatestScoreNum = -1;		//直前のスコアの番地、ランク外の場合は-1
 
 	public static void LoadTopScore () {
+		TmpScore = PlayerPrefs.GetInt ("TmpScore");
 		TopScore = PlayerPrefsX.GetIntArray ("TopScore");
+		Debug.Log ("tmp : " + TmpScore);
 		if (TopScore.Length <= 0) {
 			ResetTopScore ();
+		} else if(TmpScore > 0){
+			UpdateTopScore (TmpScore);
+			UpdateTmpScore (0);
 		}
 	}
 
 	public static void ResetTopScore () {
 		TopScore = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 		PlayerPrefsX.SetIntArray ("TopScore", TopScore);
+		UpdateTmpScore (0);
+	}
+
+	public static void UpdateTmpScore(int NowScore){
+		TmpScore = NowScore;
+		PlayerPrefs.SetInt ("TmpScore", TmpScore);
 	}
 
 	//ステージをクリアした後は、この関数を呼び出して、引数として取得したスコアを入れればよい
 	public static void UpdateTopScore (int NowScore) {
 
+		UpdateTmpScore (0);
 		for (int i = 0; i < 7; i++) {
 			if (TopScore [i] < NowScore) {
 				for (int j = 5; j - i >= 0; j--) {

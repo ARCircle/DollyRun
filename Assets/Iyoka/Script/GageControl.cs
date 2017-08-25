@@ -11,7 +11,7 @@ public class GageControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		meter.text = Mathf.FloorToInt(GrobalClass.distance).ToString () + " m";
+		meter.text = Mathf.FloorToInt(GrobalClass.distance).ToString ();
 		coin.text = Mathf.FloorToInt(GrobalClass.coins).ToString ();
 		/*if (GrobalClass.usingAtime <= 0f) {
 			gageA.fillAmount = ItemStatus.status_A / 3f;

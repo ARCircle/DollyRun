@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -86,7 +86,8 @@ LightmapSettings:
     m_PVRFilteringAtrousColorSigma: 1
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 2f6045232fbf1874f849bf544268ea89,
+    type: 2}
   m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
@@ -1430,7 +1431,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 443000621}
-  m_LocalRotation: {x: -0.0059113977, y: -0.67944837, z: 0.7336993, w: -0.00066563475}
+  m_LocalRotation: {x: -0.005911396, y: -0.67944837, z: 0.7336993, w: -0.00066563475}
   m_LocalPosition: {x: -0.14276123, y: 0.032653574, z: 0.13977996}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_Children: []
@@ -2439,20 +2440,25 @@ Prefab:
     - target: {fileID: 108560177504915214, guid: 1046e0030a10f8f46964dc8b61f455e9,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.8088235
+      value: 0.9117647
       objectReference: {fileID: 0}
     - target: {fileID: 108560177504915214, guid: 1046e0030a10f8f46964dc8b61f455e9,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.80226105
+      value: 0.85008645
       objectReference: {fileID: 0}
     - target: {fileID: 108560177504915214, guid: 1046e0030a10f8f46964dc8b61f455e9,
         type: 2}
       propertyPath: m_Color.b
-      value: 0.7850346
+      value: 0.7575692
       objectReference: {fileID: 0}
     - target: {fileID: 4482484390864076, guid: 1046e0030a10f8f46964dc8b61f455e9, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108560177504915214, guid: 1046e0030a10f8f46964dc8b61f455e9,
+        type: 2}
+      propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3057,6 +3063,7 @@ GameObject:
   - component: {fileID: 1112028123}
   - component: {fileID: 1112028122}
   - component: {fileID: 1112028121}
+  - component: {fileID: 1112028126}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3134,6 +3141,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+--- !u!114 &1112028126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1112028120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f12ea6bda300b64280d0bb4d068f7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1135815676 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4833436025800298, guid: 1d0628e658c242d468013499f756a34f,

@@ -39,40 +39,20 @@ public class ObstacleSpawn : MonoBehaviour {
 
 			if (Time <= 0.0) {
 				Time = 8.0f;
-				while (true) {
+				if (GrobalClass.distance < 200) {
+					obj1 = UnityEngine.Random.Range (1, 12);
+					obj2 = 0;
+					obj3 = 0;
+				} else if ((GrobalClass.distance >= 200) && (GrobalClass.distance < 500)) {
+					obj1 = UnityEngine.Random.Range (1, 12);
+					obj2 = UnityEngine.Random.Range (1, 12);
+					obj3 = 0;
+				} else {
 					obj1 = UnityEngine.Random.Range (0, 12);
 					obj2 = UnityEngine.Random.Range (0, 12);
 					obj3 = UnityEngine.Random.Range (0, 12);
-
-					if ((obj1 == 6 && obj2 == 10) || (obj2 == 6 && obj3 == 10)) {
-					
-					} else if ((obj1 == 10 && obj2 == 6) || (obj2 == 10 && obj3 == 6)) {
-					
-					} else if ((obj1 == 3 && obj2 == 8) || (obj2 == 3 && obj3 == 8)) {
-
-					} else if ((obj1 == 8 && obj2 == 3) || (obj2 == 8 && obj3 == 3)) {
-
-					} else if ((obj1 == 8 && obj2 == 4) || (obj2 == 8 && obj3 == 4)) {
-
-					} else if ((obj1 == 9 && obj2 == 3) || (obj2 == 9 && obj3 == 3)) {
-
-					} else if ((obj1 == 3 && obj2 == 9) || (obj2 == 3 && obj3 == 9)) {
-
-					} else if ((obj1 == 10 && obj2 == 8) || (obj2 == 10 && obj3 == 8)) {
-
-					} else if ((obj1 == 10 && obj2 == 11) || (obj2 == 10 && obj3 == 11)) {
-
-					} else if ((obj1 == 11 && obj2 == 10) || (obj2 == 11 && obj3 == 10)) {
-
-					} else if ((obj1 == 3 && obj2 == 11) || (obj2 == 3 && obj3 == 11)) {
-
-					} else if ((obj1 == 3 && obj2 == 6) || (obj2 == 3 && obj3 == 6)) {
-					
-					} else {
-						break;
-					}
-
 				}
+
 
 				for (int i = 0; i < 3; i++) {
 					int objnum = 0;

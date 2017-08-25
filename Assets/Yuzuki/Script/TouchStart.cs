@@ -22,6 +22,7 @@ public class TouchStart : MonoBehaviour {
 	void Start () {
 		fade = this.gameObject.AddComponent<Fader> ();
 
+		GrobalClass.Reset ();
 		textImg = GetComponent <Text> ();
 		touch_start = transform.parent.Find ("button").gameObject;
 		CameraMove = GameObject.Find ("Camera").GetComponent<Animation> ();

@@ -36,88 +36,91 @@ public class PlayerMoveControl : MonoBehaviour {
 			// 速度上昇、距離計算
 			GrobalClass.playtime += Time.deltaTime;
 			GrobalClass.distance += GrobalClass.speed * Time.deltaTime;
-			if (GrobalClass.playtime - GrobalClass.speedlevel * 0.4f > 0f) {
+			if (GrobalClass.playtime - GrobalClass.speedlevel * 0.2f > 0f) {
 				GrobalClass.speed += 0.01f;
 				GrobalClass.speedlevel += 1;
 			}
+			MainProcess ();
+		}
+	}
 
-			// トロッコ操作
-			if (Input.GetMouseButtonDown (0)) {
-				touchtime = 0f;
+	public void MainProcess() {
+		// トロッコ操作
+		if (Input.GetMouseButtonDown (0)) {
+			touchtime = 0f;
+		}
+		if (Input.GetMouseButton (0) && touchtime < limit) {
+			// ワールド座標の取得
+			mp = Input.mousePosition;
+			if (mp.y < Screen.height / 5) {
+				touchtime += limit;
 			}
-			if (Input.GetMouseButton (0) && touchtime < limit) {
-				// ワールド座標の取得
-				mp = Input.mousePosition;
-				if (mp.y < Screen.height / 5) {
-					touchtime += limit;
+			mp.z = 20f;
+			wptmp = Camera.main.ScreenToWorldPoint (mp);
+			cp = Camera.main.transform.position;
+			wp = (wptmp - cp) * cp.y / (cp.y - wptmp.y) + cp - rrrr [railcnt].transform.position;
+			// 描画の制限、レール交点の取得
+			if (touchcnt > 0) {
+				if (wp.z < RS [railcnt].Points [touchcnt - 1].z) {
+					wp.z = RS [railcnt].Points [touchcnt - 1].z;
 				}
-				mp.z = 20f;
-				wptmp = Camera.main.ScreenToWorldPoint (mp);
-				cp = Camera.main.transform.position;
-				wp = (wptmp - cp) * cp.y / (cp.y - wptmp.y) + cp - rrrr [railcnt].transform.position;
-				// 描画の制限、レール交点の取得
-				if (touchcnt > 0) {
-					if (wp.z < RS [railcnt].Points [touchcnt - 1].z) {
-						wp.z = RS [railcnt].Points [touchcnt - 1].z;
-					}
-					if (wp.x < -5.5f) {
-						wp.x = -5.5f;
-					} else if (wp.x > 5.5f) {
-						wp.x = 5.5f;
-					}					
-					float ccz = 0f;
-					int ccnum = CrossCheck (RS [railcnt].Points [touchcnt - 1], wp, ref ccz);
-					if (ccnum > 0) {
-						RS [railcnt].SetCrossPoint (ccnum, ccz);//RS [railcnt].Points [touchcnt - 1].z);
-						RS [railcnt].CFpoint = touchcnt;
-						//if (RS [railcnt].CSpoint < 0)
-						//	RS [railcnt].CSpoint = touchcnt - 1;
-					}
+				if (wp.x < -5.5f) {
+					wp.x = -5.5f;
+				} else if (wp.x > 5.5f) {
+					wp.x = 5.5f;
+				}					
+				float ccz = 0f;
+				int ccnum = CrossCheck (RS [railcnt].Points [touchcnt - 1], wp, ref ccz);
+				if (ccnum > 0) {
+					RS [railcnt].SetCrossPoint (ccnum, ccz);//RS [railcnt].Points [touchcnt - 1].z);
+					RS [railcnt].CFpoint = touchcnt;
+					//if (RS [railcnt].CSpoint < 0)
+					//	RS [railcnt].CSpoint = touchcnt - 1;
 				}
-				// 描画
-				RS [railcnt].Points [touchcnt] = wp;
-				for (int i = touchcnt; i < p_limit; i++) {  // レール終端の追従
-					RS [railcnt].LR.SetPosition (i, wp);
-				}
-				touchcnt++;
-				RS [railcnt].Fin = touchcnt;
-				touchtime += Time.deltaTime;
-			} else if (touchcnt > 0) {
-				//レール始端
-				/*int strp = RS [railcnt].CSpoint;
+			}
+			// 描画
+			RS [railcnt].Points [touchcnt] = wp;
+			for (int i = touchcnt; i < p_limit; i++) {  // レール終端の追従
+				RS [railcnt].LR.SetPosition (i, wp);
+			}
+			touchcnt++;
+			RS [railcnt].Fin = touchcnt;
+			touchtime += Time.deltaTime;
+		} else if (touchcnt > 0) {
+			//レール始端
+			/*int strp = RS [railcnt].CSpoint;
 				for (int i = 0; i < strp; i++) {
 					RS [railcnt].LR.SetPosition (i, RS [railcnt].LR.GetPosition (strp));
 				}*/
-				//レール終端
-				int finp = RS [railcnt].CFpoint;
-				for (int i = finp; i < p_limit; i++) {
-					RS [railcnt].LR.SetPosition (i, RS [railcnt].LR.GetPosition (finp));
-				}
-				touchcnt = 0;
-				railcnt = (railcnt + 1) % r_limit;
-				RS [railcnt].Reset ();
+			//レール終端
+			int finp = RS [railcnt].CFpoint;
+			for (int i = finp; i < p_limit; i++) {
+				RS [railcnt].LR.SetPosition (i, RS [railcnt].LR.GetPosition (finp));
 			}
-			for (int i = 0; i < r_limit; i++) {
-				RS [i].CheckKP ();
-				if (RS [i].KPenable) {
-					int index = RS [i].FindCrossPoint (GrobalClass.RideRailNum);
-					if (index >= 0 && RS [i].CrossZ [index] + RS [i].myrrrr.position.z <= playerline) {
-						if (RS [i].GetLastCrossZ () + RS [i].myrrrr.position.z <= playerline) { // 降りるとき
-							GrobalClass.RideRailNum = RS [i].GetLastCrossR ();
-							RS [i].Riding = false;
-							int j = GrobalClass.RideRailNum - 1;
-							Body.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
-							Body.transform.position = new Vector3 ((StageRail [j, 0] + StageRail [j, 1]) / 2f, 0f, playerline);
-						} else { // 乗るとき、乗ってるとき
-							RS [i].Riding = true;
-							GrobalClass.RideRailNum = -1;
-							Body.transform.Translate (RS [i].KeyPoint - Body.transform.position);
-							Body.transform.LookAt (RS [i].NextPoint);
-							Body.transform.position = new Vector3 (Body.transform.position.x, Body.transform.position.y, 1f);
-						}
+			touchcnt = 0;
+			railcnt = (railcnt + 1) % r_limit;
+			RS [railcnt].Reset ();
+		}
+		for (int i = 0; i < r_limit; i++) {
+			RS [i].CheckKP ();
+			if (RS [i].KPenable) {
+				int index = RS [i].FindCrossPoint (GrobalClass.RideRailNum);
+				if (index >= 0 && RS [i].CrossZ [index] + RS [i].myrrrr.position.z <= playerline) {
+					if (RS [i].GetLastCrossZ () + RS [i].myrrrr.position.z <= playerline) { // 降りるとき
+						GrobalClass.RideRailNum = RS [i].GetLastCrossR ();
+						RS [i].Riding = false;
+						int j = GrobalClass.RideRailNum - 1;
+						Body.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
+						Body.transform.position = new Vector3 ((StageRail [j, 0] + StageRail [j, 1]) / 2f, 0f, playerline);
+					} else { // 乗るとき、乗ってるとき
+						RS [i].Riding = true;
+						GrobalClass.RideRailNum = -1;
+						Body.transform.Translate (RS [i].KeyPoint - Body.transform.position);
+						Body.transform.LookAt (RS [i].NextPoint);
+						Body.transform.position = new Vector3 (Body.transform.position.x, Body.transform.position.y, 1f);
 					}
-					RS [i].DeleteCrossPoint ();
 				}
+				RS [i].DeleteCrossPoint ();
 			}
 		}
 	}
