@@ -1004,7 +1004,7 @@ RectTransform:
   - {fileID: 273548855}
   - {fileID: 1385719068}
   m_Father: {fileID: 1815536270}
-  m_RootOrder: 2
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2991,7 +2991,7 @@ MonoBehaviour:
   - {fileID: 1441050550507936, guid: c779f1981439c2c4595c321f381e82f7, type: 2}
   - {fileID: 1072124509067418, guid: 9b4e798cd542da0469b38d9280bfd090, type: 2}
   - {fileID: 1383697718699858, guid: d670feecea189d548aeb51a97051164d, type: 2}
-  probability: 010000000a0000000f0000000f0000000c000000010000000f00000009000000090000000d000000
+  probability: 020000000a0000000f0000000f0000000c000000020000000f00000008000000080000000d000000
   windowBelowTransform: {fileID: 1325459476}
   player: {fileID: 113806316}
   destroyBorder: {fileID: 1325459476}

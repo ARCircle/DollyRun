@@ -37,12 +37,10 @@ public class ReturnTitleScript : MonoBehaviour {
 	}
 		
 	public void ReturnTitle() {
-        GrobalClass.Reset();
 		SceneManager.LoadScene ("Tittle");
 	}
 
 	public void Retry() {
-        GrobalClass.Reset();
-        SceneManager.LoadScene ("GameScene");
+		SceneManager.LoadScene ("GameScene");
 	}
 }
