@@ -28,7 +28,7 @@ public class CreateCrystal_iyoka : MonoBehaviour {
 					crystal.transform.position = new Vector3 (x, 0, 40);
 					crystal.GetComponent<CrystalScript_iyoka> ().type = "R";
 				}
-				time = 7 * 5f / GrobalClass.speed;
+				time = 7f * (1.5f + 5f / GrobalClass.speed) / 2.5f;
 			} else {
 				time -= Time.deltaTime;
 			}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverScript : MonoBehaviour {
 
@@ -47,6 +48,7 @@ public class GameOverScript : MonoBehaviour {
 
 		if (t > 3) {
 			panel.SetActive (true);
+			panel.transform.Find ("scoreText").GetComponent<Text>().text = GrobalClass.ScoreCalc ().ToString ();
 		}
 
 		if (t > 4.9f) {
@@ -58,7 +60,9 @@ public class GameOverScript : MonoBehaviour {
 
 		if (t > 4.5f) {
 			//ハイスコアだったら
-			panel.GetComponent<Animator> ().SetTrigger ("HighScore");
+			if (ScoreCalculator.LatestScoreNum != -1) {
+				panel.GetComponent<Animator> ().SetTrigger ("HighScore");
+			}
 		}
 	}
 

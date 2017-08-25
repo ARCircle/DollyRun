@@ -30,6 +30,7 @@ public class TouchOtherButton : MonoBehaviour {
 	}
 
 	void ToGameScene () {
+		//GrobalClass.Reset ();
 		UnityEngine.SceneManagement.SceneManager.LoadScene ("GameScene");
 	}
 

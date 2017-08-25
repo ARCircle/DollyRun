@@ -9,14 +9,15 @@ public class SceneStopScript : MonoBehaviour {
 	private AudioSource audio1;
 	private AudioSource audio2;
 	private AudioSource audio3;
+	public Pause pausescript;
 
 	void Start () {
 		fadeOut = GameObject.Find ("FadeOut");
 		fadeOut.SetActive (false);
 		AudioSource[] audiosources = GameObject.Find("audios").GetComponents<AudioSource> ();
 		audio1 = audiosources [0];
-		audio2 = audiosources [1];
-		audio3 = audiosources [2];
+		audio2 = audiosources [0];
+		audio3 = audiosources [1];
 		gameObject.SetActive (false);
 	}
 
@@ -42,6 +43,7 @@ public class SceneStopScript : MonoBehaviour {
 	public void ReturnGameButton() {
 		//一時停止終わり
 		audio3.Play ();
+		pausescript.Push ();
 	}
 
 	public void ReturnTitle() {
