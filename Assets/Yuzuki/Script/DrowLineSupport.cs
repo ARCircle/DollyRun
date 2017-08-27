@@ -7,10 +7,11 @@ public class DrowLineSupport : MonoBehaviour {
 
 	PlayerMoveControl_tutorial pmc;
 
-	Vector2 inputPos = new Vector2 ();
+	float inputPosY;
 	Animation anim;
 	Image SlideGuide;
 	GameObject GuideText;
+
 
 	bool isDrow = false;
 
@@ -36,9 +37,10 @@ public class DrowLineSupport : MonoBehaviour {
 	void Update () {
 		//想定通りに描いてくれているかのチェック
 		if (Input.GetMouseButtonDown(0)) {
-			if (Input.mousePosition.x < 140 && Input.mousePosition.y < 370 && Input.mousePosition.y > 160) {
-				inputPos.x = Input.mousePosition.x;
-				inputPos.y = Input.mousePosition.y;
+			Vector3 pos;
+			pos = MouseposToWorldpos (Input.mousePosition);
+			if (pos.x < 0 && Input.mousePosition.y < 370 && Input.mousePosition.y > 160) {
+				inputPosY = Input.mousePosition.y;
 				isDrow = true;
 				pmc.DoDrowRail = true;
 				//animation停止
@@ -50,29 +52,38 @@ public class DrowLineSupport : MonoBehaviour {
 
 		if (isDrow) {
 			pmc.MainProcess ();
-		}
 
-		if (Input.GetMouseButtonUp (0)) {
-			isDrow = false;
+			if (Input.GetMouseButtonUp (0) || (isDrow && pmc.touchcnt == 0)) {
+				isDrow = false;
+				Vector3 pos;
+				pos = MouseposToWorldpos (Input.mousePosition);
+				if (pos.x > 4.2 && Input.mousePosition.y > inputPosY) {
+					//描いてほしい通りに描いてくれたので、その後の処理
 
-			if (Input.mousePosition.x > 200 && Input.mousePosition.y > inputPos.y) {
-				//描いてほしい通りに描いてくれたので、その後の処理
+					//成功音の再生処理を追加...
 
-				//成功音の再生処理を追加...
+					//ポーズを解いてレールを引けなくする
+					GrobalClass.pause = false;
+					pmc.DoDrowRail = false;
 
-				//ポーズを解いてレールを引けなくする
-				GrobalClass.pause = false;
-				pmc.DoDrowRail = false;
-
-				//次の処理へ命令を出し、このスクリプトを消す
-				this.GetComponent<TutorialManager> ().endActionSupport = true;
-				GuideText.SetActive (false);
-				Destroy (this.gameObject.GetComponent<DrowLineSupport> ());
-			} else {
-				anim.Play ();
-				SlideGuide.enabled = true;
+					//次の処理へ命令を出し、このスクリプトを消す
+					this.GetComponent<TutorialManager> ().endActionSupport = true;
+					GuideText.SetActive (false);
+					Destroy (this.gameObject.GetComponent<DrowLineSupport> ());
+				} else {
+					anim.Play ();
+					SlideGuide.enabled = true;
+				}
 			}
 		}
 
+	}
+
+	Vector3 MouseposToWorldpos (Vector3 mousePos) {
+		Vector3 mp = Input.mousePosition;
+		mp.z = 20;
+		Vector3 wptmp = Camera.main.ScreenToWorldPoint (mp);
+		Vector3 cp = Camera.main.transform.position;
+		return (wptmp - cp) * cp.y / (cp.y - wptmp.y) + cp;
 	}
 }

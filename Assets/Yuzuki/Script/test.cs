@@ -22,8 +22,13 @@ public class test : MonoBehaviour {
 			GrobalClass.pause = !GrobalClass.pause;
 		}
 
-		if (Input.GetMouseButtonDown(0)) {
-			Debug.Log(Input.mousePosition);
+		if (Input.GetMouseButtonUp(0)) {
+			Vector3 mp = Input.mousePosition;
+			mp.z = 20;
+			Vector3 wptmp = Camera.main.ScreenToWorldPoint (mp);
+			Vector3 cp = Camera.main.transform.position;
+			Vector3 wp = (wptmp - cp) * cp.y / (cp.y - wptmp.y) + cp;
+			Debug.Log(wp);
 		}
 	}
 }

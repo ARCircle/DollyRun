@@ -45,7 +45,6 @@ public static class ScoreCalculator {
 
 	public static int[] TopScore = { 0, 0, 0, 0, 0, 0, 0 };	//トップ７のスコア
 	public static int TmpScore = 0;
-	public static int LatestScore = 0;			//直前のスコア、ゲームオーバー時に値を表示するために使用
 	public static int LatestScoreNum = -1;		//直前のスコアの番地、ランク外の場合は-1、ランクインしたら0以上の値になる
 
 
@@ -76,7 +75,6 @@ public static class ScoreCalculator {
 	public static void UpdateTopScore (int NowScore) {
 
 		UpdateTmpScore (0);
-		LatestScore = NowScore;
 		for (int i = 0; i < 7; i++) {
 			if (TopScore [i] < NowScore) {
 				for (int j = 5; j - i >= 0; j--) {

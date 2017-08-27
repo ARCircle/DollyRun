@@ -45,16 +45,15 @@ public class TouchOtherButton : MonoBehaviour {
 
 
 	public void TutorialStart () {
-		ToTutorial ();
-		//StartCoroutine (fade.blackin (1.5f, ToTutorial));
-	}
-
-	void ToTutorial () {
-		Debug.Log ("チュートリアルシーンへ");
 		//音声の再生
 		GameObject.Find ("AudioManager").GetComponent <AudioManager> ().DecisionSE.Play ();
 
-		//UnityEngine.SceneManagement.SceneManager.LoadScene ("");
+		fade = this.gameObject.AddComponent<Fader> ();
+		StartCoroutine (fade.blackin (1.5f, ToTutorial));
+	}
+
+	void ToTutorial () {
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("Tutorial");
 	}
 
 	public void ScoreEnd () {
