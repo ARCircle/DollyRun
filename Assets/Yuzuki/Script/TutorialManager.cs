@@ -21,10 +21,12 @@ public class TutorialManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//GameObject.Find ("CoinManager").GetComponent <ItemManager> ().EnableCoinGenerate = false;
 		GuideObj = GameObject.Find ("GuideText");
 		Guide = GuideObj.transform.Find ("Text").gameObject.GetComponent <Text> ();
 		GuideObj.SetActive (false);
 
+		GameObject.Find ("PlayerBase").GetComponent <PlayerMoveControl_tutorial> ().DoDrowRail = false;
 		//NextTutorial ();
 	}
 
@@ -50,19 +52,74 @@ public class TutorialManager : MonoBehaviour {
 		switch (ProcessNum) {
 		case 0:		//最初の基本説明と線路の書き方
 			GuideText = new string[3];
-			GuideText [0] = "a";
+			GuideText [0] = "基本操作";
 			GuideText [1] = "aa";
 			GuideText [2] = "aaa";
 
 			waittime = 0;
 			break;
 		case 1:		//線路を引く、の追加説明
-			GuideText = new string[7];
+			GuideText = new string[2];
+			GuideText [0] = "こうやってひくんだよ";
+			GuideText [1] = "aa";
+
 			waittime = 2;
 			break;
-		case 2:		//アイテムの説明
-			GuideText = new string[8];
+		case 2:		//アイテムの説明（青）
+			GuideText = new string[3];
 			GuideText [0] = "次は、アイテムについて\n説明するよ！！";
+			GuideText [1] = "aa";
+			GuideText [2] = "aaa";
+
+			waittime = 0;
+			break;
+
+		case 3:		//アイテムの説明（青）の追加説明
+			GuideText = new string[2];
+			GuideText [0] = "青は無敵";
+			GuideText [1] = "aa";
+
+			waittime = 2;
+			break;
+
+		case 4:		//アイテムの説明（赤）
+			GuideText = new string[3];
+			GuideText [0] = "次は、赤について\n説明するよ！！";
+			GuideText [1] = "aa";
+			GuideText [2] = "aaa";
+
+			waittime = 0;
+			break;
+
+		case 5:		//アイテムの説明（赤）、の追加説明
+			GuideText = new string[2];
+			GuideText [0] = "赤は回収";
+			GuideText [1] = "aa";
+
+			waittime = 2;
+			break;
+
+		case 6:		//アイテムの説明（どっちも）
+			GuideText = new string[3];
+			GuideText [0] = "次は、どうじについて\n説明するよ！！";
+			GuideText [1] = "aa";
+			GuideText [2] = "aaa";
+
+			waittime = 0;
+			break;
+
+		case 7:		//アイテムの説明（どっちも）、の追加説明
+			GuideText = new string[2];
+			GuideText [0] = "どっちも使える";
+			GuideText [1] = "aa";
+
+			waittime = 2;
+			break;
+
+
+		case 8:		//最後に
+			GuideText = new string[3];
+			GuideText [0] = "おわた";
 			GuideText [1] = "aa";
 			GuideText [2] = "aaa";
 
@@ -107,15 +164,29 @@ public class TutorialManager : MonoBehaviour {
 	private IEnumerator SupportAction () {
 		Debug.Log ("Start Support Action");
 		switch (ProcessNum) {
-		case 0:
+		case 0:		//レールを引くチュートリアル
 			this.gameObject.AddComponent <DrowLineSupport> ();
 			break;
-		case 2:
+		case 2:		//Aアイテムのチュートリアル
 			this.gameObject.AddComponent <ItemSupport> ();
+			break;
+		case 4:		//Rアイテムのチュートリアル
+			this.GetComponent<ItemSupport> ().Start2 ();
+			break;
+		case 6:		//AとRの同時使用のチュートリアル
+			this.GetComponent<ItemSupport> ().Start3 ();
+			break;
+		case 8:		//終了
+			Fader fade = this.gameObject.AddComponent <Fader> ();
+			yield return fade.blackin (1.5f, Totitle);
+			yield break;
 			break;
 
 
 		case 1:
+		case 3:
+		case 5:
+		case 7:
 			//テキスト表示だけで終わるときはこの二つを実行する
 			isWaiting = true;
 			yield break;
@@ -133,6 +204,8 @@ public class TutorialManager : MonoBehaviour {
 				//終了メッセージを表示
 				GuideObj.SetActive (true);
 				Guide.text = endMessage;
+
+				yield return new WaitForSeconds (1);
 				//タッチしたら終了
 				while (true) {
 					if (Input.GetMouseButtonUp (0)) {
@@ -146,6 +219,11 @@ public class TutorialManager : MonoBehaviour {
 
 			yield return new WaitForSeconds (0.2f);
 		}
+	}
+
+
+	void Totitle () {
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("Tittle");
 	}
 
 }

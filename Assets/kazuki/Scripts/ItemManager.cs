@@ -19,7 +19,7 @@ public class ItemManager : MonoBehaviour {
     //子オブジェクトのローカルポジションで親オブジェクトの下辺で指定できるようにする
     private BoxCollider prefabColl; //一番下のコライダー
 
-    private List<GameObject> instanceList;
+    public List<GameObject> instanceList;
 //    private float coinVaccumEndTimer; //加算タイマー
     private float intervalTime; //生成するまでの時間
     private float instanceTimer; //加算タイマー
