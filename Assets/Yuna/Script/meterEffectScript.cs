@@ -11,7 +11,7 @@ public class meterEffectScript : MonoBehaviour {
 	}
 
 	void Update () {
-		Debug.Log ((int)GrobalClass.distance);
+		//Debug.Log ((int)GrobalClass.distance);
 		if ((int)GrobalClass.distance == 100 ||
 			(int)GrobalClass.distance == 200 ||
 			//(int)GrobalClass.distance == 300 ||

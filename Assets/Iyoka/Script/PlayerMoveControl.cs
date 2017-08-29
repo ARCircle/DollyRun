@@ -9,6 +9,7 @@ public class PlayerMoveControl : MonoBehaviour {
 	float touchtime = 0f, limit = 0.6f;
 	float[,] StageRail = {{-5f, -4f}, {-0.5f, 0.5f}, {4f, 5f}};
 
+	AudioSource onrailsound, drawingsound;
 	GameObject Body;
 	GameObject[] rrrr = new GameObject[r_limit]; // Rail RendeReR
 	RState[] RS = new RState[r_limit];
@@ -16,6 +17,8 @@ public class PlayerMoveControl : MonoBehaviour {
 
 	void Start () {
 		GrobalClass.RideRailNum = 2;
+		drawingsound = transform.parent.GetComponents<AudioSource> () [0];
+		onrailsound = transform.parent.GetComponents<AudioSource> () [1];
 		rrrr [0] = transform.parent.Find ("RailRenderer").gameObject;
 		for (int i = 0; i < r_limit; i++) {
 			Body = transform.Find ("Trokko").gameObject;
@@ -48,6 +51,7 @@ public class PlayerMoveControl : MonoBehaviour {
 		// トロッコ操作
 		if (Input.GetMouseButtonDown (0)) {
 			touchtime = 0f;
+			drawingsound.Play ();
 		}
 		if (Input.GetMouseButton (0) && touchtime < limit) {
 			// ワールド座標の取得
@@ -87,6 +91,7 @@ public class PlayerMoveControl : MonoBehaviour {
 			RS [railcnt].Fin = touchcnt;
 			touchtime += Time.deltaTime;
 		} else if (touchcnt > 0) {
+			drawingsound.Stop ();
 			//レール始端
 			/*int strp = RS [railcnt].CSpoint;
 				for (int i = 0; i < strp; i++) {
@@ -101,6 +106,7 @@ public class PlayerMoveControl : MonoBehaviour {
 			railcnt = (railcnt + 1) % r_limit;
 			RS [railcnt].Reset ();
 		}
+		// プレイヤー移動判定
 		for (int i = 0; i < r_limit; i++) {
 			RS [i].CheckKP ();
 			if (RS [i].KPenable) {
@@ -109,11 +115,15 @@ public class PlayerMoveControl : MonoBehaviour {
 					if (RS [i].GetLastCrossZ () + RS [i].myrrrr.position.z <= playerline) { // 降りるとき
 						GrobalClass.RideRailNum = RS [i].GetLastCrossR ();
 						RS [i].Riding = false;
+						if (onrailsound.isPlaying)
+							onrailsound.Stop ();
 						int j = GrobalClass.RideRailNum - 1;
 						Body.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
 						Body.transform.position = new Vector3 ((StageRail [j, 0] + StageRail [j, 1]) / 2f, 0f, playerline);
 					} else { // 乗るとき、乗ってるとき
 						RS [i].Riding = true;
+						if (!onrailsound.isPlaying)
+							onrailsound.Play ();
 						GrobalClass.RideRailNum = -1;
 						Body.transform.Translate (RS [i].KeyPoint - Body.transform.position);
 						Body.transform.LookAt (RS [i].NextPoint);
