@@ -14,10 +14,10 @@ public class meterEffectScript : MonoBehaviour {
 		Debug.Log ((int)GrobalClass.distance);
 		if ((int)GrobalClass.distance == 100 ||
 			(int)GrobalClass.distance == 200 ||
-			(int)GrobalClass.distance == 300 ||
-			(int)GrobalClass.distance == 400 ||
+			//(int)GrobalClass.distance == 300 ||
+			//(int)GrobalClass.distance == 400 ||
 			(int)GrobalClass.distance == 500 ||
-			(int)GrobalClass.distance == 750 ||
+			//(int)GrobalClass.distance == 750 ||
 			(int)GrobalClass.distance == 1000 ||
 			(int)GrobalClass.distance == 1500 ||
 			(int)GrobalClass.distance == 2000 ||
