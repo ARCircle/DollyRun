@@ -133,14 +133,16 @@ public class TutorialManager : MonoBehaviour {
 
 	private IEnumerator ShowGuideText () {
 		int TextNum = 0;
+		float ShowTime = 0;
 		Guide.text = GuideText [0];
 		Debug.Log ("Start Guide Text");
 		yield return null;
 
 		while (true) {
 
-			if (Input.GetMouseButtonUp (0)) {
+			if (Input.GetMouseButtonUp (0) || ShowTime > 3.0f) {
 				//次のテキストへ
+				ShowTime = 0;
 				if (++TextNum == GuideText.Length) {
 					GuideObj.SetActive (false);
 					Debug.Log ("End Guide Text");
@@ -152,10 +154,10 @@ public class TutorialManager : MonoBehaviour {
 				Guide.text = GuideText [TextNum];
 
 
-				//連続入力禁止用に0.5s待つ
-				yield return new WaitForSeconds (0.5f);
+				//連続入力禁止用に0.3s待つ
+				yield return new WaitForSeconds (0.3f);
 			}
-
+			ShowTime += Time.deltaTime;
 			yield return null;
 		}
 	}
@@ -180,7 +182,7 @@ public class TutorialManager : MonoBehaviour {
 			Fader fade = this.gameObject.AddComponent <Fader> ();
 			yield return fade.blackin (1.5f, Totitle);
 			yield break;
-			break;
+			//break;
 
 
 		case 1:
@@ -190,7 +192,7 @@ public class TutorialManager : MonoBehaviour {
 			//テキスト表示だけで終わるときはこの二つを実行する
 			isWaiting = true;
 			yield break;
-			break;
+			//break;
 
 		}
 		yield return null;
@@ -204,15 +206,17 @@ public class TutorialManager : MonoBehaviour {
 				//終了メッセージを表示
 				GuideObj.SetActive (true);
 				Guide.text = endMessage;
+				float time = 0;
 
 				yield return new WaitForSeconds (1);
 				//タッチしたら終了
 				while (true) {
-					if (Input.GetMouseButtonUp (0)) {
+					if (Input.GetMouseButtonUp (0) || time > 3.0f) {
 						GuideObj.SetActive (false);
 						isWaiting = true;
 						yield break;
 					}
+					time += Time.deltaTime;
 					yield return null;
 				}
 			}

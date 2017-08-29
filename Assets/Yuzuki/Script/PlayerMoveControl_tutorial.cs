@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMoveControl_tutorial : MonoBehaviour {
-	int touchcnt = 0, railcnt = 0;
+	public int touchcnt = 0; 
+	int railcnt = 0;
 	const int r_limit = 20, p_limit = 200;
 	const float playerline = 1f;
 	float touchtime = 0f, limit = 0.6f;

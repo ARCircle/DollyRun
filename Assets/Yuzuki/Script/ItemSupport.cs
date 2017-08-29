@@ -146,7 +146,7 @@ public class ItemSupport : MonoBehaviour {
 				}
 
 
-				yield break;
+				//yield break;
 			}
 			yield return new WaitForSeconds(0.3f);
 		}
@@ -154,11 +154,13 @@ public class ItemSupport : MonoBehaviour {
 
 	IEnumerator ShowText () {
 		int TextNum = 0;
+		float ShowTime = 0;
 		GuideTextObj.SetActive (true);
 		GuideTextObj.transform.Find("Text").gameObject.GetComponent <Text> ().text = GuideText [0];
 		while (true) {
-			if (Input.GetMouseButtonUp (0)) {
+			if (Input.GetMouseButtonUp (0) || ShowTime > 3.0f) {
 				//次のテキストへ
+				ShowTime = 0;
 				if (++TextNum == GuideText.Length) {
 					GuideTextObj.SetActive (false);
 
@@ -168,10 +170,10 @@ public class ItemSupport : MonoBehaviour {
 				GuideTextObj.transform.Find("Text").gameObject.GetComponent <Text> ().text = GuideText [TextNum];
 
 
-				//連続入力禁止用に0.5s待つ
-				yield return new WaitForSeconds (0.5f);
+				//連続入力禁止用に0.3s待つ
+				yield return new WaitForSeconds (0.3f);
 			}
-
+			ShowTime += Time.deltaTime;
 			yield return null;
 		}
 	}

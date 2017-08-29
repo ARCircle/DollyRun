@@ -9968,7 +9968,7 @@ RectTransform:
   m_Children:
   - {fileID: 1791522636}
   m_Father: {fileID: 1741815566}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -42521,7 +42521,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1741815566}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -59045,6 +59045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93657368038cf6c4e8f0fcff8fea0201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchcnt: 0
   DoDrowRail: 1
 --- !u!1 &747447908
 GameObject:
@@ -69329,78 +69330,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &939533298
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1378284932709490, guid: 1b7763c47d9901c4783e6fd45a1e8188,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 939533299}
-  - component: {fileID: 939533301}
-  - component: {fileID: 939533300}
-  m_Layer: 5
-  m_Name: Panel2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &939533299
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224653479985280434, guid: 1b7763c47d9901c4783e6fd45a1e8188,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 939533298}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1741815566}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &939533300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114781031993154688, guid: 1b7763c47d9901c4783e6fd45a1e8188,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 939533298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &939533301
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222038098123995348, guid: 1b7763c47d9901c4783e6fd45a1e8188,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 939533298}
 --- !u!1 &942890402
 GameObject:
   m_ObjectHideFlags: 0
@@ -82387,6 +82316,7 @@ MonoBehaviour:
   destroyBorder: {fileID: 1325459476}
   coinVaccumEndTime: 5
   vaccumBorder: {fileID: 1784400779}
+  instanceList: []
 --- !u!82 &1036935271
 AudioSource:
   m_ObjectHideFlags: 0
@@ -137486,7 +137416,6 @@ GameObject:
   - component: {fileID: 1741815563}
   - component: {fileID: 1741815567}
   - component: {fileID: 1741815568}
-  - component: {fileID: 1741815569}
   m_Layer: 5
   m_Name: TutorialCanvas
   m_TagString: Untagged
@@ -137561,7 +137490,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 939533299}
   - {fileID: 70223952}
   - {fileID: 440849369}
   m_Father: {fileID: 0}
@@ -137597,18 +137525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ba636168220e14694f9a2c6659d5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1741815569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1741815562}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 812781a8913e1294e9f6721f8751ead9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GuideTextObj: {fileID: 70223951}
 --- !u!1 &1747354348
 GameObject:
   m_ObjectHideFlags: 0
