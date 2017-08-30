@@ -17,7 +17,7 @@ public class LatestStar : MonoBehaviour {
 		if (ScoreCalculator.LatestScoreNum == -1) {
 			this.gameObject.SetActive (false);
 		} else {
-			this.GetComponent <RectTransform> ().localPosition = new Vector3 (-270, 330 - ScoreCalculator.LatestScoreNum * 100, 0);
+			this.GetComponent <RectTransform> ().localPosition = new Vector3 (-230, 330 - ScoreCalculator.LatestScoreNum * 100, 0);
 			string name = "rank" + (ScoreCalculator.LatestScoreNum + 1);
 			textImg = GameObject.Find("ranking").transform.Find (name).Find ("point").gameObject.GetComponent <Text> ();
 		}

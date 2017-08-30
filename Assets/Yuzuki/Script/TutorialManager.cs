@@ -25,7 +25,7 @@ public class TutorialManager : MonoBehaviour {
 		GuideObj = GameObject.Find ("GuideText");
 		Guide = GuideObj.transform.Find ("Text").gameObject.GetComponent <Text> ();
 		GuideObj.SetActive (false);
-
+		GrobalClass.StartInterval = 0f;
 		GameObject.Find ("PlayerBase").GetComponent <PlayerMoveControl_tutorial> ().DoDrowRail = false;
 		//NextTutorial ();
 	}
