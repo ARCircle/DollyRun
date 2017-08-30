@@ -10394,6 +10394,11 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!20 &113806323 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20992490664140198, guid: 0155e285e2ce86a468af14ca249833c5,
+    type: 2}
+  m_PrefabInternal: {fileID: 113806315}
 --- !u!1 &127812869
 GameObject:
   m_ObjectHideFlags: 0
@@ -50162,7 +50167,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 113806323}
   m_PlaneDistance: 3
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
