@@ -7,7 +7,7 @@ public class DrowLineSupport : MonoBehaviour {
 
 	PlayerMoveControl_tutorial pmc;
 
-	float inputPosY;
+	float inputPosZ;
 	Animation anim;
 	Image SlideGuide;
 	GameObject GuideText;
@@ -39,8 +39,8 @@ public class DrowLineSupport : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
 			Vector3 pos;
 			pos = MouseposToWorldpos (Input.mousePosition);
-			if (pos.x < 0 && Input.mousePosition.y < 370 && Input.mousePosition.y > 160) {
-				inputPosY = Input.mousePosition.y;
+			if (pos.x < 0 && pos.z > 3 && pos.z < 12) {
+				inputPosZ = pos.z;
 				isDrow = true;
 				pmc.DoDrowRail = true;
 				//animation停止
@@ -57,7 +57,7 @@ public class DrowLineSupport : MonoBehaviour {
 				isDrow = false;
 				Vector3 pos;
 				pos = MouseposToWorldpos (Input.mousePosition);
-				if (pos.x > 4.2 && Input.mousePosition.y > inputPosY) {
+				if (pos.x > 4.2 && pos.z > inputPosZ) {
 					//描いてほしい通りに描いてくれたので、その後の処理
 
 					//成功音の再生処理を追加...
