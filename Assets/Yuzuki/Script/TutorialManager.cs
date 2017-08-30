@@ -22,6 +22,7 @@ public class TutorialManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//GameObject.Find ("CoinManager").GetComponent <ItemManager> ().EnableCoinGenerate = false;
+		GrobalClass.Reset ();
 		GuideObj = GameObject.Find ("GuideText");
 		Guide = GuideObj.transform.Find ("Text").gameObject.GetComponent <Text> ();
 		GuideObj.SetActive (false);
