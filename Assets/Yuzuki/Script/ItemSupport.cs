@@ -32,10 +32,10 @@ public class ItemSupport : MonoBehaviour {
 		maruta.transform.position = new Vector3 (4.2f, 0, 40);
 
 		//テキストの設定
-		GuideText = new string[3];
-		GuideText[0] = "これが青アイテム";
-		GuideText[1] = "aa";
-		GuideText[2] = "aaa";
+		GuideText = new string[1];
+		GuideText[0] = "これが<color=#AAAAFF>アクアマリン</color>";
+		//GuideText[1] = "aa";
+		//GuideText[2] = "aaa";
 
 		StartCoroutine (CheckItemPos ());
 	}
@@ -58,10 +58,10 @@ public class ItemSupport : MonoBehaviour {
 
 
 		//テキストの設定
-		GuideText = new string[3];
-		GuideText[0] = "これが赤アイテム";
-		GuideText[1] = "aa";
-		GuideText[2] = "aaa";
+		GuideText = new string[1];
+		GuideText[0] = "これが<color=#FF8888>ルビー</color>";
+		//GuideText[1] = "aa";
+		//GuideText[2] = "aaa";
 
 		StartCoroutine (CheckItemPos ());
 	}
@@ -90,10 +90,10 @@ public class ItemSupport : MonoBehaviour {
 
 
 		//テキストの設定
-		GuideText = new string[3];
+		GuideText = new string[2];
 		GuideText[0] = "二つのアイテムを取れそうだね";
 		GuideText[1] = "同時に使ったらどうなるんだろう";
-		GuideText[2] = "aaa";
+		//GuideText[2] = "aaa";
 
 		StartCoroutine (CheckItemPos ());
 	}

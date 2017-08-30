@@ -53,76 +53,78 @@ public class TutorialManager : MonoBehaviour {
 		switch (ProcessNum) {
 		case 0:		//最初の基本説明と線路の書き方
 			GuideText = new string[3];
-			GuideText [0] = "基本操作";
-			GuideText [1] = "aa";
-			GuideText [2] = "aaa";
+			GuideText [0] = "これからチュートリアルを\n始めるよ！";
+			GuideText [1] = "障害物をよけながら\nコインを集めよう！";
+			GuideText [2] = "まずは線路を移動しよう！";
 
 			waittime = 0;
 			break;
 		case 1:		//線路を引く、の追加説明
 			GuideText = new string[2];
-			GuideText [0] = "こうやってひくんだよ";
-			GuideText [1] = "aa";
+			GuideText [0] = "新しい線路を引いて\n移動できたね！";
+			GuideText [1] = "これがDollyRunの\n基本操作だよ！";
 
 			waittime = 2;
 			break;
 		case 2:		//アイテムの説明（青）
 			GuideText = new string[3];
 			GuideText [0] = "次は、アイテムについて\n説明するよ！！";
-			GuideText [1] = "aa";
-			GuideText [2] = "aaa";
+			GuideText [1] = "アイテムは2種類！";
+			GuideText [2] = "まずは<color=#AAAAFF>アクアマリン</color>クリスタルだよ！";
 
 			waittime = 0;
 			break;
 
 		case 3:		//アイテムの説明（青）の追加説明
 			GuideText = new string[2];
-			GuideText [0] = "青は無敵";
-			GuideText [1] = "aa";
+			GuideText [0] = "<color=#AAAAFF>アクアマリン</color>を使うと、\n障害物を壊せるよ！";
+			GuideText [1] = "ピンチになったら使おう！";
 
 			waittime = 2;
 			break;
 
 		case 4:		//アイテムの説明（赤）
-			GuideText = new string[3];
-			GuideText [0] = "次は、赤について\n説明するよ！！";
-			GuideText [1] = "aa";
-			GuideText [2] = "aaa";
+			GuideText = new string[1];
+			GuideText [0] = "次は<color=#FF8888>ルビー</color>クリスタル";
+			//GuideText [1] = "aa";
+			//GuideText [2] = "aaa";
 
 			waittime = 0;
 			break;
 
 		case 5:		//アイテムの説明（赤）、の追加説明
 			GuideText = new string[2];
-			GuideText [0] = "赤は回収";
-			GuideText [1] = "aa";
+			GuideText [0] = "<color=#FF8888>ルビー</color>はコインを引き寄せるよ！";
+			GuideText [1] = "取れない場所にあるコインを\n一気にゲットしよう！";
 
 			waittime = 2;
 			break;
 
 		case 6:		//アイテムの説明（どっちも）
 			GuideText = new string[3];
-			GuideText [0] = "次は、どうじについて\n説明するよ！！";
-			GuideText [1] = "aa";
-			GuideText [2] = "aaa";
+			GuideText [0] = "アイテムの効果時間は\n下に表示されるよ";
+			GuideText [1] = "取った分だけ\n効果時間が伸びるんだ";
+			GuideText [2] = "でもそれぞれ3つまで\nだから気をつけてね！";
 
 			waittime = 0;
 			break;
 
 		case 7:		//アイテムの説明（どっちも）、の追加説明
 			GuideText = new string[2];
-			GuideText [0] = "どっちも使える";
-			GuideText [1] = "aa";
+			GuideText [0] = "一度にどっちも\n使っちゃうよ！";
+			GuideText [1] = "ためた分は全部\nなくなっちゃうから\n注意しよう！";
 
 			waittime = 2;
 			break;
 
 
 		case 8:		//最後に
-			GuideText = new string[3];
-			GuideText [0] = "おわた";
-			GuideText [1] = "aa";
-			GuideText [2] = "aaa";
+			GuideText = new string[5];
+			GuideText [0] = "これでチュートリアルは終わり！";
+			GuideText [1] = "高いスコアを取るには……";
+			GuideText [2] = "長い距離を走って、";
+			GuideText [3] = "コインをたくさん取ろう！";
+			GuideText [4] = "ハイスコアの記録\n目指してがんばってね！！";
 
 			break;
 
