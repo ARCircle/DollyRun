@@ -56,7 +56,8 @@ public class PlayerMoveControl : MonoBehaviour {
 		if (Input.GetMouseButton (0) && touchtime < limit) {
 			// ワールド座標の取得
 			mp = Input.mousePosition;
-			if (mp.y < Screen.height / 5) {
+			if ((mp.y < Screen.height / 5f) || 
+				(mp.x > Screen.width * 7f / 8f && mp.y > Screen.height * 9f / 10f)){
 				touchtime += limit;
 			}
 			mp.z = 20f;

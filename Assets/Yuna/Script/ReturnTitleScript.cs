@@ -35,6 +35,19 @@ public class ReturnTitleScript : MonoBehaviour {
 		audio2.Play ();
 		Invoke("Retry", 1);
 	}
+
+	public void TweetButton() {
+		string scoretext = GrobalClass.ScoreCalc ().ToString ();
+		string text1 = "新感覚トロッコランゲーム「DollyRun」でスコア";
+		string text2 = "点でた！\n";
+		string text3 = "探検";
+		string text4 = "m コイン";
+		string text5 = "枚\n";
+		string url = "http://arcircle.net/\n";
+		string hashtag = "#AR会 #DollyRun";
+		string message = text1 + scoretext + text2 + text3 + GrobalClass.distance + text4 + GrobalClass.coins + text5 + url + hashtag;
+		Application.OpenURL("http://twitter.com/intent/tweet?text=" + WWW.EscapeURL(message));
+	}
 		
 	public void ReturnTitle() {
 		SceneManager.LoadScene ("Tittle");
