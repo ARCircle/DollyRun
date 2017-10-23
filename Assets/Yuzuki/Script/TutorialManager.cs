@@ -17,7 +17,7 @@ public class TutorialManager : MonoBehaviour {
 
 	public GameObject GuideObj;
 	Text Guide;
-
+	PlayerMoveControl_tutorial pmc;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +27,8 @@ public class TutorialManager : MonoBehaviour {
 		Guide = GuideObj.transform.Find ("Text").gameObject.GetComponent <Text> ();
 		GuideObj.SetActive (false);
 		GrobalClass.StartInterval = 0f;
-		GameObject.Find ("PlayerBase").GetComponent <PlayerMoveControl_tutorial> ().DoDrowRail = false;
+		pmc = GameObject.Find ("PlayerBase").GetComponent <PlayerMoveControl_tutorial> ();
+		pmc.DoDrowRail = false;
 		//NextTutorial ();
 	}
 
@@ -72,6 +73,7 @@ public class TutorialManager : MonoBehaviour {
 			GuideText [1] = "アイテムは2種類！";
 			GuideText [2] = "まずは<color=#AAAAFF>アクアマリン</color>クリスタルだよ！";
 
+			pmc.DoDrowRail = false;
 			waittime = 0;
 			break;
 
@@ -80,6 +82,7 @@ public class TutorialManager : MonoBehaviour {
 			GuideText [0] = "<color=#AAAAFF>アクアマリン</color>を使うと、\n障害物を壊せるよ！";
 			GuideText [1] = "ピンチになったら使おう！";
 
+			pmc.DoDrowRail = true;
 			waittime = 2;
 			break;
 
@@ -89,6 +92,7 @@ public class TutorialManager : MonoBehaviour {
 			//GuideText [1] = "aa";
 			//GuideText [2] = "aaa";
 
+			pmc.DoDrowRail = false;
 			waittime = 0;
 			break;
 
@@ -97,6 +101,7 @@ public class TutorialManager : MonoBehaviour {
 			GuideText [0] = "<color=#FF8888>ルビー</color>はコインを引き寄せるよ！";
 			GuideText [1] = "取れない場所にあるコインを\n一気にゲットしよう！";
 
+			pmc.DoDrowRail = true;
 			waittime = 2;
 			break;
 
@@ -106,6 +111,7 @@ public class TutorialManager : MonoBehaviour {
 			GuideText [1] = "取った分だけ\n効果時間が伸びるんだ";
 			GuideText [2] = "でもそれぞれ3つまで\nだから気をつけてね！";
 
+			pmc.DoDrowRail = false;
 			waittime = 0;
 			break;
 
@@ -114,6 +120,7 @@ public class TutorialManager : MonoBehaviour {
 			GuideText [0] = "一度にどっちも\n使っちゃうよ！";
 			GuideText [1] = "ためた分は全部\nなくなっちゃうから\n注意しよう！";
 
+			pmc.DoDrowRail = true;
 			waittime = 2;
 			break;
 
@@ -127,10 +134,7 @@ public class TutorialManager : MonoBehaviour {
 			GuideText [4] = "ハイスコアの記録\n目指してがんばってね！！";
 
 			break;
-
-
 		}
-
 		StartCoroutine (ShowGuideText ());
 	}
 
@@ -173,12 +177,15 @@ public class TutorialManager : MonoBehaviour {
 			this.gameObject.AddComponent <DrowLineSupport> ();
 			break;
 		case 2:		//Aアイテムのチュートリアル
+			yield return new WaitForSeconds (1.5f);
 			this.gameObject.AddComponent <ItemSupport> ();
 			break;
 		case 4:		//Rアイテムのチュートリアル
+			yield return new WaitForSeconds (1.5f);
 			this.GetComponent<ItemSupport> ().Start2 ();
 			break;
 		case 6:		//AとRの同時使用のチュートリアル
+			yield return new WaitForSeconds (1.5f);
 			this.GetComponent<ItemSupport> ().Start3 ();
 			break;
 		case 8:		//終了
@@ -189,7 +196,7 @@ public class TutorialManager : MonoBehaviour {
 
 
 		case 1:
-		case 3:
+		case 3:			
 		case 5:
 		case 7:
 			//テキスト表示だけで終わるときはこの二つを実行する

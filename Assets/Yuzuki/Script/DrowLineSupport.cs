@@ -64,7 +64,7 @@ public class DrowLineSupport : MonoBehaviour {
 
 					//ポーズを解いてレールを引けなくする
 					GrobalClass.pause = false;
-					pmc.DoDrowRail = false;
+					//pmc.DoDrowRail = false;
 
 					//次の処理へ命令を出し、このスクリプトを消す
 					this.GetComponent<TutorialManager> ().endActionSupport = true;
