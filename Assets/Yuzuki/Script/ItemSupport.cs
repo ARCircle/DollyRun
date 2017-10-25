@@ -24,15 +24,17 @@ public class ItemSupport : MonoBehaviour {
 		GuideTextObj = this.GetComponent <TutorialManager> ().GuideObj;
 		_iec = GameObject.Find ("GameManager").GetComponent <ItemEffectControler_iyoka> ();
 
-		int railcheck = GrobalClass.RideRailNum - 2;
-		Debug.Log ("railcheck : " + railcheck);
+		//int railcheck = GrobalClass.RideRailNum - 2;
+		//Debug.Log ("railcheck : " + railcheck);
 
 		//アイテムの生成
-		crystal = Instantiate (Resources.Load("Crystal_obj_A_iyoka") as GameObject);
-		crystal.transform.position = new Vector3 (4.2f * railcheck, 0, 35);
-		crystal.GetComponent<CrystalScript_iyoka> ().type = "A";
-		maruta = Instantiate (Resources.Load("ObjBlock01") as GameObject);
-		maruta.transform.position = new Vector3 (4.2f * railcheck, 0, 40);
+		for (int i = -1; i < 2; i++) {
+			crystal = Instantiate (Resources.Load ("Crystal_obj_A_iyoka") as GameObject);
+			crystal.transform.position = new Vector3 (4.2f * i, 0, 35);
+			crystal.GetComponent<CrystalScript_iyoka> ().type = "A";
+			maruta = Instantiate (Resources.Load ("ObjBlock01") as GameObject);
+			maruta.transform.position = new Vector3 (4.2f * i, 0, 40);
+		}
 
 		//テキストの設定
 		GuideText = new string[1];
@@ -48,13 +50,16 @@ public class ItemSupport : MonoBehaviour {
 		GuideTextObj = this.GetComponent <TutorialManager> ().GuideObj;
 		_iec = GameObject.Find ("GameManager").GetComponent <ItemEffectControler_iyoka> ();
 		im = GameObject.Find ("CoinManager").GetComponent <ItemManager> ();
-		int railcheck = GrobalClass.RideRailNum - 2;
-		Debug.Log ("railcheck : " + railcheck);
+
+		//int railcheck = GrobalClass.RideRailNum - 2;
+		//Debug.Log ("railcheck : " + railcheck);
 
 		//アイテムの生成
-		crystal = Instantiate (Resources.Load("Crystal_obj_R_iyoka") as GameObject);
-		crystal.transform.position = new Vector3 (4.2f * railcheck, 0, 35);
-		crystal.GetComponent<CrystalScript_iyoka> ().type = "R";
+		for (int i = -1; i < 2; i++) {
+			crystal = Instantiate (Resources.Load ("Crystal_obj_R_iyoka") as GameObject);
+			crystal.transform.position = new Vector3 (4.2f * i, 0, 35);
+			crystal.GetComponent<CrystalScript_iyoka> ().type = "R";
+		}
 		coin = Instantiate (Resources.Load("ButterflyCoinPrefab") as GameObject);
 		coin.transform.position = new Vector3 (0, 0, 45);
 
@@ -76,13 +81,16 @@ public class ItemSupport : MonoBehaviour {
 		GuideTextObj = this.GetComponent <TutorialManager> ().GuideObj;
 		_iec = GameObject.Find ("GameManager").GetComponent <ItemEffectControler_iyoka> ();
 		im = GameObject.Find ("CoinManager").GetComponent <ItemManager> ();
-		int railcheck = GrobalClass.RideRailNum - 2;
-		Debug.Log ("railcheck : " + railcheck);
+
+		//int railcheck = GrobalClass.RideRailNum - 2;
+		//Debug.Log ("railcheck : " + railcheck);
 
 		//アイテムの生成
-		crystal = Instantiate (Resources.Load("Crystal_obj_R_iyoka") as GameObject);
-		crystal.transform.position = new Vector3 (4.2f * railcheck, 0, 35);
-		crystal.GetComponent<CrystalScript_iyoka> ().type = "R";
+		for (int i = -1; i < 2; i++) {
+			crystal = Instantiate (Resources.Load ("Crystal_obj_R_iyoka") as GameObject);
+			crystal.transform.position = new Vector3 (4.2f * i, 0, 35);
+			crystal.GetComponent<CrystalScript_iyoka> ().type = "R";
+		}
 		coin = Instantiate (Resources.Load("ButterflyCoinPrefab") as GameObject);
 		coin.transform.position = new Vector3 (0, 0, 50);
 		//リストに追加することで、アイテム吸収をできるようにする
@@ -90,12 +98,14 @@ public class ItemSupport : MonoBehaviour {
 		im.instanceList.Add (coin);
 
 
-		crystal = Instantiate (Resources.Load("Crystal_obj_A_iyoka") as GameObject);
-		crystal.transform.position = new Vector3 (4.2f * railcheck, 0, 36.5f);
-		crystal.GetComponent<CrystalScript_iyoka> ().type = "A";
+		for (int i = -1; i < 2; i++) {
+			crystal = Instantiate (Resources.Load ("Crystal_obj_A_iyoka") as GameObject);
+			crystal.transform.position = new Vector3 (4.2f * i, 0, 36.5f);
+			crystal.GetComponent<CrystalScript_iyoka> ().type = "A";
 
-		maruta = Instantiate (Resources.Load("ObjBlock01") as GameObject);
-		maruta.transform.position = new Vector3 (4.2f * railcheck, 0, 40);
+			maruta = Instantiate (Resources.Load ("ObjBlock01") as GameObject);
+			maruta.transform.position = new Vector3 (4.2f * i, 0, 40);
+		}
 
 
 		//テキストの設定

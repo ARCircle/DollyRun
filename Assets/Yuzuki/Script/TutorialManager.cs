@@ -154,7 +154,6 @@ public class TutorialManager : MonoBehaviour {
 					GuideObj.SetActive (false);
 					Debug.Log ("End Guide Text");
 					yield return SupportAction ();
-
 					yield break;
 				}
 
@@ -177,15 +176,12 @@ public class TutorialManager : MonoBehaviour {
 			this.gameObject.AddComponent <DrowLineSupport> ();
 			break;
 		case 2:		//Aアイテムのチュートリアル
-			yield return new WaitForSeconds (1.5f);
 			this.gameObject.AddComponent <ItemSupport> ();
 			break;
 		case 4:		//Rアイテムのチュートリアル
-			yield return new WaitForSeconds (1.5f);
 			this.GetComponent<ItemSupport> ().Start2 ();
 			break;
 		case 6:		//AとRの同時使用のチュートリアル
-			yield return new WaitForSeconds (1.5f);
 			this.GetComponent<ItemSupport> ().Start3 ();
 			break;
 		case 8:		//終了
@@ -234,7 +230,6 @@ public class TutorialManager : MonoBehaviour {
 			yield return new WaitForSeconds (0.2f);
 		}
 	}
-
 
 	void Totitle () {
 		UnityEngine.SceneManagement.SceneManager.LoadScene ("Tittle");

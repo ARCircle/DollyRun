@@ -16,6 +16,7 @@ public class PlayerMoveControl_tutorial : MonoBehaviour {
 	Vector3 mp, wp, wptmp, cp;
 
 	public bool DoDrowRail = false;
+	public bool touched = false;
 
 	void Start () {
 		GrobalClass.RideRailNum = 2;
@@ -50,8 +51,10 @@ public class PlayerMoveControl_tutorial : MonoBehaviour {
 	public void MainProcess() {
 		// トロッコ操作
 		if (DoDrowRail) {
+			touched = false;
 			if (Input.GetMouseButtonDown (0)) {
 				touchtime = 0f;
+				touched = true;
 			}
 			if (Input.GetMouseButton (0) && touchtime < limit) {
 				// ワールド座標の取得
