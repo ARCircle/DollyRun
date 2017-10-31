@@ -43,6 +43,12 @@ public class TouchOtherButton : MonoBehaviour {
 		GameObject.Find ("ScoreCanvas").GetComponent <ScoreManager> ().StartScoreMenu ();
 	}
 
+	public void LicenseStart () {
+		//音声の再生
+		GameObject.Find ("AudioManager").GetComponent <AudioManager> ().DecisionSE.Play ();
+
+		GameObject.Find ("LicenseCanvas").GetComponent <LicenseManager> ().StartMenu ();
+	}
 
 	public void TutorialStart () {
 		//音声の再生
@@ -59,7 +65,12 @@ public class TouchOtherButton : MonoBehaviour {
 	public void ScoreEnd () {
 		//音声の再生
 		GameObject.Find ("AudioManager").GetComponent <AudioManager> ().backSE.Play ();
-
 		GameObject.Find ("ScoreCanvas").GetComponent <ScoreManager> ().EndScoreMenu ();
+	}
+
+	public void LicenseEnd () {
+		//音声の再生
+		GameObject.Find ("AudioManager").GetComponent <AudioManager> ().backSE.Play ();
+		GameObject.Find ("LicenseCanvas").GetComponent <LicenseManager> ().EndMenu ();
 	}
 }
