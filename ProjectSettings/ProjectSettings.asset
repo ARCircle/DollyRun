@@ -139,7 +139,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: net.ARCircle.DollyRun
   buildNumber: {}
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -213,8 +213,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/addwi/Desktop/dollyrunkey.keystore
+  AndroidKeyaliasName: pjrdev
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1

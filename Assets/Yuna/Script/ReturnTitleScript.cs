@@ -43,9 +43,10 @@ public class ReturnTitleScript : MonoBehaviour {
 		string text3 = "探検";
 		string text4 = "m コイン";
 		string text5 = "枚\n";
-		string url = "http://arcircle.net/\n";
+		string url = "https://play.google.com/store/apps/details?id=net.ARCircle.DollyRun\n";
 		string hashtag = "#AR会 #DollyRun";
-		string message = text1 + scoretext + text2 + text3 + GrobalClass.distance + text4 + GrobalClass.coins + text5 + url + hashtag;
+		string dist = (Mathf.Round(GrobalClass.distance * 1000) / 1000f) + "";
+		string message = text1 + scoretext + text2 + text3 + dist + text4 + GrobalClass.coins + text5 + url + hashtag;
 		Application.OpenURL("http://twitter.com/intent/tweet?text=" + WWW.EscapeURL(message));
 	}
 		
