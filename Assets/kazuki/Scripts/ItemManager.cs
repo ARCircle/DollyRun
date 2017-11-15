@@ -109,6 +109,7 @@ public class ItemManager : MonoBehaviour {
         //リストの０のところにあるプレハブの奥行距離から生成間隔時間を毎回調べれば、
         //任意のバラバラの大きさのプレハブをまとめて自動生成できる
         //        intervalTime = prefabColl.bounds.size.z / itemSpeed;
+        GrobalClass.speed = 5f;
         intervalTime = prefabColl.bounds.size.z / GrobalClass.speed;
         instanceTimer = 0;
 //        coinVaccumEndTimer = 0;
